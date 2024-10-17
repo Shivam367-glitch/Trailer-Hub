@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto:wght@400;700&display=swap');
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+ 
+.img_container{
+    z-index: -1;
+}
+ 
+body, html, #root { 
+    height: 100%;
+    margin: 0; 
+    font-family: "Poppins", Sans-serif;
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/04bef84d-51f6-401e-9b8e-4a521cbce3c5/null/IN-en-20240903-TRIFECTA-perspective_0d3aac9c-578f-4e3c-8aa8-bbf4a392269b_small.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+.app-layout { 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    /* padding-top:6rem; */
+}
+.header { 
+    /* background-color: #fff; */
+    flex: 0 0 auto;
+    background: transparent !important;
+}
+.home_link{
+    cursor: pointer;
+    background:linear-gradient(to bottom,rgb(245, 242, 242),rgb(241, 237, 237));
+    border: none;
+    font-size: 1.5rem;
+}
+.main-content {
+  flex: 1 0 auto;
+}
+  
+.footer {
+  /* background-color: #ECEDF4; */
+  flex: 0 0 auto;
+}
+ 
+ /* Header Section */ 
+.header_container {
+    /* position: absolute; */
+    background: transparent !important;
+}  
+.header_container img{
+    width: 180px;
+}
+.form_container{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%); 
+    opacity: 0.9;
+} 
+ 
+.login_button{
+    color:#e50914 !important
+} 
+ 
+.hover_white{ 
+    text-decoration: none;
+    transition: text-decoration 0.3s ease-in-out;
+}
+.hover_white:hover{ 
+  text-decoration: underline;
+}
+
+#floatingInput::placeholder{
+color: #a9aeb3;
+} 
+
+.form-floating label{
+    color: #a9aeb3 !important; 
+    border: none; 
+    background: transparent !important;
+}
+
+
+#rememberMe{
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+#rememberMe:checked::after{
+    color: black;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    line-height: 18px; 
+    background-color: white !important;
+}
+
+
+/* Log Out */ 
+
+.log_out_container{
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%,-20%); 
+}
+
+
+.container_scroll {
+    overflow: scroll;
+  }
+  
+.container_scroll::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+} 
+
+
+  
+  /* For other browsers like Firefox */
+.container_scroll {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+.opacity-90{
+    opacity: 0.96;
+}
+
+.bottom-95{
+    bottom: 95% !important;
+} 
+.top-35{
+    top: 30% !important;
+} 
+.w-35{
+    width: 35% !important;
+}
+
+/* movie Detail Container */ 
+
+.movie_detail_container{
+    background-repeat: no-repeat !important; 
+    /* background-size: cover; */
+} 
+
+.cursor_pointer{
+    cursor: pointer !important;
+}

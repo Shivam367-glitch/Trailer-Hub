@@ -1,0 +1,8 @@
+Firebase
+
+
+-->To Keep Checking we have to OnAuthChange Event Listerners --->when user sign in && sign Up && sign Out 
+
+
+Early Return--->
+Is to return if store is not updated
