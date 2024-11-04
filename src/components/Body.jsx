@@ -34,7 +34,6 @@ const Body = () => {
     <main className="main-content">
       <Outlet />
     </main>
-    {/* <Analytics /> */}
     {/* <Footer className="footer" /> */}
   </div>
   );

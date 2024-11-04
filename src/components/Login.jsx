@@ -8,7 +8,6 @@ import { FaEye,FaEyeSlash } from "react-icons/fa";
 import { BAC_IMG_CDN_URL } from "../utils/Constants";
 const Login = () => { 
   const[error,setError]=useState(); 
-
   const [showPassword,setShowPassword]=useState(false);
   const[isSignInForm,setIsSignInForm]=useState(true);
   const email=useRef(null); 
@@ -29,7 +28,7 @@ const Login = () => {
     }else{
       if(isSignInForm){ 
         try {
-          const userCredential = await signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value);
+          await signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value);
         } catch (error) {
           switch (error.code) {
             case 'auth/wrong-password':
@@ -53,8 +52,7 @@ const Login = () => {
   
         // const auth=getAuth();
         createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value,name?.current?.value)
-          .then((userCredential) => {
-            const user = userCredential.user;  
+          .then((userCredential) => {  
             updateProfile(auth.currentUser, {
               displayName:name?.current?.value, photoURL: "https://res.cloudinary.com/mern-app-cruds/image/upload/v1705033984/uploads/user_avatar_1705033984352.png"
             }).then(() => {
@@ -63,10 +61,6 @@ const Login = () => {
               // An error occurred 
               setError(error.message);
             });
-            
-            
-            // dispatch(addUser(auth.currentUser));
-        
           })
           .catch((error) => {
             switch (error.code) {
