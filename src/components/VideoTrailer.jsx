@@ -3,6 +3,8 @@ import useMovieTrailer from '../hooks/useMovieTrailer';
 import { useSelector } from 'react-redux';
 
 const VideoTrailer = (props) => { 
+    
+    console.log(props?.id);
     useMovieTrailer(props?.id); 
     const videoId=useSelector((store)=>store?.nowPlaying?.videoId); 
 
@@ -13,12 +15,12 @@ const VideoTrailer = (props) => {
     size="lg"
     aria-labelledby="contained-modal-title-vcenter"
     fullscreen={true}
-    className='m-0 p-0 bg-danger'
+    className='m-0 p-0 bg-dark'
   >
-    <Modal.Header closeButton className='bg-danger text-white'>
+    <Modal.Header closeButton className='bg-dark text-white'>
         <Modal.Title>Play Trailer</Modal.Title>
     </Modal.Header>
-    <Modal.Body className='bg-danger'>
+    <Modal.Body className='bg-dark'>
    {
     videoId? <iframe 
     title="Video Background"

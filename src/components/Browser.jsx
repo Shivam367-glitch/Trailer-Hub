@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 const Browser = () => {  
 
           const showGpt=useSelector((store)=>store.gpt.showGptSearch);
+          
           useNowPlayingMovies();
           usePopularMovies(); 
           useTopRatedMovies();

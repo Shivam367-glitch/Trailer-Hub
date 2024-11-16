@@ -12,16 +12,18 @@ import { removeViwedMovie } from "../utils/movieSlice";
 
 const MovieDetail = () => {
   let { movieId } = useParams();
+  console.log(movieId);
+  
   const [modalShow, setModalShow] = useState(false);
   const movie = useSelector((store) => store?.movie?.viwedMovie);
   const dispatch = useDispatch();
   const [error, loading] = useMovieDetail(movieId);
 
-  useEffect(() => {
-    return () => {
-      dispatch(removeViwedMovie());
-    };
-  }, [movieId, dispatch]);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(removeViwedMovie());
+  //   };
+  // }, [movieId, dispatch]);
 
   if (!movie) return null;
 
@@ -32,20 +34,20 @@ const MovieDetail = () => {
 
   return (
     <>
-      <Container fluid={true}>
-        <Row className="d-flex flex-row bg-danger opacity-90 py-3 gap-2 text-white">
+      <Container fluid={true} >
+        <Row className=" d-flex flex-column flex-md-row  bg-dark opacity-90 py-3 gap-2 text-white">
           {loading && <Col className="bg-danger text-white">Loading movie details...</Col>}
           {error && <Col className="bg-danger text-white">Failed to fetch movie details. Please try again later.</Col>}
           {!loading && !error && (
             <>
-              <Col xs={3} className="d-flex flex-row">
-                <img
+              <Col xs={12} sm={12} md={4} lg={3} className="d-flex flex-row  justify-content-center">
+                <img  
                   src={IMG_CDN_URL + poster_path}
                   alt={title}
-                  className="img-fluid rounded"
+                  className="img-fluid rounded border"
                 />
               </Col>
-              <Col xs={8} className="d-flex flex-column justify-content-center gap-2">
+              <Col xs={12} md={7} lg={8} className=" d-flex flex-column justify-content-center gap-2 mb-2">
                 <div>
                   <Link
                     to={homepage}
@@ -60,7 +62,7 @@ const MovieDetail = () => {
                   <span className="me-1 border-bottom">Movie Type:</span>
                   {genres.map((gene) => gene.name).join(", ")}
                 </p>
-                <Button className="btn w-25 btn-secondary" onClick={() => setModalShow(true)}>
+                <Button as={Col} xs={10} lg={4} className="btn btn-secondary" onClick={() => setModalShow(true)} aria-label="Play Trailer">
                   <FaPlay /> Play Trailer
                 </Button>
                 <p className="mt-3">{tagline}</p>
@@ -68,17 +70,8 @@ const MovieDetail = () => {
                   <h4>Overview</h4>
                   <p>{overview}</p>
                   <div className="position-relative d-flex flex-row gap-2">
-                    <span className="position-absolute m-4 align-self-center">
-                      {userScore}%
-                    </span>
-                    <Circle
-                      percent={userScore}
-                      trailColor="#423d0f"
-                      trailWidth={4}
-                      strokeWidth={4}
-                      strokeColor="#d2d531"
-                      width="100"
-                    />
+                    <span className="position-absolute m-4 align-self-center">{userScore}% </span>
+                    <Circle percent={userScore} trailColor="#423d0f" trailWidth={4} strokeWidth={4} strokeColor="#d2d531" width="100"/>
                     <span className="align-self-center">User Score</span>
                   </div>
                 </div>

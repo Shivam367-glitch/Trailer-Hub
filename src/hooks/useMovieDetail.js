@@ -8,13 +8,12 @@ const useMovieDetail = (movieId) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const viwedMovie=useSelector((store=>store?.viwedMovie))
+  
+  
   const getMovieInfo = async () => {
     try {
       setLoading(true);
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}`,
-        API_OPTIONS
-      );
+      const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}`,API_OPTIONS);
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }

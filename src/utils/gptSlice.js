@@ -8,12 +8,18 @@ const gptSlice=createSlice({
     },
     reducers:{
         toggleGpt:(state,action)=>{
+            console.log("toggleGpt");
+            
               state.showGptSearch=action.payload
         },
-        hideGpt:(state)=>{
+        hideGpt:(state)=>{ 
+            console.log("hideGpt");
+            
           state.showGptSearch=false;
         },
         addRecommendedMovies:(state,action)=>{
+            console.log("addRecommendedMovies");
+            
               state.recommendedMovies=action.payload
         }
     }

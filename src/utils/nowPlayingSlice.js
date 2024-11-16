@@ -9,6 +9,7 @@ const nowPlaying=createSlice(
         },
         reducers:{
             addNowPlayingVideo:(state,action)=>{
+                console.log("addNowPlayingVideo")
                state.id=action.payload.id,
                state.videoId=action.payload.videoId 
             }

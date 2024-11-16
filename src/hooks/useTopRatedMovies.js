@@ -21,7 +21,7 @@ console.log(topRatedMovies);
       
         getTopRatedMovies();
     }
-}, [topRatedMovies,dispatch]);
+}, []);
 }
 
 export default useTopRatedMovies

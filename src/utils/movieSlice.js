@@ -13,21 +13,27 @@ const movieSlice=createSlice(
         },
         reducers:{
             addNowPlayingMovies:(state,action)=>{
+                console.log("addNowPlayingMovies")
                 state.nowPlayingMovies= action.payload;
             },
             addPopularMovies:(state,action)=>{
+                console.log("addPopularMovies")
                 state.popularMovies= action.payload;
             },
             addTopRatedMovies:(state,action)=>{
+                console.log("addTopRatedMovies")
                 state.topRatedMovies= action.payload;
             },
             addUpcomingMovies:(state,action)=>{
+                console.log("addUpcomingMovies")
                 state.upcomingMovies= action.payload;
             },
             addViwedMovie:(state,action)=>{
+                console.log("addViwedMovie")
                 state.viwedMovie=action.payload
             },
             removeViwedMovie:(state)=>{
+                console.log("removeViwedMovie")
                 state.viwedMovie=null;
             }
         }
