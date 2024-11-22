@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Button,Form, Spinner } from "react-bootstrap";
+import { Button,Col,Container,Form, Row, Spinner } from "react-bootstrap";
 
 import { model } from "./geminiAi";
 import { API_OPTIONS } from "../utils/Constants";
@@ -71,21 +71,30 @@ const GptSearchBar = () => {
 
   return (
    <> 
-    <div className="text-center">
-      <Form className="mt-5 d-flex justify-content-center gap-2">
-        <input
+      <Form className="mt-5 d-flex justify-content-center gap-2 ">
+      <Container fluid={'md'}  className="border border-success"> 
+        <Row className="d-flex justify-content-lg-center">
+          <Col xs={8}  lg={6} className="border border-secondary"> 
+          <input
           type="text"
           placeholder="What do you want to watch?"
-          className="col-4 rounded-2 py-2 px-2 border-none"
+          className="rounded-2 py-2 px-2 border-none w-100"
           ref={inputRef}
         />
-        <Button variant="danger" className="col-1" onClick={handleGptSearch} disabled={loading}>
-          {loading ? <Spinner animation="border" size="sm" /> : "Search"}
-        </Button>
+       
+          </Col> 
+          <Col xs={4}  lg={2} className="border border-secondary">
+          <Button variant="danger" onClick={handleGptSearch} disabled={loading} className="w-100">
+            {loading ? <Spinner animation="border" size="sm" /> : "Search"}
+          </Button>
+          </Col> 
+          {error && <Col className="text-danger mt-3 fs-5 text-white">{error}</Col>}
+        </Row>
+
+      </Container>
       </Form>
 
-      {error && <p className="text-danger mt-3">{error}</p>}
-    </div> 
+     
        </>
   );
 };

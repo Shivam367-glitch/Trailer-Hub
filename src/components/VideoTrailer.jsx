@@ -25,7 +25,7 @@ const VideoTrailer = (props) => {
     videoId? <iframe 
     title="Video Background"
     src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&mute=1&controls=1`}
-    style={{width:"100%",height:"100%"}}
+    className='w-100 h-100'
   ></iframe>:<p className='text-white fs-5'>Trailer Not Available !</p>
    }
     </Modal.Body>

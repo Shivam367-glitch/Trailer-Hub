@@ -17,6 +17,7 @@ body, html, #root {
     background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/04bef84d-51f6-401e-9b8e-4a521cbce3c5/null/IN-en-20240903-TRIFECTA-perspective_0d3aac9c-578f-4e3c-8aa8-bbf4a392269b_small.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    /* font-size: 1rem; */
 } 
 .app-layout { 
     display: flex;
@@ -33,7 +34,6 @@ body, html, #root {
     cursor: pointer;
     background:linear-gradient(to bottom,rgb(245, 242, 242),rgb(241, 237, 237));
     border: none;
-    font-size: 1.5rem;
 }
 .main-content {
   flex: 1 0 auto;
@@ -44,13 +44,15 @@ body, html, #root {
   flex: 0 0 auto;
 }
  
- /* Header Section */ 
-.header_container {
-    /* position: absolute; */
-    background: transparent !important;
-}  
+ /* Header Section */  
 .header_container img{
-    width: 180px;
+   max-width: 100%;
+   height: auto; 
+
+} 
+
+.header_container .user_icon{
+   width: 30px; 
 }
 .form_container{
     left: 50%;
@@ -153,4 +155,6 @@ color: #a9aeb3;
 
 /* modal Style */
 
-
+.modal-header .btn-close{
+    background-color: white;
+}
