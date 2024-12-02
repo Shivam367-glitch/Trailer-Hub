@@ -16,7 +16,7 @@ body, html, #root {
     font-family: "Poppins", Sans-serif;
     background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/04bef84d-51f6-401e-9b8e-4a521cbce3c5/null/IN-en-20240903-TRIFECTA-perspective_0d3aac9c-578f-4e3c-8aa8-bbf4a392269b_small.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     /* font-size: 1rem; */
 } 
 .app-layout { 
@@ -54,11 +54,9 @@ body, html, #root {
 .header_container .user_icon{
    width: 30px; 
 }
-.form_container{
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%); 
-    opacity: 0.9;
+
+.form_container{ 
+    opacity: 0.9; 
 } 
  
 .login_button{

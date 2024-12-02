@@ -1,11 +1,12 @@
-import { Button, FloatingLabel, Form } from "react-bootstrap"
+import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { validateForm } from "../utils/validateForm"
 import { useRef, useState } from "react" 
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from "../utils/firebase" 
 import { FaEye,FaEyeSlash } from "react-icons/fa";
-import { BAC_IMG_CDN_URL } from "../utils/Constants";
+
+
 const Login = () => { 
   const[error,setError]=useState(); 
   const [showPassword,setShowPassword]=useState(false);
@@ -79,13 +80,12 @@ const Login = () => {
     }
   }
   return (
-    <div >
-      <div className="position-absolute top-0">
-        <img src={BAC_IMG_CDN_URL} alt="" srcSet="" className="img-fluid" />
-      </div> 
-      <Form className="position-absolute form_container bg-dark p-5 w-25 rounded-4">
+   <Container fluid style={{ height: '90vh' }}>
+    <Row className="justify-content-center align-items-center h-100">
+      <Col xs={12}  sm={6} lg={4}>
+        <Form className="p-4  rounded shadow form_container bg-dark">
         <h2 className="text-white mb-4">{isSignInForm?"Sign In":"Sign Up"}</h2>
-           {!isSignInForm &&   <FloatingLabel controlId="floatingInput" label="Full Name" className="mb-3 text-white">
+           {!isSignInForm && <FloatingLabel controlId="floatingInput" label="Full Name" className="mb-3 text-white">
            <Form.Control type="text" placeholder="Full Name" className="bg-dark text-white border-secondary rounded-2" ref={name}/>
           </FloatingLabel>}
           {/* Floating Label for Email or Mobile */}
@@ -97,7 +97,6 @@ const Login = () => {
               ref={email}
             />
           </FloatingLabel>
-
           {/* Floating Label for Password */}
           <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3 text-white d-flex flex-row gap-2">
             <Form.Control 
@@ -125,7 +124,7 @@ const Login = () => {
           <Button   className="w-100 fw-medium text-white bg-secondary rounded-3 border-0"  style={{background: 'transparent', }}>Use a sign-in code</Button>
 
           {/* Forgot Password Link */}
-          <Link to="/" className="text-center d-block my-3 text-white hover_white"> Forgot password?</Link>
+          <Link to="/password-reset" className="text-center d-block my-3 text-white hover_white"> Forgot password?</Link>
 
           {/* Remember Me Checkbox */}
           <div className="d-flex flex-row gap-2 align-items-center text-white mb-3">
@@ -135,26 +134,12 @@ const Login = () => {
 
           {/* Sign Up Link */}
           <span className="text-secondary" onClick={() => { setIsSignInForm(!isSignInForm) }}>
-  { 
-    isSignInForm 
-      ? (
-        <>
-          New to Netflix? 
-          <Link className="text-white hover_white ms-1">Sign up now.</Link>
-        </>
-      ) 
-      : (
-        <>
-          Already User?
-          <Link className="text-white hover_white ms-1">Sign in now.</Link>
-        </>
-      )
-  }
-</span>
-
-      </Form>
-
-    </div>
+           { isSignInForm ? (<>New to Netflix? <Link className="text-white hover_white ms-1">Sign up now.</Link></>) : (<>Already User?<Link className="text-white hover_white ms-1">Sign in now.</Link></>)}
+          </span>
+        </Form>
+      </Col>
+    </Row>
+  </Container>
   )
 }
 

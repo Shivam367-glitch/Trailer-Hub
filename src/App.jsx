@@ -2,7 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login";
 import Browser from "./components/Browser";
 import LogOut from "./components/LogOut";
-import Body from "./components/Body" 
+import Body from "./components/Body"; 
+import PasswordReset from "./components/PasswordReset";
 import MovieDetail from "./components/MovieDetail"
 function App() {
 
@@ -26,7 +27,11 @@ function App() {
       {
         path:'/logout',
         element:<LogOut/>
-      }
+      },
+      {
+        path: "/password-reset",
+        element: <PasswordReset/>,
+      },
     ]
    }
   ]);
