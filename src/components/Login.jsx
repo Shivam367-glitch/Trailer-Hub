@@ -20,8 +20,7 @@ const Login = () => {
     setError("")
     
     const result=validateForm(isSignInForm,email?.current?.value,password?.current?.value,name?.current?.value);  
-    
-    
+
     if(result){
        
       setError(result);
@@ -78,11 +77,13 @@ const Login = () => {
           });
       }
     }
-  }
+  } 
+
+
   return (
-   <Container fluid style={{ height: '90vh' }}>
-    <Row className="justify-content-center align-items-center h-100">
-      <Col xs={12}  sm={6} lg={4}>
+   <Container fluid >
+    <Row className="justify-content-center">
+      <Col xs={12}  sm={8} lg={4}>
         <Form className="p-4  rounded shadow form_container bg-dark">
         <h2 className="text-white mb-4">{isSignInForm?"Sign In":"Sign Up"}</h2>
            {!isSignInForm && <FloatingLabel controlId="floatingInput" label="Full Name" className="mb-3 text-white">

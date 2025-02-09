@@ -31,7 +31,7 @@ const Body = () => {
     <div className="app-layout">
     <Header className="header" />
     {/* <ScrollToTop /> */}
-    <main className="main-content">
+    <main className="main-content d-flex flex-row justify-content-center justify-content-md-start align-items-center">
       <Outlet />
     </main>
     {/* <Footer className="footer" /> */}

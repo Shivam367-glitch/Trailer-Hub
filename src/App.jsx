@@ -1,10 +1,15 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./components/Login";
-import Browser from "./components/Browser";
-import LogOut from "./components/LogOut";
+import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
+import { lazy } from "react";
+
 import Body from "./components/Body"; 
-import PasswordReset from "./components/PasswordReset";
-import MovieDetail from "./components/MovieDetail"
+import Browser from "./components/Browser"; 
+
+const LogOut=lazy(()=>import('./components/LogOut'));
+const MovieDetail=lazy(()=>import('./components/MovieDetail')); 
+const PasswordReset=lazy(()=>import('./components/PasswordReset'));
+const People=lazy(()=>import('./components/People')); 
+const Login=lazy(()=>import('./components/Login')); 
+
 function App() {
 
   const appRoute = createBrowserRouter([
@@ -14,7 +19,7 @@ function App() {
     children:[
       {
         path: '',
-        element: <Login />
+        element: Login? <Login/>:<h1>Loading....</h1>
       },
       {
         path: '/browser',
@@ -22,16 +27,20 @@ function App() {
       }, 
       {
           path:'/movie/:movieId',
-          element:<MovieDetail/>
+          element:MovieDetail?<MovieDetail/>:<h1>Loading....</h1>
       },
       {
         path:'/logout',
-        element:<LogOut/>
+        element:LogOut?<LogOut/>:<h1>Loading....</h1>
       },
       {
         path: "/password-reset",
-        element: <PasswordReset/>,
+        element: PasswordReset?<PasswordReset/>:<h1>Loading....</h1>,
       },
+      {
+        path:"/people",
+        element:People?<People/>:<h1>Loading....</h1>
+      }
     ]
    }
   ]);

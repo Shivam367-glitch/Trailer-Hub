@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button,Col,Container,Form, Row, Spinner } from "react-bootstrap";
 
 import { model } from "./geminiAi";
@@ -13,7 +13,7 @@ const GptSearchBar = () => {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
- const searchMoviesOnTMDB = async (movie, year) => {
+  const searchMoviesOnTMDB = async (movie, year) => {
     try {
       const data = await fetch(
         `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&primary_release_year=${year}&page=1`,
@@ -72,8 +72,8 @@ const GptSearchBar = () => {
   return (
    <> 
       <Form className="mt-5 d-flex justify-content-center gap-2 ">
-      <Container fluid={'md'}  className="border border-success"> 
-        <Row className="d-flex justify-content-lg-center">
+        <Container fluid={'md'}  className="border border-success"> 
+          <Row className="d-flex justify-content-lg-center">
           <Col xs={8}  lg={6} className="border border-secondary"> 
           <input
           type="text"
@@ -89,14 +89,12 @@ const GptSearchBar = () => {
           </Button>
           </Col> 
           {error && <Col className="text-danger mt-3 fs-5 text-white">{error}</Col>}
-        </Row>
+          </Row>
 
-      </Container>
+        </Container>
       </Form>
-
-     
        </>
   );
 };
 
-export default GptSearchBar;
+export default React.memo(GptSearchBar);

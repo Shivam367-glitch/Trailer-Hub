@@ -30,6 +30,9 @@ const Header = () => {
         <Col xs={4} lg={2}>   
          <img  src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo" className="img-fluid" /> 
         </Col> 
+        <Col>
+           <Link to="/people" className="text-decoration-none fs-3">People</Link>
+        </Col>
         <Col className="d-flex flex-row  gap-2 justify-content-end align-items-center">  
           {(showGptSearch || isMoviePage) && <Link to="/browser"  onClick={()=>{dispatch(hideGpt())}} className="text-danger home_link">Home</Link>}
           {user && <img  src={user.photoURL} alt="User Profile" className="img-fluid user_icon " />}

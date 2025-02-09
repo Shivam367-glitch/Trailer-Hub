@@ -1,6 +1,7 @@
 import GptSearchBar from "./GptSearchBar"
 import GptSearchComponent from "./GptSearchComponent"
 import { BAC_IMG_CDN_URL } from "../utils/Constants"
+import React from "react"
 const GptSearch = () => {
   return (
     <div> 
@@ -13,4 +14,4 @@ const GptSearch = () => {
   )
 }
 
-export default GptSearch
+export default React.memo(GptSearch)
