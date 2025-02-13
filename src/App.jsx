@@ -1,14 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
 import { lazy } from "react";
-
-import Body from "./components/Body"; 
+import Login from "./components/Login"; 
+import People from "./components/People"; 
+import PasswordReset from "./components/PasswordReset"; 
+import MovieDetail from "./components/MovieDetail"; 
+import LogOut from "./components/LogOut";
+import Body from "./components/Body";  
 import Browser from "./components/Browser"; 
 
-const LogOut=lazy(()=>import('./components/LogOut'));
-const MovieDetail=lazy(()=>import('./components/MovieDetail')); 
-const PasswordReset=lazy(()=>import('./components/PasswordReset'));
-const People=lazy(()=>import('./components/People')); 
-const Login=lazy(()=>import('./components/Login')); 
+// const LogOut=lazy(()=>import('./components/LogOut'));
+// const MovieDetail=lazy(()=>import('./components/MovieDetail')); 
+// const PasswordReset=lazy(()=>import('./components/PasswordReset'));
+// const People=lazy(()=>import('./components/People')); 
+// const Login=lazy(()=>import('./components/Login')); 
 
 function App() {
 
