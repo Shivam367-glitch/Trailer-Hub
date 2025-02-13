@@ -5,7 +5,7 @@ import Card from "./Card";
 
 
 
-const MovieList = ({ title, movieList,peopleList }) => { 
+const List = ({ title, movieList,peopleList }) => { 
   return (
     <Container fluid={true}> 
       <Row>
@@ -27,4 +27,4 @@ const MovieList = ({ title, movieList,peopleList }) => {
   );
 }
 
-export default MovieList;
+export default List;

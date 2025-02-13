@@ -2,12 +2,11 @@ import  { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPeople } from '../utils/peopleSlice';
 import { Button, Col, Container, Form, Row, Spinner } from 'react-bootstrap';
-import MovieList from './MovieList';
+import List from './List';
 
 const People = () => {
     const dispatch = useDispatch(); 
-     const  showshowGptSearch=useSelector((store)=>store?.gpt?.showGptSearch); 
-    const { people, status, error } = useSelector((state) => state.people);
+     const { people, status, error } = useSelector((state) => state.people);
     const [query, setQuery] = useState('');
 
     const handleSearch = () => {
@@ -56,7 +55,7 @@ const People = () => {
                     </li>
                 ))}
                 </ul> */}
-                <MovieList title={"People"} peopleList={people}   showGptSearch={false}/>
+                <List title={"People"} peopleList={people}   showGptSearch={false}/>
                 </Row>
             )
           }
