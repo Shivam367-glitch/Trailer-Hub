@@ -28,7 +28,7 @@ const movieSlice=createSlice(
                 console.log("addUpcomingMovies")
                 state.upcomingMovies= action.payload;
             },
-            addViwedMovie:(state,action)=>{
+            addViewedMovie:(state,action)=>{
                 console.log("addViwedMovie")
                 state.viwedMovie=action.payload
             },
@@ -41,5 +41,5 @@ const movieSlice=createSlice(
 ); 
 
 
-export const {addNowPlayingMovies,addPopularMovies,addTopRatedMovies,addUpcomingMovies,addViwedMovie,removeViwedMovie}=movieSlice.actions
+export const {addNowPlayingMovies,addPopularMovies,addTopRatedMovies,addUpcomingMovies,addViewedMovie,removeViwedMovie}=movieSlice.actions
 export default movieSlice.reducer 

@@ -1,14 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Circle } from "rc-progress";
 import { IMG_CDN_URL } from "../utils/Constants";
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import { FaPlay } from "react-icons/fa";
 import useMovieDetail from "../hooks/useMovieDetail";
 import VideoTrailer from "./VideoTrailer";
 import { Link } from "react-router-dom";
-import { removeViwedMovie } from "../utils/movieSlice";
 
 const MovieDetail = () => {
   let { movieId } = useParams();
@@ -16,15 +15,9 @@ const MovieDetail = () => {
   
   const [modalShow, setModalShow] = useState(false);
   const movie = useSelector((store) => store?.movie?.viwedMovie);
-  const dispatch = useDispatch();
   const [error, loading] = useMovieDetail(movieId);
 
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(removeViwedMovie());
-  //   };
-  // }, [movieId, dispatch]);
-
+  
   if (!movie) return null;
 
   const { original_title, genres, poster_path, tagline, overview, runtime, title, homepage } = movie;

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import MovieList from "./MovieList"
+import List from "./List"
 import { Col, Container, Row } from "react-bootstrap"
  
 const VideoContainer = () => { 
@@ -14,16 +14,16 @@ const VideoContainer = () => {
     <Container fluid={true} className="bg-dark display-1 text-dark position-absolute top-100 z-2">
       <Row className="gap-4 d-flex flex-column">
         <Col xs={12} className="position-absolute bottom-95"> 
-          <MovieList title={"Now Playing"} movieList={nowPlayingMovies} showGptSearch={showGptSearch}/>
+          <List title={"Now Playing"} movieList={nowPlayingMovies} showGptSearch={showGptSearch}/>
         </Col> 
         <Col xs={12} className="mt-5">
-          <MovieList title={"Top Rated"} movieList={topRatedMovies} showGptSearch={showGptSearch}/>
+          <List title={"Top Rated"} movieList={topRatedMovies} showGptSearch={showGptSearch}/>
         </Col>
         <Col xs={12} >
-          <MovieList title={"Popular"} movieList={popularMovies} showGptSearch={showGptSearch}/>
+          <List title={"Popular"} movieList={popularMovies} showGptSearch={showGptSearch}/>
         </Col> 
         <Col xs={12} className="mb-3">
-          <MovieList title={"Upcoming Movies"} movieList={upcomingMovies} showGptSearch={showGptSearch}/>
+          <List title={"Upcoming Movies"} movieList={upcomingMovies} showGptSearch={showGptSearch}/>
         </Col>
       </Row>
     </Container>

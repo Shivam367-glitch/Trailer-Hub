@@ -1,26 +1,32 @@
 import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addViwedMovie } from "../utils/movieSlice";
+import { addViewedMovie } from "../utils/movieSlice";
 
 const useMovieDetail = (movieId) => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const viwedMovie=useSelector((store=>store?.viwedMovie))
-  
-  
+
+  const viewedMovie = useSelector((store) =>
+    store?.viewedMovies?.find((movie) => movie.id === movieId)
+  );
+
   const getMovieInfo = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}`,API_OPTIONS);
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}`,
+        { ...API_OPTIONS } 
+      );
+
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
 
       const json = await response.json();
       if (json) {
-        dispatch(addViwedMovie(json));
+        dispatch(addViewedMovie(json));
       }
     } catch (error) {
       console.error("Error fetching movie:", error);
@@ -31,10 +37,10 @@ const useMovieDetail = (movieId) => {
   };
 
   useEffect(() => {
-    if (!viwedMovie && movieId) {
+    if (!viewedMovie && movieId) {
       getMovieInfo();
     }
-  }, [movieId]); // Added movieId as a dependency
+  }, [movieId]); 
 
   return [error, loading];
 };

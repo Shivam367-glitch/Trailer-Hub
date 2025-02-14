@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Button,Col,Container,Form, Row, Spinner } from "react-bootstrap";
-
 import { model } from "./geminiAi";
 import { API_OPTIONS } from "../utils/Constants";
 import { useDispatch } from "react-redux";
@@ -71,20 +70,20 @@ const GptSearchBar = () => {
 
   return (
    <> 
-      <Form className="mt-5 d-flex justify-content-center gap-2 ">
-        <Container fluid={'md'}  className="border border-success"> 
-          <Row className="d-flex justify-content-lg-center">
-          <Col xs={8}  lg={6} className="border border-secondary"> 
+        <Container fluid={true}   > 
+        <Row as={Form} className="m-0 p-0 mt-5 align-items-center justify-content-center  ">
+        <Col xs={7} sm={6} lg={4} className="m-0 p-0 mt-2"> 
           <input
           type="text"
           placeholder="What do you want to watch?"
-          className="rounded-2 py-2 px-2 border-none w-100"
+          className="rounded-2 p-2 border-none "
           ref={inputRef}
+          style={{width: "100%"}}
         />
        
           </Col> 
-          <Col xs={4}  lg={2} className="border border-secondary">
-          <Button variant="danger" onClick={handleGptSearch} disabled={loading} className="w-100">
+          <Col xs={5} sm={3} lg={2} className="mx-0  mt-2">
+          <Button variant="danger" onClick={handleGptSearch} disabled={loading} className="p-2" style={{width: "100%"}}>
             {loading ? <Spinner animation="border" size="sm" /> : "Search"}
           </Button>
           </Col> 
@@ -92,7 +91,6 @@ const GptSearchBar = () => {
           </Row>
 
         </Container>
-      </Form>
        </>
   );
 };
