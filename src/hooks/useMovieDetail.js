@@ -1,3 +1,4 @@
+
 import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,17 +8,18 @@ const useMovieDetail = (movieId) => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const viewedMovie = useSelector((store) =>
-    store?.viewedMovies?.find((movie) => movie.id === movieId)
-  );
+  const viewedMovie=useSelector((store)=>store?.movie?.viewedMovie?.id==movieId);
+ 
 
   const getMovieInfo = async () => {
+    if (!movieId) return; 
+    console.log(typeof movieId,typeof viewedMovie?.id);
+    
     try {
       setLoading(true);
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${movieId}`,
-        { ...API_OPTIONS } 
+        { ...API_OPTIONS }
       );
 
       if (!response.ok) {
@@ -37,12 +39,15 @@ const useMovieDetail = (movieId) => {
   };
 
   useEffect(() => {
-    if (!viewedMovie && movieId) {
+    // If the movie isn't in the store and movieId is valid, fetch it.
+    if (!viewedMovie && movieId) { 
       getMovieInfo();
     }
-  }, [movieId]); 
+    // We rely on movieId changes to re-trigger this effect.
+  }, [movieId]);
 
-  return [error, loading];
+  return [ error, loading ];
 };
 
 export default useMovieDetail;
+

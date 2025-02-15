@@ -14,11 +14,15 @@ const MovieDetail = () => {
   console.log(movieId);
   
   const [modalShow, setModalShow] = useState(false);
-  const movie = useSelector((store) => store?.movie?.viwedMovie);
-  const [error, loading] = useMovieDetail(movieId);
-
+  const movie = useSelector((store) => store?.movie?.viewedMovie);
   
-  if (!movie) return null;
+  const [error, loading] = useMovieDetail(movieId);
+  
+  if (!movie ) return null;
+  
+ 
+
+
 
   const { original_title, genres, poster_path, tagline, overview, runtime, title, homepage } = movie;
   let hr = Math.floor(runtime / 60);
@@ -36,7 +40,7 @@ const MovieDetail = () => {
               <Col xs={12} md={3} lg={3} className="d-flex flex-row  justify-content-center ">
                 <img  
                   src={IMG_CDN_URL + poster_path}
-                  alt={title}
+                  alt={title} 
                   className="img-fluid rounded border"
                 />
               </Col>
