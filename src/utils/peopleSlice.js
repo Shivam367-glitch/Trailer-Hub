@@ -19,13 +19,29 @@ export const fetchPeople = createAsyncThunk(
     }
 ); 
 
-console.log(fetchPeople);
+
 
 
 const peopleSlice = createSlice({
     name: 'people',
-    initialState: {people: [],status: 'idle', error: null},
-    reducers: {},
+    initialState: {
+        people: [],
+        status: 'idle',
+        error: null,
+        viewedPeople:null
+
+
+    },
+    reducers: {
+        addViewedPeople:(state,action)=>{
+            console.log("addViewedPeople")
+            state.viewedPeople=action.payload
+        },
+        removeViewedPeople:(state)=>{
+            console.log("removeViewedPeople")
+            state.viewedPeople=null;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchPeople.pending, (state) => {
@@ -42,4 +58,5 @@ const peopleSlice = createSlice({
     }
 });
 
+export const {addViewedPeople,removeViewedPeople}=peopleSlice.actions
 export default peopleSlice.reducer;

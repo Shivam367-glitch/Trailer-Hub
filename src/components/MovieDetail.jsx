@@ -11,8 +11,7 @@ import { Link } from "react-router-dom";
 
 const MovieDetail = () => {
   let { movieId } = useParams();
-  console.log(movieId);
-  
+   
   const [modalShow, setModalShow] = useState(false);
   const movie = useSelector((store) => store?.movie?.viewedMovie);
   
