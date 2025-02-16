@@ -14,7 +14,6 @@ const MovieDetail = () => {
    
   const [modalShow, setModalShow] = useState(false);
   const movie = useSelector((store) => store?.movie?.viewedMovie);
-  
   const [error, loading] = useMovieDetail(movieId);
   
   if (!movie ) return null;

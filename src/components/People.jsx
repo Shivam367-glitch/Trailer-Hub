@@ -6,7 +6,7 @@ import List from "./List";
 
 const People = () => {
   const dispatch = useDispatch();
-  const { people, status, error } = useSelector((state) => state.people);
+  const { peopleList, status, error } = useSelector((state) => state.people);
   const [query, setQuery] = useState("");
 
   const handleSearch = () => {
@@ -48,14 +48,14 @@ const People = () => {
           {status === "failed" && (
             <Col className="text-danger mt-3 fs-5 text-white">{error}</Col>
           )}
-          {status === "succeeded" && people.length === 0 && (
+          {status === "succeeded" && peopleList.length === 0 && (
             <h2 className="text-white">No results found</h2>
           )}
         </Row>
 
-        {status === "succeeded" && people.length > 0 && (
+        {status === "succeeded" && peopleList.length > 0 && (
           <Row>
-            <List title={"People"} peopleList={people} showGptSearch={false} />
+            <List title={"People"} peopleList={peopleList} showGptSearch={false} />
           </Row>
         )}
       </Container>

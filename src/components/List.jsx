@@ -6,6 +6,8 @@ import Card from "./Card";
 
 
 const List = ({ title, movieList,peopleList }) => { 
+  console.log(title,movieList,peopleList);
+  
   return (
     <Container fluid={true}> 
       <Row>
@@ -19,7 +21,7 @@ const List = ({ title, movieList,peopleList }) => {
          }
        { 
           peopleList && <Col xs={12} className="container_scroll d-flex flex-row gap-4"> 
-            {peopleList?.map((person, ind) => (<Card key={ind} id={person?.id} img={person?.profile_path} directTo={`/person/${person.id}`} />))}
+            {peopleList?.map((person, ind) => (<Card key={ind} id={person?.id} img={person?.profile_path} directTo={`/people/${person.id}`} />))}
           </Col>
       }
       </Row>

@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import People from "./components/People"; 
 import PasswordReset from "./components/PasswordReset"; 
 import MovieDetail from "./components/MovieDetail"; 
+import PeopleDetail from "./components/PeopleDetail";
 import LogOut from "./components/LogOut";
 import Body from "./components/Body";  
 import Browser from "./components/Browser"; 
@@ -23,7 +24,7 @@ function App() {
     children:[
       {
         path: '',
-        element: Login? <Login/>:<h1>Loading....</h1>
+        element: <Login/>
       },
       {
         path: '/browser',
@@ -31,20 +32,24 @@ function App() {
       }, 
       {
           path:'/movie/:movieId',
-          element:MovieDetail?<MovieDetail/>:<h1>Loading....</h1>
+          element:<MovieDetail/>
       },
       {
         path:'/logout',
-        element:LogOut?<LogOut/>:<h1>Loading....</h1>
+        element:<LogOut/>
       },
       {
         path: "/password-reset",
-        element: PasswordReset?<PasswordReset/>:<h1>Loading....</h1>,
+        element:<PasswordReset/>,
       },
       {
         path:"/people",
-        element:People?<People/>:<h1>Loading....</h1>
-      }
+        element:<People/>
+      },
+      {
+        path:'/people/:peopleId',
+        element:<PeopleDetail/>
+    }
     ]
    }
   ]);

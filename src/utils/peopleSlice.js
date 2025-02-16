@@ -1,23 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNzk4ZTNlYjkzYTdhZWMxYjM4NWI5MWFhODEwYTg3NyIsIm5iZiI6MTcyNjQ2NjU5NS43NTYsInN1YiI6IjY2ZTdjYTIzMDUwZjE0ZTRmY2NmZDM2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4n2Xp1SGlomNln_xeHvMrTvcdxo6uS-eg-j2eZ9et-U'; // Replace with your actual API key
-
+import {API_OPTIONS} from "../utils/Constants"
 export const fetchPeople = createAsyncThunk(
     'people/fetchPeople',
     async (query) => {
-        const response = await axios.get(`https://api.themoviedb.org/3/search/person`, {
-            headers: {
-                accept: 'application/json',
-                Authorization: API_KEY  // Correct usage of Bearer Token
-            },
-            params: {
-                query: query
-            }
-        });
-        return response.data.results;
+        const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${query}`,API_OPTIONS);
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data.results;
     }
-); 
+);
+
 
 
 
@@ -25,12 +21,10 @@ export const fetchPeople = createAsyncThunk(
 const peopleSlice = createSlice({
     name: 'people',
     initialState: {
-        people: [],
+        peopleList: [],
         status: 'idle',
         error: null,
         viewedPeople:null
-
-
     },
     reducers: {
         addViewedPeople:(state,action)=>{
@@ -46,10 +40,12 @@ const peopleSlice = createSlice({
         builder
             .addCase(fetchPeople.pending, (state) => {
                 state.status = 'loading';
+                state.peopleList=[];
             })
             .addCase(fetchPeople.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.people = action.payload;
+                state.peopleList = action.payload;
+
             })
             .addCase(fetchPeople.rejected, (state, action) => {
                 state.status = 'failed';

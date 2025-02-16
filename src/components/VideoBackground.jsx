@@ -12,7 +12,7 @@ const VideoBackground = ({ id }) => {
   return (
     <iframe 
       title="Video Background"
-      src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&mute=1&controls=0&playlist=${videoId}`}
+      // src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&mute=1&controls=0&playlist=${videoId}`}
       allow="autoplay; fullscreen"
       allowFullScreen  
       className="position-absolute top-0 m-0 p-0 w-100"
