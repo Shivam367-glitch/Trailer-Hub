@@ -4,10 +4,12 @@ import usePeopleDetail from "../hooks/usePeopleDetail";
 import {  Col, Container, Row } from "react-bootstrap";
 import { IMG_CDN_URL } from "../utils/Constants";
 import {Cake2Fill} from "react-bootstrap-icons"
+import List from "./List";
 const PeopleDetail = () => { 
     let { peopleId } = useParams();
     
     const viewedPeople = useSelector((store) => store?.people?.viewedPeople);
+    const viewedPeopleMovies = useSelector((store) => store?.people?.viewedPeopleMovies);
     console.log(viewedPeople);
     
     const [error, loading] = usePeopleDetail(peopleId);
@@ -33,13 +35,16 @@ const PeopleDetail = () => {
                 <Link to={homepage} target="_blank" className="cursor_pointer text-decoration-underline text-white">{name}</Link>
               ) : (<span>{name}</span>)}
               </p> 
-              <p className="d-flex flex-row justify-content-between"><span>Born On: {new Date(birthday).toLocaleDateString("en-US").replace(/\//g, '-')}  </span><span> Born At : {place_of_birth}</span> </p>
+              <p className="d-flex flex-row justify-content-between"><span>Born On: {new Date(birthday?birthday:null).toLocaleDateString("en-US").replace(/\//g, '-')}</span><span> Born At : {place_of_birth?place_of_birth:"NA"}</span> </p>
               <p className="text-white">
-              {biography}
+              {biography?biography:"No Bio is Available!"}
               </p>
               </Col>
             </>
           )}
+          <Col> 
+          <List title={"Movies"} movieList={viewedPeopleMovies} />
+          </Col>
             </Row>
          </Container>
     </>

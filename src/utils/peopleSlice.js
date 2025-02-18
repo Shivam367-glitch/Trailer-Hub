@@ -24,7 +24,8 @@ const peopleSlice = createSlice({
         peopleList: [],
         status: 'idle',
         error: null,
-        viewedPeople:null
+        viewedPeople:null,
+        viewedPeopleMovies:[]
     },
     reducers: {
         addViewedPeople:(state,action)=>{
@@ -34,6 +35,9 @@ const peopleSlice = createSlice({
         removeViewedPeople:(state)=>{
             console.log("removeViewedPeople")
             state.viewedPeople=null;
+        },
+        addViewedPeopleMovies:(state,action)=>{ 
+            state.viewedPeopleMovies=action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -54,5 +58,5 @@ const peopleSlice = createSlice({
     }
 });
 
-export const {addViewedPeople,removeViewedPeople}=peopleSlice.actions
+export const {addViewedPeople,removeViewedPeople,addViewedPeopleMovies}=peopleSlice.actions
 export default peopleSlice.reducer;

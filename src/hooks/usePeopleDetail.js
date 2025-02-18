@@ -2,13 +2,13 @@
 import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addViewedPeople } from "../utils/peopleSlice";
+import { addViewedPeople, addViewedPeopleMovies } from "../utils/peopleSlice";
 const usePeopleDetail = (peopleId) => {
     const dispatch = useDispatch();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const viewedPeople=useSelector((store)=>store?.movie?.viewedPeople?.id==peopleId);
-  const getPeopleInfo = async () => {
+    const getPeopleInfo = async () => {
     if (!peopleId) return; 
     try {
       setLoading(true);
@@ -24,6 +24,13 @@ const usePeopleDetail = (peopleId) => {
       const json = await response.json();
       if (json) {
         dispatch(addViewedPeople(json));
+        const moviesResponse = await fetch(`https://api.themoviedb.org/3/person/${peopleId}/movie_credits`,{...API_OPTIONS});
+        if (!moviesResponse.ok) {
+          throw new Error(`Error ${moviesResponse.status}: ${moviesResponse.statusText}`);
+        }
+  
+        const moviesList = await moviesResponse.json(); 
+        dispatch(addViewedPeopleMovies(moviesList.cast));
       }
     } catch (error) {
       console.error("Error fetching movie:", error);
@@ -31,7 +38,7 @@ const usePeopleDetail = (peopleId) => {
     } finally {
       setLoading(false);
     }
-  };
+    };
 
   useEffect(() => {
     if (!viewedPeople && peopleId) { 
