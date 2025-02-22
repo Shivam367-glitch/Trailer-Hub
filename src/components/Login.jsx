@@ -54,7 +54,7 @@ const Login = () => {
         createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value,name?.current?.value)
           .then((userCredential) => {  
             updateProfile(auth.currentUser, {
-              displayName:name?.current?.value, photoURL: "https://res.cloudinary.com/mern-app-cruds/image/upload/v1705033984/uploads/user_avatar_1705033984352.png"
+              displayName:name?.current?.value, photoURL: "https://res.cloudinary.com/mern-app-cruds/image/upload/v1705033842/uploads/user_avatar_1705033842005.png"
             }).then(() => {
               alert("User Profile Updated")
             }).catch((error) => {
@@ -82,8 +82,8 @@ const Login = () => {
 
   return (
    <Container fluid >
-    <Row className="justify-content-center">
-      <Col xs={12}  sm={8} lg={4}>
+    <Row className="justify-content-center mt-5">
+      <Col  xs={11} sm={10} md={8} lg={4}>
         <Form className="p-4  rounded shadow form_container bg-dark">
         <h2 className="text-white mb-4">{isSignInForm?"Sign In":"Sign Up"}</h2>
            {!isSignInForm && <FloatingLabel controlId="floatingInput" label="Full Name" className="mb-3 text-white">
@@ -116,13 +116,13 @@ const Login = () => {
           </FloatingLabel>
           {error && <p  className="text-danger my-3">{error}</p>}
           {/* Sign In Button */}
-          <Button  type="submit"className="w-100 fw-medium text-white btn-danger opacity-100 mb-3 rounded-2" onClick={(e)=>{handleSubmit(e)}}>{isSignInForm?"Sign In":"Sign Up"}</Button>
+          <Button variant="danger" type="submit"className="w-100 fw-medium text-white  mb-3 rounded-3" onClick={(e)=>{handleSubmit(e)}}>{isSignInForm?"Sign In":"Sign Up"}</Button>
 
           {/* OR Divider */}
           <span className="text-secondary fw-medium fs-5 text-center d-block mb-3">OR</span>
 
           {/* Use Sign-in Code Button */}
-          <Button   className="w-100 fw-medium text-white bg-secondary rounded-3 border-0"  style={{background: 'transparent', }}>Use a sign-in code</Button>
+          <Button  variant="secondary"  className="w-100 fw-medium text-white  rounded-3" >Use a sign-in code</Button>
 
           {/* Forgot Password Link */}
           <Link to="/password-reset" className="text-center d-block my-3 text-white hover_white"> Forgot password?</Link>

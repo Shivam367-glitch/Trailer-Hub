@@ -4,6 +4,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+.profile-menu{
+    position: absolute; 
+    height: 100%; 
+    border: 10px solid white; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: black; 
+    flex-direction: column; 
+    top: 10px;
+    z-index: 999; 
+    transition: all 5s ease-in-out;
+
 } 
  
 .img_container{
@@ -11,19 +25,18 @@
 }
  
 body, html, #root { 
-    height: 100%;
     margin: 0; 
     font-family: "Poppins", Sans-serif;
-    background-image: url('https://tse4.mm.bing.net/th?id=OIP.8TuhsWiakA20C9kEmOgLkQHaEK&pid=Api&P=0');
-    background-repeat: no-repeat;
-    background-size:cover;
-   
 } 
 .app-layout { 
     display: flex;
+    background-image: url('https://tse4.mm.bing.net/th?id=OIP.8TuhsWiakA20C9kEmOgLkQHaEK&pid=Api&P=0');
     flex-direction: column;
-    min-height: 100vh; 
-   
+    min-height: 100vh;  
+    padding-bottom: 10px; 
+    background-repeat: no-repeat;
+    background-size:cover; 
+
 }
 .header { 
     
@@ -103,9 +116,8 @@ color: #a9aeb3;
 /* Log Out */ 
 
 .log_out_container{
-    left: 50%;
-    top: 20%;
-    transform: translate(-50%,-20%); 
+    height: max-content; 
+    min-height: 100%;
 }
 
 
