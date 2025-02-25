@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
-import { lazy } from "react";
+// import { lazy } from "react";
 import Login from "./components/Login"; 
 import People from "./components/People"; 
 import PasswordReset from "./components/PasswordReset"; 
@@ -8,7 +8,7 @@ import PeopleDetail from "./components/PeopleDetail";
 import LogOut from "./components/LogOut";
 import Body from "./components/Body";  
 import Browser from "./components/Browser"; 
-
+import WatchHistoryPage from "./components/WatchHistoryPage";
 // const LogOut=lazy(()=>import('./components/LogOut'));
 // const MovieDetail=lazy(()=>import('./components/MovieDetail')); 
 // const PasswordReset=lazy(()=>import('./components/PasswordReset'));
@@ -27,6 +27,10 @@ function App() {
         element: <Login/>
       },
       {
+        path:'/my-list',
+        element:<WatchHistoryPage/>
+      },
+      {
         path: '/browser',
         element: <Browser />
       }, 
@@ -41,7 +45,7 @@ function App() {
       {
         path: "/password-reset",
         element:<PasswordReset/>,
-      },
+      }, 
       {
         path:"/people",
         element:<People/>

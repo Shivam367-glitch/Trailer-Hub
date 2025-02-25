@@ -1,20 +1,30 @@
 import { useState} from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { Circle } from "rc-progress";
 import { IMG_CDN_URL } from "../utils/Constants";
-import {useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import { FaPlay } from "react-icons/fa";
 import useMovieDetail from "../hooks/useMovieDetail";
 import VideoTrailer from "./VideoTrailer";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+import { addToWatchHistory } from "../utils/watchHistorySlice"; 
 
 const MovieDetail = () => {
   let { movieId } = useParams();
    
+
+  const dispatch=useDispatch();
   const [modalShow, setModalShow] = useState(false);
   const movie = useSelector((store) => store?.movie?.viewedMovie);
   const [error, loading] = useMovieDetail(movieId);
+   
+
+  const handleWatch=()=>{
+    setModalShow(true);  
+    dispatch(addToWatchHistory(movie));
+  } 
+
   
   if (!movie ) return null;
   
@@ -57,7 +67,7 @@ const MovieDetail = () => {
                   <span className="me-1 border-bottom">Movie Type:</span>
                   {genres.map((gene) => gene.name).join(", ")}
                 </p>
-                <Button as={Col} xs={10} sm={6} md={4} className="btn btn-secondary" onClick={() => setModalShow(true)} aria-label="Play Trailer">
+                <Button as={Col} xs={10} sm={6} md={4} className="btn btn-secondary" onClick={handleWatch} aria-label="Play Trailer">
                   <FaPlay /> Play Trailer
                 </Button>
                 <p className="mt-3">{tagline}</p>

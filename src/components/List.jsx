@@ -1,13 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap"
- 
 import Card from "./Card";
 
 
-
-
 const List = ({ title, movieList,peopleList }) => { 
-  console.log(title,movieList,peopleList);
-  
+
   return (
     <Container fluid={true}> 
       <Row>

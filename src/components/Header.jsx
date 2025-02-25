@@ -42,7 +42,7 @@ const Header = () => {
           {user && <img  src={user.photoURL} alt="User Profile" className="img-fluid user_icon " onClick={()=>{setShow(!show)}} />}
           {show&&<Profile/>}
           {user && <Button as={Link} to={"/browser"} onClick={()=>{dispatch(toggleGpt(true))}} className="bg-info fw-medium border-0">AI Search</Button> }
-          <Button  as={Link} onClick={handleLogOut} variant="danger" className="fw-medium text-white mb-3 rounded-3"> {user?"Sign Out":"Sign In"}</Button>
+          <Button  as={Link} onClick={handleLogOut} variant="danger" className="fw-medium text-white  rounded-3"> {user?"Sign Out":"Sign In"}</Button>
       
         </Col>
       </Row>

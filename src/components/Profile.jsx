@@ -1,6 +1,6 @@
 
 // import './Profile.css';
-
+import { Link } from "react-router-dom";
 const Profile = () => {
     return (
         <div className="profile-menu">
@@ -9,10 +9,10 @@ const Profile = () => {
                 <h2 className="profile-name">User Name</h2>
             </div>
             <ul className="profile-options">
-                <li><a href="/my-list">My List</a></li>
-                <li><a href="/watch-history">Watch History</a></li>
-                <li><a href="/settings">Settings</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><Link to="/my-list">My List</Link></li>
+                <li><Link to="/watch-history">Watch History</Link></li>
+                <li><Link to="/settings">Settings</Link></li>
+                <li><Link to="/logout">Logout</Link></li>
             </ul>
         </div>
     );

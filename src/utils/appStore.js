@@ -3,7 +3,8 @@ import userReducer from "./userSlice"
 import movieReducer from "./movieSlice";
 import nowPlayingReducer from "./nowPlayingSlice";
 import gptReducer from "./gptSlice";
-import peopleReducer from "./peopleSlice";
+import peopleReducer from "./peopleSlice"; 
+import watchHistoryReducer from "./watchHistorySlice";
 //  Register Reducers in the Store
 const appStore=configureStore(
     {
@@ -12,7 +13,8 @@ const appStore=configureStore(
             movie:movieReducer,
             nowPlaying:nowPlayingReducer, 
             gpt:gptReducer,
-            people:peopleReducer
+            people:peopleReducer,
+            watchHistory: watchHistoryReducer
         }
     }
 )
