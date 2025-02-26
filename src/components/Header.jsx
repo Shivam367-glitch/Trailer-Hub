@@ -40,7 +40,8 @@ const Header = () => {
         <Col className="d-flex flex-row  gap-2 justify-content-end align-items-center">  
           {(showGptSearch || isMoviePage) && <Link to="/browser"  onClick={()=>{dispatch(hideGpt())}} className="text-danger home_link">Home</Link>}
           {user && <img  src={user.photoURL} alt="User Profile" className="img-fluid user_icon " onClick={()=>{setShow(!show)}} />}
-          {show&&<Profile/>}
+          {user && <Button as={Link} to={"/watch-history"} className="bg-info fw-medium border-0">Watch History</Button>}
+          {show&&<Button className="bg-info fw-medium border-0"><Profile/></Button>}
           {user && <Button as={Link} to={"/browser"} onClick={()=>{dispatch(toggleGpt(true))}} className="bg-info fw-medium border-0">AI Search</Button> }
           <Button  as={Link} onClick={handleLogOut} variant="danger" className="fw-medium text-white  rounded-3"> {user?"Sign Out":"Sign In"}</Button>
       

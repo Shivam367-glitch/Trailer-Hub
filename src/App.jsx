@@ -27,7 +27,7 @@ function App() {
         element: <Login/>
       },
       {
-        path:'/my-list',
+        path:'/watch-history',
         element:<WatchHistoryPage/>
       },
       {
