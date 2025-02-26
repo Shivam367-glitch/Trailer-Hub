@@ -23,11 +23,10 @@ const People = () => {
           <Col xs={7} sm={6} lg={4} className="m-0 p-0 mt-2">
             <input
               type="text"
-              className="rounded-2 p-2 border-none"
+              className="rounded-2 p-2 border-none w-100"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search for an actor/actress..."
-              style={{width: "100%"}}
             />
           </Col>
           <Col xs={5} sm={3} lg={2} className="mx-0  mt-2">
@@ -35,8 +34,7 @@ const People = () => {
               variant="danger"
               onClick={handleSearch}
               disabled={status === "loading"}
-              className="p-2"
-              style={{width: "100%"}}
+              className="p-2 w-100"
             >
               {status === "loading" ? (
                 <Spinner animation="border" size="sm" />

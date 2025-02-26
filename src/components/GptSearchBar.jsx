@@ -70,24 +70,29 @@ const GptSearchBar = () => {
 
   return (
    <> 
-        <Container fluid={true}   > 
-        <Row as={Form} className="m-0 p-0 mt-5 align-items-center justify-content-center  ">
-        <Col xs={7} sm={6} lg={4} className="m-0 p-0 mt-2"> 
-          <input
-          type="text"
-          placeholder="What do you want to watch?"
-          className="rounded-2 p-2 border-none "
-          ref={inputRef}
-          style={{width: "100%"}}
-        />
-       
-          </Col> 
+        <Container fluid={true}  className="text-center" >  
+          <Row as={Form} className="m-0 p-0 mt-5 align-items-center justify-content-center ">
+          <h2 className="text-white ">Search Movie</h2>
+          <Col xs={7} sm={6} lg={4} className="m-0 p-0 mt-2  ">
+            <input
+              type="text"
+              className="rounded-2 p-2 border-none w-100"
+               placeholder="What do you want to watch?"
+
+              ref={inputRef}
+            />
+          </Col>
           <Col xs={5} sm={3} lg={2} className="mx-0  mt-2">
-          <Button variant="danger" onClick={handleGptSearch} disabled={loading} className="p-2" style={{width: "100%"}}>
+            <Button
+              variant="danger"
+              onClick={handleGptSearch}
+              disabled={loading}
+              className="p-2 w-100"
+            >
             {loading ? <Spinner animation="border" size="sm" /> : "Search"}
-          </Button>
-          </Col> 
-          {error && <Col className="text-danger mt-3 fs-5 text-white">{error}</Col>}
+            </Button>
+          </Col>
+          {error &&  <Col className="text-danger mt-3 fs-5 text-white">{error}</Col>}
           </Row>
 
         </Container>
