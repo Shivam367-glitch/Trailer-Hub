@@ -3,8 +3,6 @@ import useMovieTrailer from '../hooks/useMovieTrailer';
 import { useSelector } from 'react-redux';
 
 const VideoTrailer = (props) => { 
-    
-    console.log(props?.id);
     useMovieTrailer(props?.id); 
     const videoId=useSelector((store)=>store?.nowPlaying?.videoId); 
 
@@ -23,9 +21,11 @@ const VideoTrailer = (props) => {
     <Modal.Body className='bg-dark'>
    {
     videoId? <iframe 
-    title="Video Background"
     src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&mute=1&controls=1`}
-    className='w-100 h-100'
+        className='w-100 h-100'
+       title={"video player"} 
+      allow={"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" }
+      allowfullscreen
   ></iframe>:<p className='text-white fs-5'>Trailer Not Available !</p>
    }
     </Modal.Body>
