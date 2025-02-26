@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import {API_OPTIONS} from "../utils/Constants"
+import {API_OPTIONS} from "../utils/Constants" 
+import {BASE_URL} from "../utils/Constants"
 export const fetchPeople = createAsyncThunk(
     'people/fetchPeople',
     async (query) => {
-        const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${query}`,API_OPTIONS);
+        const response = await fetch(`${BASE_URL}search/person?query=${query}`,API_OPTIONS);
 
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);

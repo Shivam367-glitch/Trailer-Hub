@@ -2,7 +2,8 @@
 import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addViewedPeople, addViewedPeopleMovies } from "../utils/peopleSlice";
+import { addViewedPeople, addViewedPeopleMovies } from "../utils/peopleSlice"; 
+import {BASE_URL} from "../utils/Constants";  
 const usePeopleDetail = (peopleId) => {
     const dispatch = useDispatch();
     const [error, setError] = useState("");
@@ -13,7 +14,7 @@ const usePeopleDetail = (peopleId) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://api.themoviedb.org/3/person/${peopleId}`,
+        `${BASE_URL}person/${peopleId}`,
         { ...API_OPTIONS }
       );
 

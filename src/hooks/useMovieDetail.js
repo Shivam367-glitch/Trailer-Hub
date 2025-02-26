@@ -3,6 +3,7 @@ import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addViewedMovie } from "../utils/movieSlice";
+import { BASE_URL } from "../utils/Constants"; 
 
 const useMovieDetail = (movieId) => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const useMovieDetail = (movieId) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}`,
+        `${BASE_URL}movie/${movieId}`,
         { ...API_OPTIONS }
       );
 

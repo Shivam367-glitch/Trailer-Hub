@@ -2,14 +2,14 @@ import { addNowPlayingVideo } from "../utils/nowPlayingSlice";
 import {API_OPTIONS} from "../utils/Constants" 
 import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"; 
-
+import {BASE_URL} from "../utils/Constants";  
 const useMovieTrailer = (id) => {
  
   const dispatch = useDispatch();
   const nowPlayingMovies=useSelector((store)=>store?.nowPlayingMovies);
   const getVideoTrailer = async () => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, API_OPTIONS);
+      const response = await fetch(`${BASE_URL}movie/${id}/videos`, API_OPTIONS);
       const json = await response.json();
 
       const video = json.results.find((video) => video.type === "Trailer"); 
