@@ -6,7 +6,7 @@ const List = ({ title, movieList,peopleList }) => {
 
   return (
     <Container fluid={true}> 
-      <Row>
+      <Row className="gap-4">
         <Col xs={12}> 
           <h2 className="text-white">{title}</h2> 
         </Col> 

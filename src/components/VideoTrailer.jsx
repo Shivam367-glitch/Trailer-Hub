@@ -21,7 +21,7 @@ const VideoTrailer = (props) => {
     <Modal.Body className='bg-dark'>
    {
     videoId? <iframe 
-    src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&mute=1&controls=1`}
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&mute=1&controls=1`}
         className='w-100 h-100'
        title={"video player"} 
       allow={"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" }

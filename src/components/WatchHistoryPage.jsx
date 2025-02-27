@@ -2,6 +2,7 @@ import  { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWatchHistory } from "../utils/watchHistorySlice";
 import List from "./List";
+import { Container,Row,Col } from "react-bootstrap";
 
 const WatchHistoryPage = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,13 @@ const WatchHistoryPage = () => {
   if (movies.length === 0) return <p>Your Watch History is empty!</p>;
 
   return (
-    <div>
-      <List title="Your Watch History"  movieList={movies} />
-    </div>
+    <Container fluid={true} className="mt-2"> 
+    <Row >
+      <Col>
+            <List title="Your Watch History"  movieList={movies} />
+      </Col>
+    </Row>
+    </Container>
   );
 };
 

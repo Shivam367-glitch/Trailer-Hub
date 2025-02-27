@@ -9,12 +9,7 @@ import LogOut from "./components/LogOut";
 import Body from "./components/Body";  
 import Browser from "./components/Browser"; 
 import WatchHistoryPage from "./components/WatchHistoryPage";
-// const LogOut=lazy(()=>import('./components/LogOut'));
-// const MovieDetail=lazy(()=>import('./components/MovieDetail')); 
-// const PasswordReset=lazy(()=>import('./components/PasswordReset'));
-// const People=lazy(()=>import('./components/People')); 
-// const Login=lazy(()=>import('./components/Login')); 
-
+ 
 function App() {
 
   const appRoute = createBrowserRouter([
