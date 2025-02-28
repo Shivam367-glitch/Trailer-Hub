@@ -4,19 +4,20 @@ import { doc, getDoc, updateDoc, arrayUnion, arrayRemove, setDoc } from "firebas
 
 
 const getUserRef = () => {
-  const user = auth.currentUser;
+  const user = auth?.currentUser;
   if (!user) throw new Error("User not authenticated");
   return doc(db, "watchHistories", user.uid);
 };
 // Fetch user's WatchHistory
 export const fetchWatchHistory = createAsyncThunk("watchHistory/fetch", async () => {
-  const userRef = getUserRef();
+  const userRef = getUserRef(); 
+
   const docSnap = await getDoc(userRef);
   
   if (docSnap.exists()) {
     return docSnap.data().movies || [];
   } else {
-    await setDoc(userRef, { movies: [] });
+    await setDoc(userRef, { movies: [] },{ merge: true });
     return [];
   }
 });

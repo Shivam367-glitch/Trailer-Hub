@@ -12,9 +12,9 @@ const WatchHistoryPage = () => {
     dispatch(fetchWatchHistory());
   }, [dispatch]);
 
-  if (status === "loading") return <p>Loading...</p>;
-  if (movies.length === 0) return <p>Your Watch History is empty!</p>;
-
+  if (movies.length === 0) return <p className="text-white">Your Watch History is empty!</p>;
+  
+  if (status === "loading") return <p className="text-white">Loading...</p>;
   return (
     <Container fluid={true} className="mt-2"> 
     <Row >
