@@ -39,7 +39,7 @@ const MovieDetail = () => {
 
   return (
     <>
-      <Container fluid={true} >
+      <Container fluid={true} className="mt-4">
         <Row className=" d-flex flex-column flex-md-row  bg-dark opacity-90 py-3 gap-2 text-white">
           {loading && <Col className="bg-dark text-white">Loading movie details...</Col>}
           {error && <Col className="bg-dark text-white">Failed to fetch movie details. Please try again later.</Col>}

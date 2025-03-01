@@ -11,7 +11,7 @@ const VideoContainer = () => {
   
   
   return (
-    <Container fluid={true} className="bg-dark display-1 text-dark position-absolute top-100 z-2">
+    <Container fluid={true} className="bg-dark display-1 text-dark position-absolute top-100">
       <Row className="gap-4 d-flex flex-column">
         <Col xs={12} className="position-absolute bottom-95"> 
           <List title={"Now Playing"} movieList={nowPlayingMovies} showGptSearch={showGptSearch}/>
