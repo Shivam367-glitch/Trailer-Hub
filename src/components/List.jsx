@@ -8,7 +8,7 @@ const List = ({ title, movieList,peopleList }) => {
     <Container fluid={true}> 
       <Row className="gap-4">
         <Col xs={12}> 
-          <h2 className="text-white">{title}</h2> 
+          <h2 className="text-white fs-4">{title}</h2> 
         </Col> 
          {
             movieList&& <Col xs={12} className="container_scroll d-flex flex-row gap-4"> 

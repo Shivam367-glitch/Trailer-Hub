@@ -6,21 +6,21 @@ import { Container,Row,Col } from "react-bootstrap";
 
 const WatchHistoryPage = () => {
   const dispatch = useDispatch();
-  const { movies, status } = useSelector((state) => state.watchHistory);
+  const { movies, status,error } = useSelector((state) => state.watchHistory);
 
   useEffect(() => {
     dispatch(fetchWatchHistory());
   }, [dispatch]);
 
-  if (movies.length === 0) return <p className="text-white">Your Watch History is empty!</p>;
-  
-  if (status === "loading") return <p className="text-white">Loading...</p>;
   return (
     <Container fluid={true} className="mt-2"> 
-    <Row >
-      <Col>
-            <List title="Your Watch History"  movieList={movies} />
-      </Col>
+    <Row className="text-white fs-5">
+      {status === "loading" && <Col>Loading...</Col>}
+      {status === "failed" && <Col>{error.message}</Col>}
+      { status==="succeeded" && movies.length === 0 && <Col>Your Watch History is empty!</Col>}
+     {
+      status==="succeeded" && movies.length>0 &&<Col><List title="Your Watch History"  movieList={movies} /></Col>
+     }
     </Row>
     </Container>
   );
