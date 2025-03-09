@@ -8,8 +8,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate', 
       manifest: {
-        name: 'Movie Trailer',
-        short_name: 'MT',
+        name: 'Trailer Hub',
+        short_name: 'TH',
         start_url: '/',
         scope: '/',
         display: 'standalone',

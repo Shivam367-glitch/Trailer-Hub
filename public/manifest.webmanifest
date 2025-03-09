@@ -1,6 +1,6 @@
 {
-    "name": "Movie Trailer",
-        "short_name": "MT",
+    "name": "Trailer Hub",
+        "short_name": "TH",
         "start_url": "/",
         "display": "standalone",
         "background_color": "#ffffff",

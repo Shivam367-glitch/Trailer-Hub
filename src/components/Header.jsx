@@ -30,22 +30,22 @@ const Header = () => {
     }
   };
   return (
-    <Container fluid={true} className="header_container z-2 py-2">
-      <Row className="d-flex flex-row  justify-content-between align-items-center">
-        <Col xs={4} lg={2}>
+    <Container fluid={true} className="header_container z-2 py-2 overflow-hidden">
+      <Row className="d-flex flex-row   align-items-center border border-success">
+        <Col  lg={3} >
           <img
             src="logo.png" alt="logo"
-            className="img-fluid "
+            className="img-fluid w-50"
           />
         </Col>
-        <Col>
+        <Col lg={3} className="border border-danger">
           {user && (
-            <Link to="/people" className="text-decoration-none fs-3">
+            <Link as={Button} to="/people" className="text-decoration-none fs-3">
               People
             </Link>
           )}
         </Col>
-        <Col className="d-flex flex-row  gap-2 justify-content-end align-items-center">
+        <Col className="d-flex flex-row  gap-2 justify-content-around align-items-center border border-black flex-wrap">
           {(showGptSearch || isMoviePage) && (
             <Link
               to="/browser"
