@@ -25,7 +25,7 @@ const usePeopleDetail = (peopleId) => {
       const json = await response.json();
       if (json) {
         dispatch(addViewedPeople(json));
-        const moviesResponse = await fetch(`https://api.themoviedb.org/3/person/${peopleId}/movie_credits`,{...API_OPTIONS});
+        const moviesResponse = await fetch(`${BASE_URL}person/${peopleId}/movie_credits`,{...API_OPTIONS});
         if (!moviesResponse.ok) {
           throw new Error(`Error ${moviesResponse.status}: ${moviesResponse.statusText}`);
         }

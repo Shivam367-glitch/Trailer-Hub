@@ -7,7 +7,7 @@ import { BASE_URL } from "../utils/Constants";
 const useTopRatedMovies = () => { 
     const dispatch=useDispatch(); 
     const topRatedMovies=useSelector((store)=>store?.topRatedMovies);
-console.log(topRatedMovies);
+   console.log(topRatedMovies);
 
  
   useEffect(() => {

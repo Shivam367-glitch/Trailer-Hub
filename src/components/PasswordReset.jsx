@@ -7,7 +7,7 @@ const PasswordReset = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(""); 
   const [loading,setLoading]=useState(false);
- const email=useRef(null); 
+  const email=useRef(null); 
   const handlePasswordReset = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -20,7 +20,9 @@ const PasswordReset = () => {
 
     try { 
       setLoading(true)
-      await sendPasswordResetEmail(auth, email?.current?.value);
+      await sendPasswordResetEmail(auth, email?.current?.value,{
+        url:"https://trailerhub-8f6b1.web.app/"
+      });
       setMessage("Password reset email sent successfully. Please check your inbox.");
     } catch (err) {
       setError(`Error: ${err.message}`);

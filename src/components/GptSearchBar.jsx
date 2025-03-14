@@ -4,7 +4,7 @@ import { model } from "./geminiAi";
 import { API_OPTIONS } from "../utils/Constants";
 import { useDispatch } from "react-redux";
 import { addRecommendedMovies } from "../utils/gptSlice";
-
+import { BASE_URL } from "../utils/Constants";
 
 const GptSearchBar = () => {
   const inputRef = useRef(null);
@@ -15,7 +15,7 @@ const GptSearchBar = () => {
   const searchMoviesOnTMDB = async (movie, year) => {
     try {
       const data = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&primary_release_year=${year}&page=1`,
+        `${BASE_URL}search/movie?query=${movie}&include_adult=false&primary_release_year=${year}&page=1`,
         API_OPTIONS
       );
       const json = await data.json();
