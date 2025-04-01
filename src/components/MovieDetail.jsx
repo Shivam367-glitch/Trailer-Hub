@@ -33,6 +33,8 @@ const MovieDetail = () => {
 
 
   const { original_title, genres, poster_path, tagline, overview, runtime, title, homepage } = movie;
+   
+  
   let hr = Math.floor(runtime / 60);
   let min = runtime % 60;
   const userScore = movie?.vote_average ? Math.ceil(movie.vote_average * 10) : 0;

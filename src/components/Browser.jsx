@@ -6,11 +6,12 @@ import MainContainer from "./MainContainer"
 import VideoContainer from "./VideoContainer"
 import GptSearch from "./GptSearch";
 import { useSelector } from "react-redux";
+import useMovieGenres from "../hooks/useMovieGenres";
 
 const Browser = () => {  
 
           const showGpt=useSelector((store)=>store.gpt.showGptSearch);
-          
+          useMovieGenres();
           useNowPlayingMovies();
           usePopularMovies(); 
           useTopRatedMovies();

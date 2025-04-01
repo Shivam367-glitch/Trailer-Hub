@@ -1,7 +1,7 @@
 import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { validateForm } from "../utils/validateForm"
-import { useRef, useState } from "react" 
+import { useEffect, useRef, useState } from "react" 
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from "../utils/firebase" 
 import { FaEye,FaEyeSlash } from "react-icons/fa";
@@ -15,6 +15,14 @@ const Login = () => {
   const password=useRef(null);  
   const name =useRef(null);
 
+
+  useEffect(()=>{
+    if(isSignInForm){
+      email?.current?.focus();
+    }else{
+      name?.current?.focus();
+    }
+  },[isSignInForm])
   const handleSubmit=async(e)=>{ 
     e.preventDefault();
     setError("")
