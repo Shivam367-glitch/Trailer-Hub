@@ -1,16 +1,13 @@
-import { Card } from 'react-bootstrap';
 
-const GenresCard = ({src}) => {
+const GenresCard = ({src,alt}) => {
   return (
     <div className="position-relative">
       <img
         src={src}
-        alt="Action Genre"
+        alt={alt}
         className=""
         style={{height:'220px' }}
       />
-     
-   
     </div>
   );
 };
