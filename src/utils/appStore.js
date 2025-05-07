@@ -5,6 +5,7 @@ import nowPlayingReducer from "./nowPlayingSlice";
 import gptReducer from "./gptSlice";
 import peopleReducer from "./peopleSlice"; 
 import watchHistoryReducer from "./watchHistorySlice";
+import categoryReducer from "./categorySlice";
 //  Register Reducers in the Store
 const appStore=configureStore(
     {
@@ -14,7 +15,8 @@ const appStore=configureStore(
             nowPlaying:nowPlayingReducer, 
             gpt:gptReducer,
             people:peopleReducer,
-            watchHistory: watchHistoryReducer
+            watchHistory: watchHistoryReducer,
+            category:categoryReducer
         }
     }
 )

@@ -9,6 +9,7 @@ import LogOut from "./components/LogOut";
 import Body from "./components/Body";  
 import Browser from "./components/Browser"; 
 import WatchHistoryPage from "./components/WatchHistoryPage";
+import CategoryMovie from "./components/CategoryMovie";
  
 function App() {
 
@@ -45,9 +46,13 @@ function App() {
         path:"/people",
         element:<People/>
       },
+      
       {
         path:'/people/:peopleId',
         element:<PeopleDetail/>
+    },{
+      path:'/movies/:type',
+      element:<CategoryMovie/>
     }
     ]
    }

@@ -14,7 +14,7 @@ const Genres = () => {
             {
               genres?.map((item, index) => {
                 return (
-                  <GenresCard key={item?.id} src={item?.name+`.png`}  alt={item?.name}/>
+                  <GenresCard key={item?.id} src={item?.name+`.png`}  alt={item?.name} id={item?.id}/>
                 )
               })
             }
