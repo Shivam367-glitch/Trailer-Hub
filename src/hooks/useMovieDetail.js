@@ -14,23 +14,29 @@ const useMovieDetail = (movieId) => {
 
   const getMovieInfo = async () => {
     if (!movieId) return; 
-    console.log(typeof movieId,typeof viewedMovie?.id);
+    // console.log(typeof movieId,typeof viewedMovie?.id);
     
     try {
       setLoading(true);
-      const response = await fetch(
-        `${BASE_URL}movie/${movieId}`,
-        { ...API_OPTIONS }
-      );
 
-      if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-      }
+      const [details, providers] = await Promise.all([
+        fetch(
+          `${BASE_URL}movie/${movieId}`,
+          { ...API_OPTIONS }
+        ),
+        fetch(
+          `${BASE_URL}movie/${movieId}//watch/providers`,
+          { ...API_OPTIONS }
+        )
+      ]);
+       
+      const detailsJson = await details.json();
+      const providersJson = await providers.json();
+      dispatch(addViewedMovie({
+        ...detailsJson,
+        watch_providers: providersJson.results,
+      })); 
 
-      const json = await response.json();
-      if (json) {
-        dispatch(addViewedMovie(json));
-      }
     } catch (error) {
       console.error("Error fetching movie:", error);
       setError(error?.message || "Something Went Wrong!");

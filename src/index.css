@@ -165,4 +165,10 @@ color: #a9aeb3;
 
 .modal-header .btn-close{
     background-color: white;
+} 
+
+
+.hover-effect:hover{
+    transition: all 0.3s ease-in-out; 
+    color: silver !important;
 }
