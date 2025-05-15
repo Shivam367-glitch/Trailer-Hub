@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react"
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from "../utils/firebase" 
 import { FaEye,FaEyeSlash } from "react-icons/fa";
+import { fetchCountry } from "../utils/countrySlice.js";
+import { useDispatch } from "react-redux";
 
 
 const Login = () => { 
@@ -14,7 +16,7 @@ const Login = () => {
   const email=useRef(null); 
   const password=useRef(null);  
   const name =useRef(null);
-
+ const dispatch = useDispatch(); 
 
   useEffect(()=>{
     if(isSignInForm){
@@ -26,7 +28,7 @@ const Login = () => {
   const handleSubmit=async(e)=>{ 
     e.preventDefault();
     setError("")
-    
+     dispatch(fetchCountry());
     const result=validateForm(isSignInForm,email?.current?.value,password?.current?.value,name?.current?.value);  
 
     if(result){

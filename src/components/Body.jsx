@@ -5,6 +5,8 @@ import { addUser, removeUser } from '../utils/userSlice';
 import { useEffect } from 'react';
 import { auth } from "../utils/firebase";
 import Header from "./Header.jsx";
+
+
 const Body = () => {
   
   const dispatch = useDispatch(); 
@@ -15,6 +17,7 @@ const Body = () => {
         // When user Sign In and Sign Up
         const { uid, displayName, email,photoURL } = user;
         dispatch(addUser({ uid, displayName, email,photoURL })); 
+       
         navigate('/browser')
       } else {
         // when user is Sign Out

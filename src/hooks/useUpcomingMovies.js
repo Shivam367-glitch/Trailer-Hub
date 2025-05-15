@@ -6,9 +6,10 @@ import { BASE_URL } from "../utils/Constants";
 
 const useUpcomingMovies = () => { 
     const dispatch=useDispatch(); 
-    const upcomingMovies=useSelector((store)=>store?.upcomingMovies);
+    const upcomingMovies=useSelector((store)=>store?.upcomingMovies); 
+   const country=useSelector((store)=>store?.country?.country);
    const getUpcomingMovies=async()=>{
-   const data=await fetch(`${BASE_URL}movie/upcoming?page=1`, API_OPTIONS);
+   const data=await fetch(`${BASE_URL}movie/upcoming?page=1&region=${country}`, API_OPTIONS);
    const json=await data.json(); 
    dispatch(addUpcomingMovies(json?.results));
   } 
