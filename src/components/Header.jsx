@@ -11,20 +11,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleGpt } from "../utils/gptSlice";
 function OffcanvasExample() {
   const [expanded, setExpanded] = useState(false);
-const dispatch=useDispatch(); 
- const showGpt=useSelector((store)=>store.gpt.showGptSearch);
+  const dispatch=useDispatch(); 
+  const showGpt=useSelector((store)=>store.gpt.showGptSearch);
+  const user=useSelector((store)=>store.user);
   const handleCloseMenu = () => setExpanded(false);
   const expand=false;
   return (
     <>
       <Navbar expand={false} className="bg-transparent z-3 d-flex flex-row" >
-      <Container fluid={true}>
+        <Container fluid={true}>
         <Navbar.Brand  as={NavLink} to="/" className="w-18"> 
           <img src="logo.png" alt="Trailer Hub Logo" className='img-fluid'/>
-         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"  />
+         </Navbar.Brand> 
+         {
+          user&& <Navbar.Toggle aria-controls="basic-navbar-nav"  />
+         }
        
-          <Navbar.Offcanvas
+            <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
@@ -56,8 +59,8 @@ const dispatch=useDispatch();
                  
               </Offcanvas.Body>
             </Navbar.Offcanvas>
-      </Container>
-    </Navbar>
+        </Container>
+      </Navbar>
     </>
   );
 }

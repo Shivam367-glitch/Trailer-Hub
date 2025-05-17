@@ -2,7 +2,7 @@ import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstra
 import { Link } from "react-router-dom"
 import { validateForm } from "../utils/validateForm"
 import { useEffect, useRef, useState } from "react" 
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from "../utils/firebase" 
 import { FaEye,FaEyeSlash } from "react-icons/fa";
 import { fetchCountry } from "../utils/countrySlice.js";
@@ -24,77 +24,86 @@ const Login = () => {
     }else{
       name?.current?.focus();
     }
-  },[isSignInForm])
-  const handleSubmit=async(e)=>{ 
-    e.preventDefault();
-    setError("")
-     dispatch(fetchCountry());
-    const result=validateForm(isSignInForm,email?.current?.value,password?.current?.value,name?.current?.value);  
+  },[isSignInForm]) 
 
-    if(result){
-       
-      setError(result);
-      return;
-    }else{
-      if(isSignInForm){ 
-        try {
-          await signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value);
-        } catch (error) {
-          switch (error.code) {
-            case 'auth/wrong-password':
-              setError('Wrong password.');
-              break;
-            case 'auth/user-not-found':
-              setError('No user found with this email.');
-              break;
-            case 'auth/invalid-credential':
-              setError('Please Login with valid Email And Password');
-              break; 
-            case 'auth/network-request-failed':
-              setError("Please Check Your Internet Connection");
-              break; 
-            default:
-              // setError(error.message); 
-              setError("An unexpected error occurred. Please try again.")
-          }
-        }
-      }else{
-  
-        // const auth=getAuth();
-        createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value,name?.current?.value)
-          .then((userCredential) => {  
-            updateProfile(auth.currentUser, {
-              displayName:name?.current?.value, photoURL: "https://res.cloudinary.com/mern-app-cruds/image/upload/v1705033842/uploads/user_avatar_1705033842005.png"
-            }).then(() => {
-              alert("User Profile Updated")
-            }).catch((error) => {
-              // An error occurred 
-              setError(error.message);
-            });
-          })
-          .catch((error) => {
-            switch (error.code) {
-              case "auth/email-already-in-use":
-                setError("Email Already In Use")
-                break;
-              case 'auth/network-request-failed':
-                  setError("Please Check Your Internet Connection");
-                  break; 
-              default: 
-              setError("An unexpected error occurred. Please try again.")
-                break;
-            }
-          });
-      }
+  useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(fetchCountry());
     }
-  } 
+  });
+  return () => unsubscribe();
+}, [dispatch]);
+    const handleSubmit=async(e)=>{ 
+      e.preventDefault();
+      setError("")
+    
+      const result=validateForm(isSignInForm,email?.current?.value,password?.current?.value,name?.current?.value);  
+
+      if(result){
+        
+        setError(result);
+        return;
+      }else{ 
+        if(isSignInForm){ 
+          try {
+            await signInWithEmailAndPassword(auth, email?.current?.value, password?.current?.value);
+          } catch (error) {
+            switch (error.code) {
+              case 'auth/wrong-password':
+                setError('Wrong password.');
+                break;
+              case 'auth/user-not-found':
+                setError('No user found with this email.');
+                break;
+              case 'auth/invalid-credential':
+                setError('Please Login with valid Email And Password');
+                break; 
+              case 'auth/network-request-failed':
+                setError("Please Check Your Internet Connection");
+                break; 
+              default:
+                // setError(error.message); 
+                setError("An unexpected error occurred. Please try again.")
+            }
+          }
+        }else{
+    
+          // const auth=getAuth();
+          createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value,name?.current?.value)
+            .then((userCredential) => {  
+              updateProfile(auth.currentUser, {
+                displayName:name?.current?.value, photoURL: "https://res.cloudinary.com/mern-app-cruds/image/upload/v1705033842/uploads/user_avatar_1705033842005.png"
+              }).then(() => {
+                alert("User Profile Updated")
+              }).catch((error) => {
+                // An error occurred 
+                setError(error.message);
+              });
+            })
+            .catch((error) => {
+              switch (error.code) {
+                case "auth/email-already-in-use":
+                  setError("Email Already In Use")
+                  break;
+                case 'auth/network-request-failed':
+                    setError("Please Check Your Internet Connection");
+                    break; 
+                default: 
+                setError("An unexpected error occurred. Please try again.")
+                  break;
+              }
+            });
+        }
+      }
+    } 
 
 
   return (
    <Container fluid >
     <Row className="justify-content-center mt-5">
       <Col  xs={11} sm={10} md={8} lg={4}>
-        <Form className="p-4  rounded shadow form_container bg-dark">
+        <Form className="p-4  rounded shadow form_container bg-dark" onSubmit={(e)=>{handleSubmit(e)}}  key={isSignInForm ? "signIn" : "signUp"}>
         <h2 className="text-white mb-4">{isSignInForm?"Sign In":"Sign Up"}</h2>
            {!isSignInForm && <FloatingLabel controlId="floatingInput" label="Full Name" className="mb-3 text-white">
            <Form.Control type="text" placeholder="Full Name" className="bg-dark text-white border-secondary rounded-2" ref={name}/>
@@ -126,7 +135,7 @@ const Login = () => {
           </FloatingLabel>
           {error && <p  className="text-danger my-3">{error}</p>}
           {/* Sign In Button */}
-          <Button variant="danger" type="submit"className="w-100 fw-medium text-white  mb-3 rounded-3" onClick={(e)=>{handleSubmit(e)}}>{isSignInForm?"Sign In":"Sign Up"}</Button>
+          <Button variant="danger" type="submit"className="w-100 fw-medium text-white  mb-3 rounded-3" >{isSignInForm?"Sign In":"Sign Up"}</Button>
 
           {/* OR Divider */}
           <span className="text-secondary fw-medium fs-5 text-center d-block mb-3">OR</span>
@@ -145,7 +154,7 @@ const Login = () => {
 
           {/* Sign Up Link */}
           <span className="text-secondary" onClick={() => { setIsSignInForm(!isSignInForm) }}>
-           { isSignInForm ? (<>New to Netflix? <Link className="text-white hover_white ms-1">Sign up now.</Link></>) : (<>Already User?<Link className="text-white hover_white ms-1">Sign in now.</Link></>)}
+           { isSignInForm ? (<>New to Trailer Hub? <Link className="text-white hover_white ms-1">Sign up now.</Link></>) : (<>Already User?<Link className="text-white hover_white ms-1">Sign in now.</Link></>)}
           </span>
         </Form>
       </Col>

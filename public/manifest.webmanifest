@@ -1,10 +1,11 @@
 {
-    "name": "Trailer Hub",
-        "short_name": "TH",
+        "name": "Trailer Hub",
+        "short_name": "THub",
         "start_url": "/",
         "display": "standalone",
-        "background_color": "#ffffff",
+        "background_color": "#ff0033",
         "theme_color": "#333333",
+        "orientation": "portrait",
         "icons": [
           {
               "src": "/android-chrome-192x192.png",
