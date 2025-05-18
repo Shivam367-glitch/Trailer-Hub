@@ -7,6 +7,7 @@ import VideoContainer from "./VideoContainer"
 import GptSearch from "./GptSearch";
 import { useSelector } from "react-redux";
 import useMovieGenres from "../hooks/useMovieGenres";
+import useTrendingPeople from "../hooks/useTrendingPeople";
 
 const Browser = () => {  
 
@@ -16,6 +17,7 @@ const Browser = () => {
           usePopularMovies(); 
           useTopRatedMovies();
           useUpcomingMovies();
+          useTrendingPeople();
   return (
     <>
       {

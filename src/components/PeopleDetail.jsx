@@ -1,20 +1,29 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom"; 
 import usePeopleDetail from "../hooks/usePeopleDetail";
 import {  Col, Container, Row } from "react-bootstrap";
 import { IMG_CDN_URL } from "../utils/Constants";
-import {Cake2Fill} from "react-bootstrap-icons"
+import { useEffect } from "react";
+import {removeViewedPeopleMovies } from "../utils/peopleSlice"; 
 import List from "./List";
 const PeopleDetail = () => { 
     let { peopleId } = useParams();
-    
+    const dispatch=useDispatch();
     const viewedPeople = useSelector((store) => store?.people?.viewedPeople);
     const viewedPeopleMovies = useSelector((store) => store?.people?.viewedPeopleMovies);
     console.log(viewedPeople);
     
+useEffect(() => {
+   
+
+  return () => {
+   dispatch(removeViewedPeopleMovies())
+  }
+  }, []);
     const [error, loading] = usePeopleDetail(peopleId);
     if (!viewedPeople ) return null;
-  const {name,profile_path,biography,homepage,birthday,place_of_birth}=viewedPeople
+    const {name,profile_path,biography,homepage,birthday,place_of_birth}=viewedPeople 
+
   return (
     <> 
     <Container fluid={true} >
@@ -32,7 +41,7 @@ const PeopleDetail = () => {
               </Col>
               <Col xs={12} md={8} lg={8} className=" d-flex flex-column justify-content-start gap-2 mb-2 border border-success">  
               <p className="mt-3 fw-bolder fs-4 text-white text-center">{homepage ? (
-                <Link to={homepage} target="_blank" className="cursor_pointer text-decoration-underline text-white">{name}</Link>
+                <Link to={homepage} target="_blank" className="cursor_pointer text-decoration-underline text-white hover-effect">{name}</Link>
               ) : (<span>{name}</span>)}
               </p> 
               <p className="d-flex flex-row justify-content-between"><span>Born On: {new Date(birthday?birthday:null).toLocaleDateString("en-US").replace(/\//g, '-')}</span><span> Born At : {place_of_birth?place_of_birth:"NA"}</span> </p>
@@ -42,8 +51,8 @@ const PeopleDetail = () => {
               </Col>
             </>
           )}
-          <Col> 
-          <List title={"Movies"} movieList={viewedPeopleMovies} />
+          <Col xs={12}> 
+           <List title={"Movies"} movieList={viewedPeopleMovies} />
           </Col>
             </Row>
          </Container>

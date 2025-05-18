@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
-// import { lazy } from "react";
 import Login from "./components/Login"; 
-import People from "./components/People"; 
+import PeopleSearch from "./components/PeopleSearch"; 
 import PasswordReset from "./components/PasswordReset"; 
 import MovieDetail from "./components/MovieDetail"; 
 import PeopleDetail from "./components/PeopleDetail";
@@ -10,6 +9,7 @@ import Body from "./components/Body";
 import Browser from "./components/Browser"; 
 import WatchHistoryPage from "./components/WatchHistoryPage";
 import CategoryMovie from "./components/CategoryMovie";
+
  
 function App() {
 
@@ -44,7 +44,7 @@ function App() {
       }, 
       {
         path:"/people",
-        element:<People/>
+        element:<PeopleSearch/>
       },
       
       {

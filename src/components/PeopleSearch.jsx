@@ -4,7 +4,7 @@ import { fetchPeople } from "../utils/peopleSlice";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import List from "./List";
 
-const People = () => {
+const PeopleSearch = () => {
   const dispatch = useDispatch();
   const { peopleList, status, error } = useSelector((state) => state.people);
   const [query, setQuery] = useState("");
@@ -61,4 +61,4 @@ const People = () => {
   );
 };
 
-export default People;
+export default PeopleSearch;
