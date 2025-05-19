@@ -8,10 +8,10 @@ const VideoContainer = () => {
   const popularMovies = useSelector((store)=>store.movie.popularMovies);
   const topRatedMovies = useSelector((store)=>store.movie.topRatedMovies);
   const upcomingMovies = useSelector((store)=>store.movie.upcomingMovies);
-  const trendingPeople = useSelector((store)=>store.people.trendingPeople);
+  const popularPeople = useSelector((store)=>store.people.popularPeople);
   const showGptSearch = useSelector((state) => state.gpt?.showGptSearch);
   
-  console.log(trendingPeople);
+  
   
   return (
     <Container fluid={true} className="bg-dark display-1 text-dark position-absolute top-100 z-2">
@@ -33,7 +33,7 @@ const VideoContainer = () => {
         </Col> 
 
         <Col xs={12} className="mb-3">
-          <List title={"Trending People"}  peopleList={trendingPeople} />
+          <List title={"Popular People"}  peopleList={popularPeople} />
         </Col>
       </Row>
     </Container>

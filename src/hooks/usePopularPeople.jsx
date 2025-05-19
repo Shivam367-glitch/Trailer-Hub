@@ -2,18 +2,18 @@
 import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTrendingPeople } from "../utils/peopleSlice"; 
+import { addPopularPeople } from "../utils/peopleSlice"; 
 import {BASE_URL} from "../utils/Constants";  
-const useTrendingPeople = () => {
+const usePopularPeople = () => {
     const dispatch = useDispatch();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const trendingPeople=useSelector((store)=>store.people.trendingPeople);
+    const popularPeople=useSelector((store)=>store.people.popularPeople);
     const getPeopleList = async () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `${BASE_URL}trending/person/week`,
+        `${BASE_URL}/person/popular`,
         { ...API_OPTIONS }
       );
 
@@ -25,7 +25,7 @@ const useTrendingPeople = () => {
       if (json) {
         console.log(json);
         
-        dispatch(addTrendingPeople(json.results));
+        dispatch(addPopularPeople(json.results));
       }
     } catch (error) {
       console.error("Error fetching People List:", error);
@@ -36,7 +36,7 @@ const useTrendingPeople = () => {
     };
 
   useEffect(() => {
-    if (!trendingPeople || trendingPeople.length === 0) { 
+    if (!popularPeople || popularPeople.length === 0) { 
       getPeopleList();
     }
   }, []);
@@ -44,4 +44,4 @@ const useTrendingPeople = () => {
   return [ error, loading ];
 };
 
-export default useTrendingPeople;
+export default usePopularPeople;

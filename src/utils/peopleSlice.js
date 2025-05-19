@@ -27,7 +27,7 @@ const peopleSlice = createSlice({
         error: null,
         viewedPeople:null,
         viewedPeopleMovies:[],
-        trendingPeople:[]
+        popularPeople:[]
     },
     reducers: {
         addViewedPeople:(state,action)=>{
@@ -38,13 +38,13 @@ const peopleSlice = createSlice({
             console.log("removeViewedPeople")
             state.viewedPeople=null;
         }, 
-        addTrendingPeople:(state,action)=>{
-            console.log("addTrendingPeople")
-            state.trendingPeople=action.payload
+        addPopularPeople:(state,action)=>{
+            console.log("addPopularPeople")
+            state.popularPeople=action.payload
         },
-        removeTrendingPeople:(state)=>{
-            console.log("removeTrendingPeople")
-            state.trendingPeople=[];
+        removePopularPeople:(state)=>{
+            console.log("removePopularPeople")
+            state.popularPeople=[];
         },
         addViewedPeopleMovies:(state,action)=>{ 
             state.viewedPeopleMovies=action.payload;
@@ -71,5 +71,5 @@ const peopleSlice = createSlice({
     }
 });
 
-export const {addViewedPeople,removeViewedPeople,addViewedPeopleMovies,addTrendingPeople,removeTrendingPeople,removeViewedPeopleMovies}=peopleSlice.actions
+export const {addViewedPeople,removeViewedPeople,addViewedPeopleMovies,addPopularPeople,removePopularPeople,removeViewedPeopleMovies}=peopleSlice.actions
 export default peopleSlice.reducer;
