@@ -9,11 +9,12 @@ export default defineConfig({
       registerType: 'autoUpdate', 
       manifest: {
         name: 'Trailer Hub',
-        short_name: 'TH',
+        short_name: 'THub',
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        background_color: '#ffffff',
+        background_color: '#ff0033',
+       "orientation":'portrait',
         theme_color: '#333333',
         icons: [
           {
