@@ -13,26 +13,28 @@ const usePeopleDetail = (peopleId) => {
     if (!peopleId) return; 
     try {
       setLoading(true);
-      const response = await fetch(
+
+      const[person,personMovies,personIds]=await Promise.all([ fetch(
         `${BASE_URL}person/${peopleId}`,
         { ...API_OPTIONS }
-      );
+      ),
+      fetch(`${BASE_URL}person/${peopleId}/movie_credits`,{...API_OPTIONS}),
+      fetch(`${BASE_URL}person/${peopleId}/external_ids`,{...API_OPTIONS})
+    ]);
 
-      if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-      }
 
-      const json = await response.json();
-      if (json) {
-        dispatch(addViewedPeople(json));
-        const moviesResponse = await fetch(`${BASE_URL}person/${peopleId}/movie_credits`,{...API_OPTIONS});
-        if (!moviesResponse.ok) {
-          throw new Error(`Error ${moviesResponse.status}: ${moviesResponse.statusText}`);
-        }
-  
-        const moviesList = await moviesResponse.json(); 
-        dispatch(addViewedPeopleMovies(moviesList.cast));
-      }
+    const personJson = await person.json();
+    const personMoviesJson = await personMovies.json();
+
+    const personIdsJson = await personIds.json();
+
+    dispatch(addViewedPeople({
+      ...personJson,...personIdsJson
+    }));
+    dispatch(addViewedPeopleMovies(personMoviesJson.cast));
+
+    
+      
     } catch (error) {
       console.error("Error fetching movie:", error);
       setError(error?.message || "Something Went Wrong!");

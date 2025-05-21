@@ -13,9 +13,7 @@ const useMovieTrailer = (id) => {
       const json = await response.json();
 
       const video = json.results.find((video) => video.type === "Trailer"); 
-      console.log(json.results);
-    console.log(video);
-    
+       
       
       if (video) {
         dispatch(addNowPlayingVideo({ id: json.id, videoId: video?.key }));

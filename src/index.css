@@ -172,3 +172,11 @@ color: #a9aeb3;
     transition: all 0.3s ease-in-out; 
     color: silver !important;
 }
+
+
+.icon-hover {
+  transition: transform 0.3s ease;
+}
+.icon-hover:hover {
+  transform: scale(1.1);
+}
