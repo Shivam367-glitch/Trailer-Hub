@@ -18,7 +18,7 @@ const VideoTrailer = (props) => {
       <Modal.Header closeButton className="bg-dark text-white">
         <Modal.Title>Play Trailer</Modal.Title>
       </Modal.Header>
-      <Modal.Body className="bg-dark m-0 p-0">
+      <Modal.Body className="bg-dark m-0">
         {videoId ? (
           <ReactPlayer
             url={`${YOUTUBE_BASE_LINK}${videoId}`}

@@ -20,7 +20,7 @@ function OffcanvasExample() {
     <>
       <Navbar expand={false} className="bg-transparent z-3 d-flex flex-row" >
         <Container fluid={true}>
-        <Navbar.Brand  as={NavLink} to="/" className="w-18"> 
+        <Navbar.Brand  as={NavLink} to={user?"/browser":"/"} className="w-18"> 
           <img src="logo.png" alt="Trailer Hub Logo" className='img-fluid'/>
          </Navbar.Brand> 
          {
