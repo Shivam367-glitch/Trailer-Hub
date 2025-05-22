@@ -1,6 +1,7 @@
 import Modal from 'react-bootstrap/Modal';
 import useMovieTrailer from '../hooks/useMovieTrailer';
 import { useSelector } from 'react-redux';
+import ReactPlayer from 'react-player/lazy';
 
 const VideoTrailer = (props) => { 
     useMovieTrailer(props?.id); 
@@ -13,20 +14,15 @@ const VideoTrailer = (props) => {
     size="lg"
     aria-labelledby="contained-modal-title-vcenter"
     fullscreen={true}
-    className='m-0 p-0 bg-dark'
+    className='bg-dark'
   >
     <Modal.Header closeButton className='bg-dark text-white'>
         <Modal.Title>Play Trailer</Modal.Title>
     </Modal.Header>
-    <Modal.Body className='bg-dark'>
+    <Modal.Body className='bg-dark m-0 p-0'>
    {
-    videoId? <iframe 
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&mute=1&controls=1`}
-        className='w-100 h-100'
-       title={"video player"} 
-      allow={"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" }
-      allowfullscreen
-  ></iframe>:<p className='text-white fs-5'>Trailer Not Available !</p>
+    videoId?<ReactPlayer url={`https://www.youtube.com/watch?v=${videoId}` } controls={true} playing={true}  muted={true}   width='100%'
+              height='100%' />:<p className='text-white fs-5'>Trailer Not Available !</p>
    }
     </Modal.Body>
   </Modal>
@@ -34,3 +30,11 @@ const VideoTrailer = (props) => {
 }
 
 export default VideoTrailer
+
+//  <iframe 
+//         src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&mute=1&controls=1`}
+//         className='w-100 h-100'
+//        title={"video player"} 
+//       allow={"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" }
+//       allowfullscreen
+//   ></iframe>
