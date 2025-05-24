@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap"
 import Card from "./Card";
+import { IMG_CDN_URL } from "../utils/Constants"
 
 
 const List = ({ title, movieList,peopleList }) => { 
@@ -12,12 +13,12 @@ const List = ({ title, movieList,peopleList }) => {
         </Col> 
          {
             movieList&& <Col xs={12} className="container_scroll d-flex flex-row gap-4"> 
-            {movieList?.map((movie, ind) => (<Card key={ind} id={movie?.id} img={movie?.poster_path} directTo={`/movie/${movie.id}`} />))}
+            {movieList?.map((movie, ind) => (<Card key={ind} id={movie?.id} img={movie?.poster_path?IMG_CDN_URL+movie.poster_path:""} directTo={`/movie/${movie.id}`} />))}
           </Col>
          }
        { 
           peopleList && <Col xs={12} className="container_scroll d-flex flex-row gap-4"> 
-            {peopleList?.map((person, ind) => (<Card key={ind} id={person?.id} img={person?.profile_path} directTo={`/people/${person.id}`} />))}
+            {peopleList?.map((person, ind) => (<Card key={ind} id={person?.id} img={person?.profile_path?IMG_CDN_URL+person.profile_path:"/person.png"} directTo={`/people/${person.id}`} />))}
           </Col>
       }
       </Row>

@@ -24,7 +24,7 @@ const PeopleDetail = () => {
 //   }, []);
     const [error, loading] = usePeopleDetail(peopleId);
     if (!viewedPeople ) return null;
-    const {name,profile_path,biography,homepage,birthday,place_of_birth,facebook_id,instagram_id,twitter_id,youtube_id}=viewedPeople 
+    const {name,profile_path,biography,homepage,birthday,place_of_birth,known_for_department,facebook_id,instagram_id,twitter_id,youtube_id}=viewedPeople 
 
   return (
     <> 
@@ -36,7 +36,7 @@ const PeopleDetail = () => {
             <>
               <Col xs={12} md={3} lg={3} className="d-flex flex-row  justify-content-center ">
                 <img  
-                  src={IMG_CDN_URL + profile_path}
+                  src={profile_path?IMG_CDN_URL + profile_path:"/person.png"}
                   alt={name} 
                   className="img-fluid rounded border"
                 />
@@ -47,8 +47,9 @@ const PeopleDetail = () => {
               ) : (<span>{name}</span>)} 
                 <SocialIcons facebook_id={facebook_id} youtube_id={youtube_id} instagram_id={instagram_id} twitter_id={twitter_id} />
               </p> 
-              <p className="d-flex flex-row justify-content-between"><span>Born On: {new Date(birthday?birthday:null).toLocaleDateString("en-US").replace(/\//g, '-')}</span><span> Born At : {place_of_birth?place_of_birth:"NA"}</span> </p>
-              <p className="text-white">
+              <p className="d-flex flex-row justify-content-between"><span>Born On : {new Date(birthday?birthday:null).toLocaleDateString("en-US").replace(/\//g, '-')}</span><span> Born At : {place_of_birth?place_of_birth:"NA"}</span> </p>
+              <p>Department : {known_for_department}</p>
+              <p className="text-white text-justify">
               {biography?biography:"No Bio is Available!"}
               </p>
               </Col>
