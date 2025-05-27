@@ -7,6 +7,7 @@ import { auth } from "../utils/firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { fetchCountry } from "../utils/countrySlice.js";
 import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice.js";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -51,6 +52,7 @@ const Login = () => {
     if (isSignInForm) {
       try {
         await signInWithEmailAndPassword(auth, emailValue, passwordValue);
+        
       } catch (error) {
         switch (error.code) {
           case 'auth/wrong-password':

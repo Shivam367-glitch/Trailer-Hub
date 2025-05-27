@@ -41,8 +41,10 @@ function OffcanvasExample() {
                 <Nav className="justify-content-end flex-grow-1 pe-3 fs-5 fw-bolder">
                 <Nav.Link as={NavLink} to={'/browser'} >Welcome</Nav.Link>
                 <Nav.Link as={NavLink} to={'/people'}>People</Nav.Link>
-                <Nav.Link >People</Nav.Link>
-                  <NavDropdown
+                 <Nav.Link as={NavLink} to={'/watch-history'}>History</Nav.Link>
+                <Nav.Link as={NavLink} to={'/logout'}>Log Out</Nav.Link>
+              
+                  {/* <NavDropdown
                     title="Dropdown"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
@@ -54,7 +56,7 @@ function OffcanvasExample() {
                     <NavDropdown.Item href="#action5">
                       Something else here
                     </NavDropdown.Item>
-                  </NavDropdown>
+                  </NavDropdown> */}
                 </Nav>
                  
               </Offcanvas.Body>

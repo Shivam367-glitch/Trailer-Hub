@@ -17,13 +17,8 @@ const Body = () => {
         // When user Sign In and Sign Up
         const { uid, displayName, email,photoURL } = user;
         dispatch(addUser({ uid, displayName, email,photoURL })); 
-       
         navigate('/browser')
-      } else {
-        // when user is Sign Out
-        dispatch(removeUser());
-        navigate('/')
-      }
+      } 
     }); 
     return ()=>{
       unsubscribe();
