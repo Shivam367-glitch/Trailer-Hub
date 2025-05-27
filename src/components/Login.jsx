@@ -1,4 +1,4 @@
-import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, FloatingLabel, Form, Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { validateForm } from "../utils/validateForm";
 import { useEffect, useRef, useState } from "react";
@@ -7,7 +7,7 @@ import { auth } from "../utils/firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { fetchCountry } from "../utils/countrySlice.js";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice.js";
+ 
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -150,7 +150,7 @@ const Login = () => {
               className="w-100 fw-medium text-white mb-3 rounded-3"
               disabled={loading}
             >
-              {loading ? "Please wait..." : isSignInForm ? "Sign In" : "Sign Up"}
+              {loading ? <Spinner animation="border" size="sm" /> : isSignInForm ? "Sign In" : "Sign Up"}
             </Button>
 
             <span className="text-secondary fw-medium fs-5 text-center d-block mb-3">OR</span>

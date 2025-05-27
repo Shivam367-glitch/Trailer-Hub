@@ -10,7 +10,7 @@ const VideoBackground = ({ id }) => {
 
   return (
     <ReactPlayer
-      // url={`${YOUTUBE_BASE_LINK}${videoId}`}
+      url={`${YOUTUBE_BASE_LINK}${videoId}`}
       playing={true} 
       loop={true}
       muted={true}

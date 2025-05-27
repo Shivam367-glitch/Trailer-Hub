@@ -92,7 +92,7 @@ const GptSearchBar = () => {
             {loading ? <Spinner animation="border" size="sm" /> : "Search"}
             </Button>
           </Col>
-          {error &&  <Col className="text-danger mt-3 fs-5 text-white">{error}</Col>}
+          {error &&  <Col className="text-danger mt-3 fs-5">{error}</Col>}
           </Row>
 
         </Container>

@@ -41,7 +41,10 @@ function OffcanvasExample() {
                 <Nav className="justify-content-end flex-grow-1 pe-3 fs-5 fw-bolder">
                 <Nav.Link as={NavLink} to={'/browser'} >Welcome</Nav.Link>
                 <Nav.Link as={NavLink} to={'/people'}>People</Nav.Link>
-                 <Nav.Link as={NavLink} to={'/watch-history'}>History</Nav.Link>
+                 <Nav.Link as={NavLink} to={'/watch-history'}>History</Nav.Link> 
+                 <Nav.Link  onClick={()=>{
+                  dispatch(toggleGpt(true));
+                 }}>AI Recomdation</Nav.Link>
                 <Nav.Link as={NavLink} to={'/logout'}>Log Out</Nav.Link>
               
                   {/* <NavDropdown
