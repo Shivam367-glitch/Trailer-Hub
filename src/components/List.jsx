@@ -1,15 +1,17 @@
 import { Col, Container, Row } from "react-bootstrap"
 import Card from "./Card";
 import { IMG_CDN_URL } from "../utils/Constants"
+import { Link, useLocation } from "react-router-dom";
 
 
 const List = ({ title, movieList,peopleList }) => { 
 
+    const location = useLocation();
   return (
     <Container fluid={true}> 
       <Row className="gap-4">
         <Col xs={12}> 
-          <h2 className="text-white fs-4">{title}</h2> 
+          <h2 className="text-white fs-4">{title.replace("_"," ").toUpperCase()} {!location.pathname.includes("/discover")&&<Link to={`/discover/${title}`}>View More</Link>}</h2> 
         </Col> 
          {
             movieList&& <Col xs={12} className="container_scroll d-flex flex-row gap-4"> 

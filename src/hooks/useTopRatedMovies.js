@@ -6,23 +6,21 @@ import { BASE_URL } from "../utils/Constants";
 
 const useTopRatedMovies = () => { 
     const dispatch=useDispatch(); 
-    const topRatedMovies=useSelector((store)=>store?.topRatedMovies); 
-    const country=useSelector((store)=>store?.country?.country);
-   console.log(topRatedMovies);
 
+
+    const country=useSelector((store)=>store?.country?.country);
+ const page = useSelector((store) => store.movie.topRatedMovies?.page || 1);
+     
  
   useEffect(() => {
     const getTopRatedMovies=async()=>{
-      const data=await fetch(`${BASE_URL}movie/top_rated?page=1&region=${country}`, API_OPTIONS);
+      const data=await fetch(`${BASE_URL}movie/top_rated?page=${page}&region=${country}`, API_OPTIONS);
       const json=await data.json(); 
-      dispatch(addTopRatedMovies(json?.results));   
+      dispatch(addTopRatedMovies(json));   
      } 
-    if (!topRatedMovies || topRatedMovies.length === 0) {
-      console.log("topRatedMovies");
       
         getTopRatedMovies();
-    }
-}, []);
+}, [page,country, dispatch]);
 }
 
 export default useTopRatedMovies

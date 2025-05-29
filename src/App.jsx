@@ -9,6 +9,7 @@ import Body from "./components/Body";
 import Browser from "./components/Browser"; 
 import WatchHistoryPage from "./components/WatchHistoryPage";
 import CategoryMovie from "./components/CategoryMovie";
+import DiscoverPage from "./components/DiscoverPage";
 
  
 function App() {
@@ -21,6 +22,10 @@ function App() {
       {
         path: '',
         element: <Login/>
+      },
+      {
+       path:'/discover/:category',
+       element:<DiscoverPage/>
       },
       {
         path:'/watch-history',

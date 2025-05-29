@@ -6,16 +6,17 @@ import { BASE_URL } from "../utils/Constants";
 
 const useUpcomingMovies = () => { 
     const dispatch=useDispatch(); 
-    const upcomingMovies=useSelector((store)=>store?.upcomingMovies); 
    const country=useSelector((store)=>store?.country?.country);
-   const getUpcomingMovies=async()=>{
-   const data=await fetch(`${BASE_URL}movie/upcoming?page=1&region=${country}`, API_OPTIONS);
-   const json=await data.json(); 
-   dispatch(addUpcomingMovies(json?.results));
-  } 
-  useEffect(()=>{
-      !upcomingMovies && getUpcomingMovies();
-  },[])
+      const page = useSelector((store) => store.movie.nowPlayingMovies?.page || 1);
+
+      useEffect(()=>{
+     const getUpcomingMovies=async()=>{
+     const data=await fetch(`${BASE_URL}movie/upcoming?page=${page}&region=${country}`, API_OPTIONS);
+     const json=await data.json(); 
+     dispatch(addUpcomingMovies(json));
+    } 
+     getUpcomingMovies();
+  },[country,page,dispatch])
   
 }
 

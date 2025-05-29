@@ -6,16 +6,17 @@ import { BASE_URL } from "../utils/Constants";
 
 const usePopularMovies = () => { 
     const dispatch=useDispatch(); 
-    const popularMovies=useSelector((store)=>store?.popularMovies); 
+    const page = useSelector((store) => store.movie.popularMovies?.page || 1);
+    
     const country=useSelector((store)=>store?.country?.country);
+    useEffect(()=>{
     const getPopularMovies=async()=>{
-    const data=await fetch(`${BASE_URL}movie/popular?page=1&region=${country}`, API_OPTIONS);
+    const data=await fetch(`${BASE_URL}movie/popular?page=${page}&region=${country}`, API_OPTIONS);
     const json=await data.json(); 
-    dispatch(addPopularMovies(json?.results));
+    dispatch(addPopularMovies(json));
   } 
-  useEffect(()=>{
-     !popularMovies && getPopularMovies()
-  },[])
+      getPopularMovies()
+  },[page,country,dispatch])
   
 }
 
