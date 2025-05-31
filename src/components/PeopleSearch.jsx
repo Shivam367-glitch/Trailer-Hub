@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPeople } from "../utils/peopleSlice";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import List from "./List";
+import GridList from "./GridList";
 
 const PeopleSearch = () => {
   const dispatch = useDispatch();
@@ -52,8 +53,11 @@ const PeopleSearch = () => {
         </Row>
 
         {status === "succeeded" && peopleList.length > 0 && (
-          <Row>
-            <List title={"People"} peopleList={peopleList} showGptSearch={false} />
+          <Row className="g-0">
+            <Col xs={12} className="m-0 p-0 ">
+            <GridList title={"People"} people={peopleList} />
+            
+            </Col>
           </Row>
         )}
       </Container>

@@ -2,9 +2,11 @@ import { Col, Container, Row } from "react-bootstrap"
 import List from "./List"
 import { useSelector } from "react-redux"
 import React from "react";
+import GridList from "./GridList";
+
 
 const GptSearchComponent = () => { 
-  const  showshowGptSearch=useSelector((store)=>store?.gpt?.showGptSearch); 
+  // const  showshowGptSearch=useSelector((store)=>store?.gpt?.showGptSearch); 
   const recommendedMovies=useSelector((store)=>store?.gpt?.recommendedMovies);
   if(recommendedMovies==null || recommendedMovies.length==0)return
 
@@ -16,10 +18,10 @@ const GptSearchComponent = () => {
   });
 
   return (
-     <Container fluid={true} className=" display-1 text-dark position-absolute  z-2">
-        <Row className="gap-4 d-flex flex-column">
-          <Col  className="mt-5"> 
-            <List title={"Recommended Movies"} movieList={movieList} showGptSearch={showshowGptSearch}/>
+     <Container fluid={true}>
+        <Row>
+          <Col >  
+            <GridList title={"Recommended Movies"} items={movieList}/>
           </Col>
         </Row>
      </Container>
