@@ -21,7 +21,13 @@ const appStore=configureStore(
             category:categoryReducer, 
             country:countryReducer,
             discover:discoverReducer
-        }
+        },
+        devTools:import.meta.env.MODE !== 'production',
+         middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+            serializableCheck: import.meta.env.MODE !== 'production',
+            immutableCheck: import.meta.env.MODE !== 'production',
+            }),
     }
 )
 
