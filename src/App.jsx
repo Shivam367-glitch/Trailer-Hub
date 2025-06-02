@@ -24,7 +24,7 @@ function App() {
         element: <Login/>
       },
       {
-       path:'/discover/:category',
+       path:'/discover/:endpoint',
        element:<DiscoverPage/>
       },
       {

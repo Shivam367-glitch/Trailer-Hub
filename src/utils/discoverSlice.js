@@ -4,10 +4,13 @@ import { API_OPTIONS, BASE_URL } from "./Constants";
 
 export const fetchDiscover = createAsyncThunk(
     'discover/fetchDiscover',
-    async ({country,page,category})    => {
-        console.log(country,page,category);
+    async ({country,page,endpoint,people})    => {
+        console.log(country,page,endpoint);
         
-        const response = await fetch(`${BASE_URL}movie/${category}?page=${page}&region=${country}`, API_OPTIONS);
+        const response = await fetch(
+        `${BASE_URL}${people ? "person/popular" : "movie/" + endpoint}?page=${page}&region=${country}`,
+            API_OPTIONS
+        );
 
 
        if (!response.ok) {
@@ -23,7 +26,7 @@ export const fetchDiscover = createAsyncThunk(
 const discoverSlice = createSlice({
     name: 'discover',
     initialState: {
-        movies: [],
+        items: [],
         total_pages: 0,
         status: 'idle',
         error: null,
@@ -35,7 +38,7 @@ const discoverSlice = createSlice({
             })
             .addCase(fetchDiscover.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.movies = action.payload.results;
+                state.items = action.payload.results;
 
                  state.total_pages = action.payload.total_pages;
             })

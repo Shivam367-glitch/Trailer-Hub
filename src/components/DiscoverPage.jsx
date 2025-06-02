@@ -8,15 +8,17 @@ import { Col, Container, Row } from "react-bootstrap";
 import { AiOutlineCaretLeft,AiOutlineCaretRight } from "react-icons/ai";
 
 const DiscoverPage = () => {
-  const { category } = useParams();
+  const { endpoint } = useParams();
+  const people=endpoint==="Popular People"
+  
   const [page, setPage] = useState(1);
    const country=useSelector((store)=>store?.country?.country);
    const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchDiscover({country, page, category}));
-  }, [country, page, category, dispatch]);
+    dispatch(fetchDiscover({country, page, endpoint,people}));
+  }, [country, page, endpoint, dispatch]);
 
-  const { movies, total_pages, status, error } = useSelector((store) => store.discover);
+  const { items, total_pages, status, error } = useSelector((store) => store.discover);
   if (status === "loading") {
      <div>Loading...</div>;
   }
@@ -28,7 +30,7 @@ const DiscoverPage = () => {
   return (
     // <div>
     //   <div className="movie-grid grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 ">
-    //     <GridList title={category} items={movies} />
+    //     <GridList title={endpoint} items={items} />
     //   </div>
 
     //   <div className="pagination flex justify-center items-center gap-4 mt-6">
@@ -45,7 +47,7 @@ const DiscoverPage = () => {
     <Container fluid={true} className="text-white  g-0">
       <Row className="m-0 p-0 g-0 gap-3">
         <Col xs={12} className="m-0 p-0">
-          <GridList title={category} items={movies} />
+          <GridList title={endpoint} items={items} people={people} />
         </Col> 
         <Col xs={12} className="m-0 p-0 text-center d-flex flex-row gap-3 justify-content-center align-items-center"> 
                <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1} className="border-0  rounded-circle p-2">
