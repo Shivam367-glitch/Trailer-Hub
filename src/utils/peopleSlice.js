@@ -10,8 +10,9 @@ export const fetchPeople = createAsyncThunk(
             throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
 
-        const data = await response.json();
-        return data.results;
+        const data = await response.json(); 
+         const filteredPerson = data.results.filter(actor => actor.profile_path !== null);
+        return filteredPerson;
     }
 );
 

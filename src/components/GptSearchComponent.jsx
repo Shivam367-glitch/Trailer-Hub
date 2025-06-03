@@ -21,7 +21,7 @@ const GptSearchComponent = () => {
      <Container fluid={true}>
         <Row>
           <Col >  
-            <GridList title={"Recommended Movies"} items={movieList}/>
+            <GridList title={"Recommended Movies"} items={movieList} people={false}/>
           </Col>
         </Row>
      </Container>

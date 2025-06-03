@@ -45,7 +45,7 @@ const PeopleSearch = () => {
             </Button>
           </Col>
           {status === "failed" && (
-            <Col className="text-danger mt-3 fs-5 text-white">{error}</Col>
+            <Col className="text-danger mt-3 fs-5 text-white" xs={12}>{error}</Col>
           )}
           {status === "succeeded" && peopleList.length === 0 && (
             <h2 className="text-white">No results found</h2>
@@ -55,8 +55,7 @@ const PeopleSearch = () => {
         {status === "succeeded" && peopleList.length > 0 && (
           <Row className="g-0">
             <Col xs={12} className="m-0 p-0 ">
-            <GridList title={"People"} people={peopleList} />
-            
+            <GridList title={"People"} items={peopleList}  people={true} />
             </Col>
           </Row>
         )}

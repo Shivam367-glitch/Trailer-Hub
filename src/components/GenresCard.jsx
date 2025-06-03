@@ -7,7 +7,7 @@ const GenresCard = ({src,alt,id}) => {
       <img
         src={src}
         alt={alt}
-        className=""
+        className="m-md-3"
         style={{height:'220px' }}
       />
       </Link>
