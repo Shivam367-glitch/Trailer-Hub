@@ -4,11 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const categorySlice=createSlice({
     name:'category',
     initialState:{
-        movies:null
+        movies:null,
+        id:null
     },
     reducers:{
          addMovies:(state,action)=>{
-              state.movies= action.payload;
+              state.movies= action.payload.movies;
+            state.id= action.payload.id;
             }
     }
 });

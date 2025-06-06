@@ -68,7 +68,7 @@ const MovieDetail = () => {
                 <p>
                   <span className="me-1 ">Movie Type<span className="ms-1">:</span></span>
                   {
-                    genres.map((genre, index) => (
+                    genres?.map((genre, index) => (
                       <Badge  pill bg="secondary" as={Link}   to={`/movies/${genre.id}`} key={index} className="me-1  text-decoration-none hover-effect">
                         {genre.name}
                         

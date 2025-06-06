@@ -10,8 +10,8 @@ const useGenreMovies = () => {
 
   const[loading,setLoading]=useState(false); 
     const country=useSelector((store)=>store?.country?.country);
-  
-  const[error,setError]=useState(null);
+    const[error,setError]=useState(null);
+
     let {type}=useParams(); 
     const dispatch=useDispatch(); 
     const getMovie=async()=>{
@@ -19,7 +19,7 @@ const useGenreMovies = () => {
         setLoading(true); 
        const data=await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&with_genres=${type}&region=${country}`, API_OPTIONS);
        const json=await data.json();  
-       dispatch(addMovies(json?.results));
+       dispatch(addMovies({movies:json?.results, id:type}));
       } catch (error) {
         setError(error.message);
       }

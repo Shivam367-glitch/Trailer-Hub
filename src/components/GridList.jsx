@@ -9,7 +9,7 @@ const GridList = ({title,items,people}) => {
 
         <Row className="gap-4 mt-5">
           <Col xs={12}> 
-            <h2 className="text-white fs-4">{title.replace("_"," ").toUpperCase()}</h2>
+            <h2 className="text-white fs-4">{title?.replace("_"," ").toUpperCase()}</h2>
           </Col>
            {
             !people &&<Col xs={12} className="  d-flex flex-row gap-2 gap-md-auto flex-wrap justify-content-around justify-content-md-center justify-content-lg-start" > 
