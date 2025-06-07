@@ -4,6 +4,7 @@ import { fetchPeople } from "../utils/peopleSlice";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import List from "./List";
 import GridList from "./GridList";
+import Error from "./Error";
 
 const PeopleSearch = () => {
   const dispatch = useDispatch();
@@ -44,9 +45,7 @@ const PeopleSearch = () => {
               )}
             </Button>
           </Col>
-          {status === "failed" && (
-            <Col className="text-danger mt-3 fs-5 text-white" xs={12}>{error}</Col>
-          )}
+          {status === "failed" &&  <Error error={error}/>}
           {status === "succeeded" && peopleList.length === 0 && (
             <h2 className="text-white">No results found</h2>
           )}

@@ -18,24 +18,6 @@ const Genres = () => {
                 )
               })
             }
-              {/* <GenresCard src={"Action.png"}/> 
-              <GenresCard src={"Documentary.png"}/> 
-              <GenresCard src={"Comedy.png"}/> 
-              <GenresCard src={"Adventure.png"}/> 
-              <GenresCard src={"Animation.png"}/> 
-              <GenresCard src={"Drama.png"}/> 
-              <GenresCard src={"Crime.png"}/> 
-              <GenresCard src={"Family.png"}/>
-              <GenresCard src={"Fantasy.png"}/> 
-              <GenresCard src={"Horror.png"}/> 
-              <GenresCard src={"History.png"}/> 
-              <GenresCard src={"Mystery.png"}/> 
-              <GenresCard  src={"Music.png"}/> 
-              <GenresCard src={"Romance.png"}/> 
-              <GenresCard src={"Science.png"}/>
-              <GenresCard src={"TV.png"}/>
-              <GenresCard src={"Thriller.png"}/>
-              <GenresCard src={"War.png"}/> */}
             </Col>
             </Row>
      </Container>

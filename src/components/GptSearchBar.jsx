@@ -5,6 +5,7 @@ import { API_OPTIONS } from "../utils/Constants";
 import { useDispatch } from "react-redux";
 import { addRecommendedMovies } from "../utils/gptSlice";
 import { BASE_URL } from "../utils/Constants";
+import Error from "./Error";
 
 const GptSearchBar = () => {
   const inputRef = useRef(null);
@@ -92,7 +93,7 @@ const GptSearchBar = () => {
             {loading ? <Spinner animation="border" size="sm" /> : "Search"}
             </Button>
           </Col>
-          {error &&  <Col className="text-danger mt-3 fs-5">{error}</Col>}
+          {error &&  <Error error={error} />}
           </Row>
 
         </Container>
