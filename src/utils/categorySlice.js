@@ -5,12 +5,14 @@ const categorySlice=createSlice({
     name:'category',
     initialState:{
         movies:null,
-        id:null
+        id:null,
+        total_pages:0
     },
     reducers:{
          addMovies:(state,action)=>{
               state.movies= action.payload.movies;
-            state.id= action.payload.id;
+              state.id= action.payload.id;
+              state.total_pages= action.payload.total_pages || 0;
             }
     }
 });

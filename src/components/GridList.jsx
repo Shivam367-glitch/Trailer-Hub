@@ -7,7 +7,7 @@ const GridList = ({title,items,people}) => {
    
     <Container fluid>
 
-        <Row className="gap-4 mt-5">
+        <Row className="gap-4">
           <Col xs={12}> 
             <h2 className="text-white fs-4">{title?.replace("_"," ").toUpperCase()}</h2>
           </Col>

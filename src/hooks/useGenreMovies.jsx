@@ -6,9 +6,9 @@ import { API_OPTIONS } from "../utils/Constants";
 import {BASE_URL} from "../utils/Constants";  
 import { addMovies } from "../utils/categorySlice";
 
-const useGenreMovies = () => { 
+const useGenreMovies = (page) => { 
 
-  const[loading,setLoading]=useState(false); 
+    const[loading,setLoading]=useState(false); 
     const country=useSelector((store)=>store?.country?.country);
     const[error,setError]=useState(null);
 
@@ -17,19 +17,19 @@ const useGenreMovies = () => {
     const getMovie=async()=>{
       try {
         setLoading(true); 
-       const data=await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&with_genres=${type}&region=${country}`, API_OPTIONS);
+       const data=await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&with_genres=${type}&region=${country}&page=${page}`, API_OPTIONS);
        const json=await data.json();  
-       dispatch(addMovies({movies:json?.results, id:type}));
+       dispatch(addMovies({movies:json?.results, id:type, total_pages:json?.total_pages}));
       } catch (error) {
         setError(error.message);
       }
       finally{
-        setLoading(loading);  
+        setLoading(false);  
       }
       } 
     useEffect(()=>{
         getMovie();
-    },[]);
+    },[page]);
 
     return [loading,error]
 }
