@@ -1,22 +1,33 @@
-
-// import './Profile.css';
-import { Link } from "react-router-dom"; 
-import {auth} from "../utils/firebase";
+import { Link } from "react-router-dom";
+import { auth } from "../utils/firebase";
+import { Button, Col, Container, Row } from "react-bootstrap";
 const Profile = () => {
-    return (
-        <div className="profile-menu ">
-            <div className="profile-header text-center">
-                <img src={`${auth?.currentUser?.photoURL}`} alt="Profile" className="profile-pic w-50" />
-                <h2 className="profile-name text-white">{auth?.currentUser?.displayName}</h2>
-            </div>
-            <ul className="profile-options">
-                <li><Link to="/my-list">My List</Link></li>
-                <li><Link to="/watch-history">Watch History</Link></li>
-                <li><Link to="/settings">Settings</Link></li>
-                <li><Link to="/logout">Logout</Link></li>
-            </ul>
-        </div>
-    );
+  return (
+    <Container fluid>
+      <Row>
+        <Col xs={12}
+          className="text-center bg-dark bg-opacity-75 text-danger gap-3 d-flex flex-column justify-content-center align-items-center py-4"
+        >
+          <img
+            src={auth?.currentUser?.photoURL || "/person.png"}
+            alt={auth?.currentUser?.displayName || "User"}
+            className="img-fluid rounded-circle"
+          />
+          <p className="mb-0">
+            <strong>Name</strong>{" : "}
+            {auth?.currentUser?.displayName || "Anonymous"}
+          </p> 
+           <p className="mb-0">
+            <strong>Email</strong>{" : "}
+            {auth?.currentUser?.email}
+          </p>
+         <Button as={Link}  to="/password-reset"variant="danger">
+          Change Password
+        </Button>
+        </Col> 
+      </Row>
+    </Container>
+  );
 };
 
 export default Profile;

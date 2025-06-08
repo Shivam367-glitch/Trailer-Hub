@@ -10,6 +10,7 @@ import Browser from "./components/Browser";
 import WatchHistoryPage from "./components/WatchHistoryPage";
 import CategoryMovie from "./components/CategoryMovie";
 import DiscoverPage from "./components/DiscoverPage";
+import Profile from "./components/Profile";
 
  
 function App() {
@@ -27,10 +28,10 @@ function App() {
        path:'/discover/:endpoint',
        element:<DiscoverPage/>
       },
-      {
-        path:'/watch-history',
-        element:<WatchHistoryPage/>
-      },
+      // {
+      //   path:'/watch-history',
+      //   element:<WatchHistoryPage/>
+      // },
       {
         path: '/browser',
         element: <Browser />
@@ -58,6 +59,10 @@ function App() {
     },{
       path:'/movies/:type',
       element:<CategoryMovie/>
+    },
+    {
+      path:"/profile",
+      element:<Profile/>
     }
     ]
    }

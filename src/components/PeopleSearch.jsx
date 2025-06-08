@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPeople } from "../utils/peopleSlice";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
-import List from "./List";
 import GridList from "./GridList";
 import Error from "./Error";
 

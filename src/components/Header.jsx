@@ -20,8 +20,8 @@ function OffcanvasExample() {
     <>
       <Navbar expand={false} className="bg-transparent z-3 d-flex flex-row" >
         <Container fluid={true}>
-        <Navbar.Brand  as={NavLink} to={user?"/browser":"/"} className="w-18"> 
-          <img src="logo.png" alt="Trailer Hub Logo" className='img-fluid'/>
+        <Navbar.Brand  as={NavLink} to={user?"/browser":"/"} > 
+          <img src="logo.png" alt="Trailer Hub Logo" className='img-fluid w-18'/>
          </Navbar.Brand> 
          {
           user&& <Navbar.Toggle aria-controls="basic-navbar-nav"  />
@@ -41,25 +41,21 @@ function OffcanvasExample() {
                 <Nav className="justify-content-end flex-grow-1 pe-3 fs-5 fw-bolder">
                 <Nav.Link as={NavLink} to={'/browser'} >Welcome</Nav.Link>
                 <Nav.Link as={NavLink} to={'/people'}>People</Nav.Link>
-                 <Nav.Link as={NavLink} to={'/watch-history'}>History</Nav.Link> 
+                 {/* <Nav.Link as={NavLink} to={'/watch-history'}>History</Nav.Link>  */}
                  <Nav.Link  onClick={()=>{
                   dispatch(toggleGpt(true));
-                 }}>AI Recomdation</Nav.Link>
-                <Nav.Link as={NavLink} to={'/logout'}>Log Out</Nav.Link>
+                 }}>AI Recommendation</Nav.Link>
+                {/* <Nav.Link as={NavLink} to={'/logout'}>Log Out</Nav.Link> */}
               
-                  {/* <NavDropdown
-                    title="Dropdown"
+                  <NavDropdown
+                    title={user?.displayName?user.displayName:"User"}
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Another action
+                    <NavDropdown.Item>
+                      <Nav.Link as={NavLink} to={'/profile'}>Profile</Nav.Link>
                     </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action5">
-                      Something else here
-                    </NavDropdown.Item>
-                  </NavDropdown> */}
+                    <NavDropdown.Item> <Nav.Link as={NavLink} to={'/logout'}>Log Out</Nav.Link></NavDropdown.Item>
+                  </NavDropdown>
                 </Nav>
                  
               </Offcanvas.Body>

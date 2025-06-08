@@ -29,7 +29,7 @@ const VideoTrailer = (props) => {
             height="100%"
           />
         ) : (
-          <p className="text-white fs-5">Trailer Not Available !</p>
+          <p className="text-white fs-4 ms-3">Trailer Not Available !</p>
         )}
       </Modal.Body>
     </Modal>
@@ -37,11 +37,3 @@ const VideoTrailer = (props) => {
 };
 
 export default VideoTrailer;
-
-//  <iframe
-//         src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&mute=1&controls=1`}
-//         className='w-100 h-100'
-//        title={"video player"}
-//       allow={"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" }
-//       allowfullscreen
-//   ></iframe>

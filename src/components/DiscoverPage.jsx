@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { fetchDiscover } from "../utils/discoverSlice";
-
 import GridList from "./GridList";
 import { Col, Container, Row } from "react-bootstrap";
 import { AiOutlineCaretLeft,AiOutlineCaretRight } from "react-icons/ai";
@@ -25,7 +24,7 @@ const DiscoverPage = () => {
   return (
     <Container fluid={true} className="text-white  g-0 mx-2 overflow-hidden">
       <Row className="gap-3 mt-5"> 
-      <Title title={endpoint +" "+ "Movies"} />
+      <Title title={people ? endpoint : `${endpoint} Movies`} />
        {status === "loading" && <Loading/>
        }
        {status === "failed" && <Error error={error} />} 
