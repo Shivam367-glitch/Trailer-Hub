@@ -3,8 +3,8 @@ import Skeleton from 'react-loading-skeleton';
 
 const MovieCardSkeleton = () => {
   return (
-    <Col md={2} className="mb-4 rounded"  style={{height:"220px" ,width:"145px",backgroundColor:"silver"}}>
-      <Card style={{height:"220px" ,width:"145px",backgroundColor:"silver"}}>
+    <Col md={2} className="mb-4 rounded-4"  style={{height:"220px" ,width:"145px",backgroundColor:"silver"}} >
+      <Card style={{backgroundColor:"silver"}} className=' border-0'>
         <Skeleton height={220} baseColor={"silver"} />
         <Card.Body>
           <Skeleton height={20} width="80%" />

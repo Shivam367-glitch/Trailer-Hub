@@ -8,6 +8,7 @@ import {removeViewedPeopleMovies } from "../utils/peopleSlice";
 import List from "./List";
 
 import SocialIcons from "./SocialIcons";
+import ReadMoreText from "./ReadMoreText";
 const PeopleDetail = () => { 
     let { peopleId } = useParams();
     const dispatch=useDispatch();
@@ -34,11 +35,12 @@ const PeopleDetail = () => {
              {error && <Col className="bg-dark text-white">Failed to fetch People details. Please try again later.</Col>}
              {!loading && !error && (
             <>
-              <Col xs={12} md={3} lg={3} className="d-flex flex-row  justify-content-center ">
+              <Col xs={12} md={3} lg={3}  className="d-flex flex-row  justify-content-center align-items-center mb-2 border border-success">
                 <img  
                   src={profile_path?IMG_CDN_URL + profile_path:"/person.png"}
                   alt={name} 
                   className="img-fluid rounded border"
+                 
                 />
               </Col>
               <Col xs={12} md={8} lg={8} className=" d-flex flex-column justify-content-start gap-2 mb-2 border border-success">  
@@ -49,9 +51,11 @@ const PeopleDetail = () => {
               </p> 
               <p className="d-flex flex-row justify-content-between"><span>Born On : {new Date(birthday?birthday:null).toLocaleDateString("en-US").replace(/\//g, '-')}</span><span> Born At : {place_of_birth?place_of_birth:"NA"}</span> </p>
               <p>Department : {known_for_department}</p>
-              <p className="text-white text-justify">
+                {/* <p className="text-white text-justify">
               {biography?biography:"No Bio is Available!"}
-              </p>
+              </p>    */}
+
+              <ReadMoreText text={biography}/>
               </Col>
             </>
           )}

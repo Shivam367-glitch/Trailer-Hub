@@ -11,7 +11,7 @@ const Profile = () => {
           <img
             src={auth?.currentUser?.photoURL || "/person.png"}
             alt={auth?.currentUser?.displayName || "User"}
-            className="img-fluid rounded-circle"
+            className="img-fluid rounded"
           />
           <p className="mb-0">
             <strong>Name</strong>{" : "}
