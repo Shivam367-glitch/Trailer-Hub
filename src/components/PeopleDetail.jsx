@@ -35,7 +35,7 @@ const PeopleDetail = () => {
                   style={{ maxHeight: "500px"}}
                 />
               </Col>
-              <Col xs={12}  lg={8} className=" d-flex flex-column justify-content-start gap-2 mb-2   border-start">  
+              <Col xs={12}  lg={8} className="d-flex flex-column justify-content-start gap-2 mb-2   border-start">  
               <p className=" mt-3 fw-bolder fs-4 text-white  d-flex flex-wrap justify-content-center align-items-center gap-3">{homepage ? (
                 <Link to={homepage} target="_blank" className="cursor_pointer text-decoration-underline text-white hover-effect">{name}</Link>
               ) : (<span>{name}</span>)} 

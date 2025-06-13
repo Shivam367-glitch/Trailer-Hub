@@ -9,6 +9,7 @@ import useMovieDetail from "../hooks/useMovieDetail";
 import VideoTrailer from "./VideoTrailer";
 import { Link } from "react-router-dom"; 
 import { addToWatchHistory } from "../utils/watchHistorySlice"; 
+import { setCategoryPage } from "../utils/categorySlice";
 
 const MovieDetail = () => {
   let { movieId } = useParams();
@@ -47,14 +48,14 @@ const MovieDetail = () => {
           {error && <Col className="bg-dark text-white">Failed to fetch movie details. Please try again later.</Col>}
           {!loading && !error && (
             <>
-              <Col xs={12} md={3} lg={3} className="d-flex flex-row  justify-content-center align-items-center border-secondary border-end">
+              <Col xs={12}  lg={3} className="d-flex flex-row  justify-content-center  mb-2 ">
                 <img  
                   src={IMG_CDN_URL + poster_path}
                   alt={title} 
                   className="img-fluid rounded border"
                 />
               </Col>
-              <Col xs={12} md={8} lg={8} className=" d-flex flex-column justify-content-center gap-3 mb-2">
+              <Col xs={12}  lg={8} className="d-flex flex-column justify-content-start gap-2 mb-2   border-start">
                 <div>
                   <Link
                     to={homepage}
@@ -69,7 +70,7 @@ const MovieDetail = () => {
                   <span className="me-1 ">Movie Type<span className="ms-1">:</span></span>
                   {
                     genres?.map((genre, index) => (
-                      <Badge  pill bg="secondary" as={Link}   to={`/movies/${genre.id}`} key={index} className="me-1  text-decoration-none hover-effect">
+                      <Badge  pill bg="secondary" as={Link} onClick={()=>{dispatch(setCategoryPage(1))}}   to={`/movies/${genre.id}`} key={index} className="me-1  text-decoration-none hover-effect">
                         {genre.name}
                         
                       </Badge>
