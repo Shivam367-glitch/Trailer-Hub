@@ -27,9 +27,22 @@ const discoverSlice = createSlice({
     name: 'discover',
     initialState: {
         items: [],
+        page: 1,
         total_pages: 0,
         status: 'idle',
         error: null,
+    },
+    reducers: {
+        setPage: (state, action) => {
+            state.page = action.payload;
+        },
+        resetDiscover: (state) => {
+            state.items = [];
+            state.page = 1;
+            state.total_pages = 0;
+            state.status = 'idle';
+            state.error = null;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -49,5 +62,5 @@ const discoverSlice = createSlice({
     }
 });
 
-
-export default discoverSlice.reducer;
+export const { setPage, resetDiscover } = discoverSlice.actions;
+export default discoverSlice.reducer;   
