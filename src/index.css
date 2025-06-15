@@ -38,10 +38,18 @@ body, html, #root {
     background-size:cover; 
 
 }
-.header { 
 
-    flex: 0 0 auto;
-    background: transparent !important; 
+@media screen and (min-width: 768px) {
+    .nav-link{
+    color: white !important;
+    font-weight: 500 !important;
+    font-size: 1.2rem !important;
+    text-decoration: none !important;
+}
+    
+}
+.dropdown .nav-link{
+    color: black !important;
 }
 .main-content {
   flex: 1 0 auto;
