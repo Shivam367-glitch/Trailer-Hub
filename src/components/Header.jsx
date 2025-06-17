@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Container from "react-bootstrap/Container";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Nav from "react-bootstrap/Nav";
@@ -7,23 +7,31 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleGpt } from "../utils/gptSlice";
 import Dropdown from "./Dropdown";
+import { setCategoryPage } from '../utils/categorySlice';
+
+
 function OffcanvasExample() {
   const [expanded, setExpanded] = useState(false);
   const dispatch=useDispatch(); 
-  const showGpt=useSelector((store)=>store.gpt.showGptSearch);
   const user=useSelector((store)=>store.user);
   const handleCloseMenu = () => setExpanded(false);
+ 
+  const handleClick = () => {
 
-  const links=[{
-                  url:"/profile",
-                  title:"Profile"
-                 },
-                 {
-                   url:"/logout",
-                  title:"Log Out"
-                 }]
+    dispatch(setCategoryPage(1));
+  } 
+  const links=[{ url:"/profile",name:"Profile"},{url:"/logout",name:"Log Out"}]
+  const Genres=useSelector((store) => store?.movie?.genres);
+  const genreLinks = useMemo(() => 
+    (Genres ?? []).map((genre) => ({
+      url: `/movies/${genre.id}`,
+      name: genre.name,
+    })), 
+  [Genres]);
+
+
+
   const expand=false;
   return (
     <>
@@ -54,19 +62,9 @@ function OffcanvasExample() {
                 <Nav.Link as={NavLink} to={'/browser'} >Welcome</Nav.Link>
                 <Nav.Link as={NavLink} to={'/people'}>People</Nav.Link>
                  {/* <Nav.Link as={NavLink} to={'/watch-history'}>History</Nav.Link>  */}
-                 <Nav.Link  onClick={()=>{
-                  dispatch(toggleGpt(true));
-                 }}>AI Recommendation</Nav.Link>
-                  {/* <NavDropdown
-                    title={<img src="person.png" alt="User Icon" className='img-fluid ' style={{ width: '30px', height: '30px' }} />}
-                    id={`offcanvasNavbarDropdown-${expand}`}
-                  >
-                    <NavDropdown.Item>
-                      <Nav.Link as={NavLink} to={'/profile'}>Profile</Nav.Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item> <Nav.Link as={NavLink} to={'/logout'}>Log Out</Nav.Link></NavDropdown.Item>
-                  </NavDropdown> */} 
-                 <Dropdown title={<img src="person.png" alt="User Icon" className='img-fluid ' style={{ width: '30px', height: '30px' }} />} links={links}/>
+                 <Nav.Link  as={NavLink} to={'/ai-recommendation'}>AI Recommendation</Nav.Link>
+                 <Dropdown title={"Genres"} links={genreLinks} onClick={handleClick}/>
+                 <Dropdown title={<img src="user.webp" alt="User Icon" className='img-fluid ' style={{ width: '30px', height: '30px' }} />} links={links}/>
 
                 </Nav>
                  

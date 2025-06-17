@@ -38,19 +38,23 @@ body, html, #root {
     background-size:cover; 
 
 }
-
-@media screen and (min-width: 768px) {
-    .nav-link{
+.nav-link {
     color: white !important;
-    font-weight: 500 !important;
+     font-weight: 500 !important;
     font-size: 1.2rem !important;
     text-decoration: none !important;
 }
+
+@media screen   and (max-width: 768px) {
+    .nav-link {
+         color: black !important;
+    }
     
 }
-.dropdown .nav-link{
-    color: black !important;
-}
+
+    
+
+
 .main-content {
   flex: 1 0 auto;
   overflow: hidden;

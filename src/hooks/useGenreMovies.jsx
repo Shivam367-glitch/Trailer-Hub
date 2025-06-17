@@ -29,7 +29,7 @@ const useGenreMovies = (page) => {
       } 
     useEffect(()=>{
         getMovie();
-    },[page]);
+    },[page,type]);
 
     return [loading,error]
 }

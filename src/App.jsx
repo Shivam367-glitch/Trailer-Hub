@@ -11,6 +11,7 @@ import WatchHistoryPage from "./components/WatchHistoryPage";
 import CategoryMovie from "./components/CategoryMovie";
 import DiscoverPage from "./components/DiscoverPage";
 import Profile from "./components/Profile";
+import GptSearch from "./components/GptSearch";
 
  
 function App() {
@@ -63,6 +64,10 @@ function App() {
     {
       path:"/profile",
       element:<Profile/>
+    },
+    {
+      path:'/ai-recommendation',
+      element:<GptSearch/>
     }
     ]
    }
