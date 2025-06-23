@@ -18,6 +18,8 @@ const useMovieTrailer = (id) => {
       if (video) {
         dispatch(addNowPlayingVideo({ id: json.id, videoId: video?.key }));
       }else{
+        console.log(json );
+        
         dispatch(addNowPlayingVideo({ id: json.id, videoId: json?.results[0]?.key }));
       }
     } catch (error) {

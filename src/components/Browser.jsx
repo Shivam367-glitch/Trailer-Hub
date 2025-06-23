@@ -6,6 +6,7 @@ import MainContainer from "./MainContainer"
 import VideoContainer from "./VideoContainer"
 import useMovieGenres from "../hooks/useMovieGenres";
 import usePopularPeople from "../hooks/usePopularPeople";
+import ScrollDownArrow from "./ScrollDownArrow";
 
 const Browser = () => {  
 
@@ -15,9 +16,10 @@ const Browser = () => {
           useTopRatedMovies();
           useUpcomingMovies();
           usePopularPeople();
+          
   return (
     <>
-        <MainContainer/><VideoContainer/>
+        <MainContainer/><VideoContainer/><ScrollDownArrow/>
     </>
   )
 }

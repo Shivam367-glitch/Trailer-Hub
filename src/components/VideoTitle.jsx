@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Button } from "react-bootstrap"
 import { FaPlay,FaInfoCircle  } from "react-icons/fa"
 import { useSelector } from "react-redux"
@@ -23,4 +24,4 @@ const VideoTitle = ({title,overview}) => {
   )
 }
 
-export default VideoTitle 
+export default memo(VideoTitle) 

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import useMovieTrailer from "../hooks/useMovieTrailer";
 import ReactPlayer from "react-player/lazy";
 import {YOUTUBE_BASE_LINK} from "../utils/Constants";
+import { memo } from "react";
 const VideoBackground = ({ id }) => {
   useMovieTrailer(id);
   const nowPlaying = useSelector((store) => store?.nowPlaying);
@@ -10,7 +11,7 @@ const VideoBackground = ({ id }) => {
 
   return (
     <ReactPlayer
-      // url={`${YOUTUBE_BASE_LINK}${videoId}`}
+      url={`${YOUTUBE_BASE_LINK}${videoId}`}
       playing={true} 
       loop={true}
       muted={true}
@@ -21,6 +22,6 @@ const VideoBackground = ({ id }) => {
   );
 };
 
-export default VideoBackground;
+export default memo(VideoBackground);
 
 
