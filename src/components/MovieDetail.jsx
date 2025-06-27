@@ -26,12 +26,8 @@ const MovieDetail = () => {
     dispatch(addToWatchHistory(movie));
   } 
 
-  
   if (!movie ) return null;
   
- 
-
-
 
   const { original_title, genres, poster_path, tagline, overview, runtime, title, homepage ,watch_providers} = movie;
    
@@ -106,7 +102,7 @@ const MovieDetail = () => {
           )}
         </Row>
       </Container>
-      <VideoTrailer id={movieId} show={modalShow} onHide={() => setModalShow(false)} />
+      <VideoTrailer id={movieId} show={modalShow} onHide={() => setModalShow(false)} title={title} />
     </>
   );
 };

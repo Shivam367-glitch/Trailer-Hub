@@ -31,7 +31,7 @@ const  VideoContainer = () => {
         <Col xs={12} className="mt-3">
           <List title={"Popular People"}  peopleList={popularPeople} />
         </Col>
-        <Col xs={12} className="mt-3"> 
+        <Col xs={12} className="mt-3 mb-3"> 
           <Genres/>
         </Col> 
 
