@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import useGenreMovies from "../hooks/useGenreMovies"
 import GridList from "./GridList";
 import Title from "./Title";

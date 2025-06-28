@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Col } from "react-bootstrap";
 import { AiOutlineCaretLeft,AiOutlineCaretRight } from "react-icons/ai";
 import { useDispatch } from "react-redux";
@@ -15,4 +16,4 @@ const Pagination = ({page,total_pages,setPage}) => {
   )
 }
 
-export default Pagination
+export default memo(Pagination);

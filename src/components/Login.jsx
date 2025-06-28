@@ -153,12 +153,6 @@ const Login = () => {
               {loading ? <Spinner animation="border" size="sm" /> : isSignInForm ? "Sign In" : "Sign Up"}
             </Button>
 
-            <span className="text-secondary fw-medium fs-5 text-center d-block mb-3">OR</span>
-
-            <Button variant="secondary" className="w-100 fw-medium text-white rounded-3">
-              Use a sign-in code
-            </Button>
-
             <Link to="/password-reset" className="text-center d-block my-3 text-white hover_white">
               Forgot password?
             </Link>

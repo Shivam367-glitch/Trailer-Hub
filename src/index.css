@@ -146,7 +146,7 @@ color: #a9aeb3;
 }
 
 .opacity-90{
-    opacity: 0.96;
+    opacity: 0.96 !important;
 }
 
 .bottom-95{

@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
-import { addUser} from '../utils/userSlice';
+import { addUser, removeUser} from '../utils/userSlice';
 import { useEffect } from 'react';
 import { auth } from "../utils/firebase";
 import Header from "./Header.jsx";
@@ -17,13 +17,17 @@ const Body = () => {
         // When user Sign In and Sign Up
         const { uid, displayName, email,photoURL } = user;
         dispatch(addUser({ uid, displayName, email,photoURL })); 
-        navigate('/browser')
-      } 
+       if (window.location.pathname === "/" || window.location.pathname === "/login") {
+        navigate("/browser");
+      }
+      }else {
+        dispatch(removeUser());
+      }
     }); 
     return ()=>{
       unsubscribe();
     }
-  }, []); // Add dependencies
+  }, [dispatch, navigate]); // Add dependencies
 
   return (
     <div className="app-layout">
