@@ -17,7 +17,7 @@ const useGenreMovies = (page) => {
     const getMovie=async()=>{
       try {
         setLoading(true); 
-       const data=await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&with_genres=${type}&region=${country}&page=${page}`, API_OPTIONS);
+       const data=await fetch(`${BASE_URL}discover/movie?sort_by=popularity.desc&with_genres=${type}&region=${country}&with_origin_country=${country}&page=${page}`, API_OPTIONS);
        const json=await data.json();  
        dispatch(addMovies({movies:json?.results, id:type, total_pages:json?.total_pages}));
       } catch (error) {

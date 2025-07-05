@@ -3,16 +3,18 @@ import useMovieTrailer from "../hooks/useMovieTrailer";
 import ReactPlayer from "react-player/lazy";
 import {YOUTUBE_BASE_LINK} from "../utils/Constants";
 import { memo } from "react";
-const VideoBackground = ({ id }) => {
+const VideoBackground = ({ id}) => {
   useMovieTrailer(id);
-  const nowPlaying = useSelector((store) => store?.nowPlaying);
-  const { videoId } = nowPlaying;
+  const nowPlaying = useSelector((store) => store?.nowPlaying); 
+ console.log("VideoBackground Rendered");
+
+  const { videoId, playing } = nowPlaying;
   if (!videoId) return null;
 
   return (
     <ReactPlayer
       url={`${YOUTUBE_BASE_LINK}${videoId}`}
-      playing={true} 
+      playing={playing} 
       loop={true}
       muted={true}
       controls={false}

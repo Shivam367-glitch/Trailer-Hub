@@ -30,12 +30,13 @@ body, html, #root {
 } 
 .app-layout { 
     display: flex;
-    background-image: url('https://tse4.mm.bing.net/th?id=OIP.8TuhsWiakA20C9kEmOgLkQHaEK&pid=Api&P=0');
+    background-image: url('/Background.png');
     flex-direction: column;
     min-height: 100vh;  
     padding-bottom: 10px; 
     background-repeat: no-repeat;
     background-size:cover; 
+    background-position:   center;
 
 }
 .nav-link {
@@ -74,6 +75,12 @@ body, html, #root {
 
 .header_container .user_icon{
    width: 30px; 
+}
+
+.logo{
+    width: 200px;
+    height: auto;
+    margin-inline: auto;
 }
 
 .form_container{ 

@@ -17,16 +17,16 @@ const  VideoContainer = () => {
     <Container fluid={true} className="bg-dark display-1 text-dark position-absolute top-100 z-2">
       <Row className=" d-flex flex-column">
         <Col xs={12} id="next-section"  className="mt-3"> 
-          <List title={"now_playing"} movieList={nowPlayingMovies?.results||[]} />
+          <List title={"now_playing"} movieList={nowPlayingMovies||[]} />
         </Col> 
         <Col xs={12} className="mt-3">
-          <List title={"top_rated"} movieList={topRatedMovies?.results||[]}  />
+          <List title={"top_rated"} movieList={topRatedMovies||[]}  />
         </Col>
         <Col xs={12}  className="mt-3">
-          <List title={"popular"} movieList={popularMovies?.results||[]} />
+          <List title={"popular"} movieList={popularMovies||[]} />
         </Col> 
         <Col xs={12}  className="mt-3">
-          <List title={"upcoming"} movieList={upcomingMovies?.results||[]} />
+          <List title={"upcoming"} movieList={upcomingMovies||[]} />
         </Col> 
         <Col xs={12} className="mt-3">
           <List title={"Popular People"}  peopleList={popularPeople} />

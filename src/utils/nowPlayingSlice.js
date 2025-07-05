@@ -5,13 +5,17 @@ const nowPlaying=createSlice(
         name:"nowPlaying",
         initialState:{
             id:null,
-            videoId:null
+            videoId:null,
+            playing:true
         },
         reducers:{
             addNowPlayingVideo:(state,action)=>{
                 console.log("addNowPlayingVideo")
                state.id=action.payload.id,
                state.videoId=action.payload.videoId 
+            },
+            togglePlaying:(state)=>{
+                state.playing=!state.playing
             }
         }
     }
@@ -19,6 +23,6 @@ const nowPlaying=createSlice(
 
 
 
-export const {addNowPlayingVideo}=nowPlaying.actions
+export const {addNowPlayingVideo,togglePlaying}=nowPlaying.actions
 
 export default nowPlaying.reducer

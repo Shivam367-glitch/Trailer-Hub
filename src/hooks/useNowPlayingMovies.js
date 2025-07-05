@@ -12,7 +12,7 @@ const useNowPlayingMovies = () => {
    useEffect(()=>{
     const getNowPlayingMovies=async()=>{
     const data=await fetch(`${BASE_URL}movie/now_playing?page=${page}&region=${country}`, API_OPTIONS);
-    const json=await data.json(); 
+     const json=await data.json(); 
     dispatch(addNowPlayingMovies(json));
    } 
       getNowPlayingMovies()

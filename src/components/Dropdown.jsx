@@ -1,8 +1,7 @@
 import { NavDropdown } from 'react-bootstrap';
 import {NavLink } from 'react-router-dom';
 import { memo } from 'react';
-import { useDispatch } from 'react-redux';
-const Dropdown = ({ title, links,onClick }) => {
+const Dropdown = ({ title, links }) => {
   
   return (
     <NavDropdown title={title} id={`Dropdown-${title}`}>
@@ -12,7 +11,7 @@ const Dropdown = ({ title, links,onClick }) => {
             as={NavLink} 
             to={link.url} 
             key={link.url + ind}
-           onClick={onClick}
+           onClick={link.onClick }
           >
             {link.name}
           </NavDropdown.Item>
