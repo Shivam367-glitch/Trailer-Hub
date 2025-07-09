@@ -8,16 +8,26 @@ import Title from "./Title";
 import Loading from "./Loading";
 import Error from "./Error";
 import Pagination from "./Pagination";
+import { getDiscoverParams } from "../utils/discoverParams";
 
 const DiscoverPage = () => {
   const { endpoint } = useParams();
   const people=endpoint==="Popular People"
+  
    
    const country=useSelector((store)=>store?.country?.country);
-   const dispatch = useDispatch();
+   const dispatch = useDispatch(); 
+
+   const additionalParams = getDiscoverParams(endpoint);
    const { items, total_pages, status, error,page } = useSelector((store) => store.discover);
    useEffect(() => {
-     dispatch(fetchDiscover({country, page, endpoint,people}));
+      dispatch(fetchDiscover({
+      country,
+      page,
+      endpoint,
+      people,
+      additionalParams: additionalParams,
+    }));
    }, [country, page, endpoint, dispatch]);
   return (
     <Container fluid={true} className="text-white  g-0 mx-2 overflow-hidden">

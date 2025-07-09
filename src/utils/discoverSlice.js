@@ -3,24 +3,37 @@ import { API_OPTIONS, BASE_URL } from "./Constants";
 
 
 export const fetchDiscover = createAsyncThunk(
-    'discover/fetchDiscover',
-    async ({country,page,endpoint,people})    => {
-        console.log(country,page,endpoint);
-        
-        const response = await fetch(
-        `${BASE_URL}${people ? "person/popular" : "movie/" + endpoint}?page=${page}&region=${country}`,
-            API_OPTIONS
-        );
+  "discover/fetchDiscover",
+  async ({ country, page, people = false, additionalParams = {} }) => {
+    try {
+      const queryParams = new URLSearchParams({
+          include_adult: false,
+          page: page,
+          ...additionalParams,
+          region: country,
+          with_origin_country: country,
+      });
 
+      const path = people ? `person/popular?page=${page}` : `discover/movie?${queryParams.toString()}`;
 
-       if (!response.ok) {
-            throw new Error(`Error: ${response.status} ${response.statusText}`);
-        }
+      const url = `${BASE_URL}${path}`;
+      console.log("fetchDiscover URL:", url);
 
-        const data = await response.json(); 
-        return data;
+      const response = await fetch(url, API_OPTIONS);
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("fetchDiscover error:", error);
+      throw error;
     }
+  }
 );
+
 
 
 const discoverSlice = createSlice({
