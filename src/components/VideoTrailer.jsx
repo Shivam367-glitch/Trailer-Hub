@@ -41,7 +41,7 @@ const VideoTrailer = (props) => {
                 }}
               />
         ) : (
-          <p className="text-white fs-4 ms-3">Trailer Not Available !</p>
+          <p className="text-white fs-4 ms-2">Trailer Not Available !</p>
         )}
       </Modal.Body>
     </Modal>

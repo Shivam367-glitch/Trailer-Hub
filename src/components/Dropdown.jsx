@@ -23,5 +23,3 @@ const Dropdown = ({ title, links }) => {
 
 export default memo(Dropdown);
 
-
-{/* <img src="person.png" alt="User Icon" className='img-fluid ' style={{ width: '30px', height: '30px' }} /> */}

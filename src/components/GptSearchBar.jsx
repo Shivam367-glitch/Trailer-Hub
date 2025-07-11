@@ -79,7 +79,6 @@ const GptSearchBar = () => {
               type="text"
               className="rounded-2 p-2 border-none w-100"
                placeholder="What do you want to watch?"
-
               ref={inputRef}
             />
           </Col>

@@ -27,7 +27,7 @@ const Body = () => {
     return ()=>{
       unsubscribe();
     }
-  }, [dispatch, navigate]); // Add dependencies
+  }, [dispatch, navigate]); 
 
   return (
     <div className="app-layout">

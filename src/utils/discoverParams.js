@@ -1,15 +1,15 @@
-export const today = new Date().toISOString().split("T")[0];
-const sevenDaysAgo = new Date();
-sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-export const min_date = sevenDaysAgo.toISOString().split("T")[0];
 export const getDiscoverParams = (endpoint) => {
-
+  
+  const today = new Date().toISOString().split("T")[0];
+  const fifteenDaysAgo = new Date();
+  fifteenDaysAgo.setDate(fifteenDaysAgo.getDate() - 15);
+  const min_date = fifteenDaysAgo.toISOString().split("T")[0];
 
   switch (endpoint) {
 
     case "now_playing":
       return {
-        sort_by: "popularity.desc",
+        sort_by: "vote_average.desc",
         with_release_type: "2|3", 
         "release_date.gte": min_date,
         "release_date.lte": today,

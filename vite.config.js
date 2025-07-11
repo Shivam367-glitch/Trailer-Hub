@@ -10,22 +10,24 @@ export default defineConfig({
       manifest: {
         name: 'Trailer Hub',
         short_name: 'THub',
+        description: 'Watch trailers and discover trending movies with Trailer Hub',
+        lang: 'en',
         start_url: '/',
         scope: '/',
         display: 'standalone',
         background_color: '#ff0033',
-       "orientation":'portrait',
+        orientation: 'portrait',
         theme_color: '#333333',
         icons: [
           {
-              "src": "/android-chrome-192x192.png",
-              "sizes": "192x192",
-              "type": "image/png"
+              src: "/android-chrome-192x192.png",
+              sizes: "192x192",
+              type: "image/png"
           },
           {
-              "src": "/android-chrome-512x512.png",
-              "sizes": "512x512",
-              "type": "image/png"
+              src: "/android-chrome-512x512.png",
+              sizes : "512x512",
+              type: "image/png"
           }
       ],
       },
