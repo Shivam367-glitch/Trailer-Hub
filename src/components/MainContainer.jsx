@@ -7,13 +7,13 @@ const MainContainer = () => {
       
     if(!movies || movies.length==0)return ;
    
-    const {id,original_title,overview}=movies[0];
+    const {id,title,overview}=movies[0];
     
 
   return (
     <>
         <VideoBackground id={id}/>
-        <VideoTitle title={original_title} overview={overview}/>
+        <VideoTitle title={title} overview={overview}/>
     </>
   )
 }
