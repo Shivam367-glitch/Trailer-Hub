@@ -1,8 +1,16 @@
 {
   "projects": {
-    "default": "trailerhub-8f6b1",
-    " ": "trailerhub-8f6b1"
+    "default": "trailer-hub-13f0c",
+    " ": "trailer-hub-13f0c"
   },
-  "targets": {},
+  "targets": {
+    "trailer-hub-13f0c": {
+      "hosting": {
+        "trailer-hub-13f0c": [
+          "trailer-hub-13f0c"
+        ]
+      }
+    }
+  },
   "etags": {}
 }

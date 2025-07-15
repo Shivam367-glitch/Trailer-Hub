@@ -19,9 +19,24 @@ const Login = () => {
   const password = useRef(null);
   const name = useRef(null);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
-    isSignInForm ? email?.current?.focus() : name?.current?.focus();
+
+
+   const onSignUp=()=>{ 
+    if(isSignInForm){ 
+       email.current.value = "guest@gmail.com"; 
+       password.current.value = "Guest@123";
+       email?.current?.focus();
+    }
+    else{
+
+      email.current.value = ""; 
+      name?.current?.focus();
+      password.current.value = "";
+    }
+    }
+     onSignUp();
   }, [isSignInForm]);
 
   useEffect(() => {
