@@ -3,10 +3,10 @@ import { auth } from "../utils/firebase";
 import { Button, Col, Container, Row } from "react-bootstrap";
 const Profile = () => {
   return (
-    <Container fluid>
+    <Container fluid className="mt-4">
       <Row>
         <Col xs={12}
-          className="text-center bg-dark bg-opacity-75 text-danger gap-3 d-flex flex-column justify-content-center align-items-center py-4"
+          className="text-center bg-dark opacity-90 text-danger gap-3 d-flex flex-column justify-content-center align-items-center py-4"
         >
           <img
             src={auth?.currentUser?.photoURL || "/person.png"}

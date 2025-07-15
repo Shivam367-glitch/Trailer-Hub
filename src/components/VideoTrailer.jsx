@@ -27,7 +27,7 @@ const VideoTrailer = (props) => {
                 playing={true} 
                 loop={true}
                 muted={true}
-                controls={false}
+                controls={true}
                 width={"100%"} 
                 height={"100%"} 
                 fallback={<>Loading...</>}

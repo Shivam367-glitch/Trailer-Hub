@@ -29,9 +29,9 @@ const MovieDetail = () => {
   if (!movie ) return null;
   
 
-  const { original_title, genres, poster_path, tagline, overview, runtime, title, homepage ,watch_providers} = movie;
-   
-  
+  const { original_title, genres, poster_path, tagline, overview="No Overview Available", runtime, title, homepage ,watch_providers="No Watch Providers Available"} = movie;
+
+
   let hr = Math.floor(runtime / 60);
   let min = runtime % 60;
   const userScore = movie?.vote_average ? Math.ceil(movie.vote_average * 10) : 0;
@@ -49,7 +49,8 @@ const MovieDetail = () => {
                   src={IMG_CDN_URL + poster_path}
                   alt={title} 
                   className="img-fluid rounded border"
-                />
+                  style={{ maxHeight: "500px" }}
+               />
               </Col>
               <Col xs={12}  lg={8} className="d-flex flex-column justify-content-start gap-2 mb-2   border-start">
                 <div>
@@ -80,7 +81,7 @@ const MovieDetail = () => {
                 <p className="mt-3 text-secondary fs-6">{tagline}</p>
                 <div>
                   <h3>Overview</h3>
-                  <p className="fst-italic">{overview}</p>
+                  <p className=" paragraph_text">{overview}</p>
                   <div className="position-relative d-flex flex-row gap-2">
                     <span className="position-absolute m-4 align-self-center">{userScore}% </span>
                     <Circle percent={userScore} trailColor="#423d0f" trailWidth={4} strokeWidth={4} strokeColor="#d2d531" width="100"/>

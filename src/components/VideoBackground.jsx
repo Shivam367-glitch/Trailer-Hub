@@ -12,7 +12,8 @@ const VideoBackground = ({ id}) => {
   if (!videoId) return null;
 
   return (
-    <ReactPlayer
+    <ReactPlayer 
+
       url={`${YOUTUBE_BASE_LINK}${videoId}`}
       playing={playing} 
       loop={true}
@@ -21,7 +22,7 @@ const VideoBackground = ({ id}) => {
       width={"100%"} 
       height={"100%"}
       fallback={<>Loading...</>}
-        style={{ position: "absolute", top: 0, left: 0 }}
+      style={{ position: "absolute", top: 0, left: 0 }}
         config={{
           youtube: {
             playerVars: {
