@@ -10,6 +10,7 @@ import VideoTrailer from "./VideoTrailer";
 import { Link } from "react-router-dom"; 
 import { addToWatchHistory } from "../utils/watchHistorySlice"; 
 import { setCategoryPage } from "../utils/categorySlice";
+import ReadMoreText from "./ReadMoreText";
 
 const MovieDetail = () => {
   let { movieId } = useParams();
@@ -81,7 +82,7 @@ const MovieDetail = () => {
                 <p className="mt-3 text-secondary fs-6">{tagline}</p>
                 <div>
                   <h3>Overview</h3>
-                  <p className=" paragraph_text">{overview}</p>
+                  <p className=" paragraph_text">{<ReadMoreText text={overview} />}</p>
                   <div className="position-relative d-flex flex-row gap-2">
                     <span className="position-absolute m-4 align-self-center">{userScore}% </span>
                     <Circle percent={userScore} trailColor="#423d0f" trailWidth={4} strokeWidth={4} strokeColor="#d2d531" width="100"/>

@@ -17,7 +17,7 @@ const Body = () => {
         // When user Sign In and Sign Up
         const { uid, displayName, email,photoURL } = user;
         dispatch(addUser({ uid, displayName, email,photoURL })); 
-       if (window.location.pathname === "/" || window.location.pathname === "/login") {
+       if (window.location.pathname === "/" ) {
         navigate("/browser");
       }
       }else {

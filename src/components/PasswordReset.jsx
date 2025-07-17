@@ -3,6 +3,7 @@ import  { useState,useRef } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import {auth} from "../utils/firebase" 
 import { Container,Row,Col, Form, FloatingLabel, Button ,Spinner} from "react-bootstrap";
+import { WEB_URL } from "../utils/Constants";
 const PasswordReset = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(""); 
@@ -21,7 +22,7 @@ const PasswordReset = () => {
     try { 
       setLoading(true)
       await sendPasswordResetEmail(auth, email?.current?.value,{
-        url:"https://trailerhub-8f6b1.web.app/"
+        url:WEB_URL
       });
       setMessage("Password reset email sent successfully. Please check your inbox.");
     } catch (err) {

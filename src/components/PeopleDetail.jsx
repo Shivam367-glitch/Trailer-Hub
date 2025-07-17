@@ -36,13 +36,22 @@ const PeopleDetail = () => {
                 />
               </Col>
               <Col xs={12}  lg={8} className="d-flex flex-column justify-content-start gap-2 mb-2   border-start">  
-              <p className=" mt-3 fw-bolder fs-4 text-white  d-flex flex-wrap justify-content-center align-items-center gap-3">{homepage ? (
+              <div className=" mt-3 fw-bolder fs-4 text-white  d-flex flex-wrap justify-content-center align-items-center gap-3">{homepage ? (
                 <Link to={homepage} target="_blank" className="cursor_pointer text-decoration-underline text-white hover-effect">{name}</Link>
               ) : (<span>{name}</span>)} 
                 <SocialIcons facebook_id={facebook_id} youtube_id={youtube_id} instagram_id={instagram_id} twitter_id={twitter_id} />
-              </p> 
-              <p className="d-flex flex-row justify-content-between"><span>Born On : {new Date(birthday?birthday:null).toLocaleDateString("en-US").replace(/\//g, '-')}</span><span> Born At : {place_of_birth?place_of_birth:"NA"}</span> </p>
-              <p>Department : {known_for_department}</p>
+              </div> 
+              <div className="d-flex flex-column flex-md-row gap-2 justify-content-md-between">
+                <span>
+                  Born On: {birthday 
+                    ? new Date(birthday).toLocaleDateString("en-GB").replace(/\//g, '-') 
+                    : "NA"}
+                </span>
+                <span>
+                  Born At: {place_of_birth ? place_of_birth : "NA"}
+                </span>
+              </div>
+              <p>Department : {known_for_department?known_for_department:"NA"}</p>
               <ReadMoreText text={biography}/>
               </Col>
             </>
