@@ -67,7 +67,7 @@ function OffcanvasExample() {
             placement="end"
             show={showOffcanvas}
             onHide={handleCloseMenu}
-          >
+              >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
                 <img
@@ -79,7 +79,7 @@ function OffcanvasExample() {
             </Offcanvas.Header>
 
             {user && (
-              <Offcanvas.Body className="d-flex flex-row justify-content-center">
+              <Offcanvas.Body className="d-flex flex-row justify-content-center ">
                 <Nav className="justify-content-start flex-grow-1 fw-bolder">
                   <Nav.Link
                     as={NavLink}

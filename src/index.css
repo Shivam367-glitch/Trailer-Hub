@@ -46,15 +46,18 @@ body, html, #root {
     text-decoration: none !important;
 }
 
-@media screen   and (max-width: 768px) {
-    .nav-link {
-         color: black !important;
-    }
-    
+.navbar-toggler{
+    background-color:rgba(255, 255, 255, 0.8)!important;
 }
 
-    
+.btn-close{
+        background-color:rgba(255, 255, 255, 0.8) !important;
+}
 
+#offcanvasNavbar-expand-md{
+    background-color: rgba(108, 117, 125, 0.9) !important;
+  
+}
 
 .main-content {
   flex: 1 0 auto;
