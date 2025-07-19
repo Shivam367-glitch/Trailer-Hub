@@ -54,9 +54,15 @@ body, html, #root {
         background-color:rgba(255, 255, 255, 0.8) !important;
 }
 
-#offcanvasNavbar-expand-md{
-    background-color: rgba(108, 117, 125, 0.9) !important;
-  
+
+
+
+@media screen and (max-width: 768px) {
+    
+    #offcanvasNavbar-expand-md{
+        background-color: rgba(108, 117, 125, 0.9) !important;
+      
+    } 
 }
 
 .main-content {
