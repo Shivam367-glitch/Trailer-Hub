@@ -20,9 +20,10 @@ const GptSearchBar = () => {
         API_OPTIONS
       );
       const json = await data.json();
-      return json.results;
+
+      return json.results.length==0?null:json.results;
     } catch (error) {
-      console.error("Failed to fetch movie details from TMDB:", error);
+
       return [];
     }
   };
@@ -39,7 +40,6 @@ const GptSearchBar = () => {
       const result = await model.generateContent([createQuery]);
       const responseText = await result?.response?.text();
       const movieList = responseText.split(",").map((movie) => movie.trim()); 
-      console.log(movieList);
 
       const moviePromises = movieList?.map((movie) => {
         const movieName = movie.substring(0, movie.lastIndexOf("-")).trim();
@@ -48,6 +48,7 @@ const GptSearchBar = () => {
       });
 
       const movieDetailsArray = await Promise.all(moviePromises);
+      
       dispatch(addRecommendedMovies(movieDetailsArray));
     } catch (error) {
       if (error.message.includes("GoogleGenerativeAI Error")) {
@@ -71,10 +72,10 @@ const GptSearchBar = () => {
 
   return (
    <> 
-        <Container fluid={true}  className="text-center" >  
+        <Container fluid={true}   >  
           <Row as={Form} className="m-0 p-0 mt-5 align-items-center justify-content-center ">
-          <h2 className="text-white ">Search Movie</h2>
-          <Col xs={7} sm={6} lg={4} className="m-0 p-0 mt-2  ">
+          <h2 className="text-white text-center ">Ask AI</h2>
+          <Col xs={7} sm={6} lg={4} className="m-0 p-0 mt-3  ">
             <input
               type="text"
               className="rounded-2 p-2 border-none w-100"
@@ -82,7 +83,7 @@ const GptSearchBar = () => {
               ref={inputRef}
             />
           </Col>
-          <Col xs={5} sm={3} lg={2} className="mx-0  mt-2">
+          <Col xs={5} sm={3} lg={2} className="mx-0  mt-3">
             <Button
               variant="danger"
               onClick={handleGptSearch}

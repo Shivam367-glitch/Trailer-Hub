@@ -1,3 +1,5 @@
+
+
 import { Col, Container, Row } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import React from "react";
@@ -9,7 +11,8 @@ const GptSearchComponent = () => {
   if(recommendedMovies==null || recommendedMovies.length==0)return
 
   let movieList = [];
-  recommendedMovies.forEach((movies) => { 
+  recommendedMovies.forEach((movies) => {  
+    if(movies==null || movies.length==0) return;
     movies.forEach((movie)=>{
       movieList.push(movie);
     })
@@ -19,6 +22,7 @@ const GptSearchComponent = () => {
      <Container fluid={true}>
         <Row>
           <Col >  
+          { movieList.length===0 && <h3 className="text-white text-center mt-3">No Movies Found</h3>}
             <GridList title={"Recommended Movies"} items={movieList} people={false}/>
           </Col>
         </Row>

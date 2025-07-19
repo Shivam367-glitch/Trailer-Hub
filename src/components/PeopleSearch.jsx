@@ -18,10 +18,10 @@ const PeopleSearch = () => {
 
   return (
     <>
-      <Container fluid={true} className="text-center">
+      <Container fluid={true}>
         <Row as={Form} className="m-0 p-0 mt-5 align-items-center justify-content-center  ">
-          <h2 className="text-white ">Search People</h2>
-          <Col xs={7} sm={6} lg={4} className="m-0 p-0 mt-2">
+          <h2 className="text-white text-center">Search People</h2>
+          <Col xs={7} sm={6} lg={4} className="m-0 p-0 mt-3">
             <input
               type="text"
               className="rounded-2 p-2 border-none w-100"
@@ -30,7 +30,7 @@ const PeopleSearch = () => {
               placeholder="Search for an actor/actress..."
             />
           </Col>
-          <Col xs={5} sm={3} lg={2} className="mx-0  mt-2">
+          <Col xs={5} sm={3} lg={2} className="mx-0  mt-3">
             <Button
               variant="danger"
               onClick={handleSearch}
