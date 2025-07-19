@@ -5,9 +5,10 @@ const MainContainer = () => {
    console.log("MainContainer Rendered");
     const movies=useSelector((store)=>store.movie?.nowPlayingMovies); 
       
-    if(!movies || movies.length==0)return ;
-   
-    const {id,title,overview}=movies[0];
+    if(!movies || movies.length==0)return ; 
+
+
+    const {id,title,overview}=movies[1];
     
 
   return (
