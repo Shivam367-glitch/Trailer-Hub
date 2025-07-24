@@ -22,8 +22,7 @@ const GptSearchComponent = () => {
      <Container fluid={true}>
         <Row>
           <Col >  
-          { movieList.length===0 && <h3 className="text-white text-center mt-3">No Movies Found</h3>}
-            <GridList title={"Recommended Movies"} items={movieList} people={false}/>
+             <GridList title={"Recommended Movies"} items={movieList} people={false}/>
           </Col>
         </Row>
      </Container>

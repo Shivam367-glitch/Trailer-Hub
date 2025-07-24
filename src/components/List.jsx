@@ -1,25 +1,17 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Card from "./Card";
-import { IMG_CDN_URL } from "../utils/Constants";
 import { Link, useLocation } from "react-router-dom";
 import { setPage } from "../utils/discoverSlice";
 import { useDispatch } from "react-redux";
+import Error from "./Error";
+import { getImagePath } from "../utils/common";
 
 const List = ({ title, movieList, peopleList }) => {
   const dispatch = useDispatch();
   const path = useLocation().pathname;
   const isBrowser = path === "/browser";
   const displayList = movieList || peopleList;
-  const isPeople = !!peopleList;
-
-  const getImagePath = (item) =>
-    isPeople
-      ? item?.profile_path
-        ? IMG_CDN_URL + item.profile_path
-        : "/person.png"
-      : item?.poster_path
-      ? IMG_CDN_URL + item.poster_path
-      : "";
+  const people = !!peopleList;
 
   return (
     <Container fluid>
@@ -42,22 +34,22 @@ const List = ({ title, movieList, peopleList }) => {
           </h2>
         </Col>
 
-      {displayList && (
-        <Col xs={12} className="container_scroll d-flex flex-row gap-4">
-    {displayList.length > 0 ? (
-      displayList.map((item, ind) => (
-        <Card
-          key={ind}
-          id={item?.id}
-          img={getImagePath(item)}
-          directTo={`/${isPeople ? "people" : "movie"}/${item.id}`}
-        />
-      ))
-    ) : (
-      <p className="text-white">No items found</p>
-    )}
-        </Col>
-     )}
+        {displayList && (
+          <Col xs={12} className="container_scroll d-flex flex-row gap-4">
+            {displayList.length > 0 ? (
+              displayList.map((item, ind) => (
+                <Card
+                  key={ind}
+                  id={item?.id}
+                  img={getImagePath(item, people)}
+                  directTo={`/${people ? "people" : "movie"}/${item.id}`}
+                />
+              ))
+            ) : (
+              <Error error={people ? "No People Found" : "No Movies Found"} />
+            )}
+          </Col>
+        )}
       </Row>
     </Container>
   );

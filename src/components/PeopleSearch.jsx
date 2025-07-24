@@ -46,7 +46,7 @@ const PeopleSearch = () => {
           </Col>
           {status === "failed" &&  <Error error={error}/>}
           {status === "succeeded" && peopleList.length === 0 && (
-            <h2 className="text-white text-center mt-3">No results found</h2>
+            <Error error="No results found" />
           )}
         </Row>
 

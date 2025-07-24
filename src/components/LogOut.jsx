@@ -13,12 +13,10 @@ const LogOut = () => {
   const timeoutRef = useRef(null);
 
   useEffect(() => {
-    // Auto logout and redirect after 30 seconds
     timeoutRef.current = setTimeout(() => {
       handleAutoLogOut();
     }, 30000);
 
-    // Cleanup timeout on unmount
     return () => clearTimeout(timeoutRef.current);
   }, []);
 
