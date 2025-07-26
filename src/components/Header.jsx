@@ -120,7 +120,14 @@ function OffcanvasExample() {
                       ...link,
                       onClick: handleCloseMenu,
                     }))}
-                  />
+                  />  
+                   <Nav.Link
+                    as={NavLink}
+                    to="/download"
+                    onClick={handleCloseMenu}
+                  >
+                    Download
+                  </Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             )}

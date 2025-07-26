@@ -12,23 +12,21 @@ const usePopularPeople = () => {
     const getPeopleList = async () => {
     try {
       setLoading(true);
+      setError("");
       const response = await fetch(
         `${BASE_URL}/person/popular`,
         { ...API_OPTIONS }
       );
+      const json = await response.json();
 
       if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
+          throw new Error(json.status_message || "Failed to fetch Movies");
       }
 
-      const json = await response.json();
-      if (json) {
-        console.log(json);
-        
+  
         dispatch(addPopularPeople(json.results));
-      }
+
     } catch (error) {
-      console.error("Error fetching People List:", error);
       setError(error?.message || "Something Went Wrong!");
     } finally {
       setLoading(false);

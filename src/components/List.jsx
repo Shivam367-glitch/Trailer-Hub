@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import Error from "./Error";
 import { getImagePath } from "../utils/common";
 
-const List = ({ title, movieList, peopleList }) => {
+const List = ({ title, movieList, peopleList,error=null }) => {
   const dispatch = useDispatch();
   const path = useLocation().pathname;
   const isBrowser = path === "/browser";
@@ -33,7 +33,10 @@ const List = ({ title, movieList, peopleList }) => {
             )}
           </h2>
         </Col>
-
+        {error && <Error error={error} />}
+        {!error && !displayList && (
+          <Error error={people ? "No People Found" : "No Movies Found"} />
+        )}
         {displayList && (
           <Col xs={12} className="container_scroll d-flex flex-row gap-4">
             {displayList.length > 0 ? (
@@ -45,9 +48,7 @@ const List = ({ title, movieList, peopleList }) => {
                   directTo={`/${people ? "people" : "movie"}/${item.id}`}
                 />
               ))
-            ) : (
-              <Error error={people ? "No People Found" : "No Movies Found"} />
-            )}
+            ) : null}
           </Col>
         )}
       </Row>

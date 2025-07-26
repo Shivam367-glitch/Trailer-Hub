@@ -16,6 +16,7 @@ const CategoryMovie = lazy(() => import("./components/CategoryMovie"));
 const DiscoverPage = lazy(() => import("./components/DiscoverPage"));
 const Profile = lazy(() => import("./components/Profile"));
 const GptSearch = lazy(() => import("./components/GptSearch"));
+const Download = lazy(() => import("./components/Download"));
 
 function App() {
   const appRoute = createBrowserRouter([
@@ -36,6 +37,14 @@ function App() {
           element: (
             <Suspense fallback={<MainLoader />}>
               <PasswordReset />
+            </Suspense>
+          ),
+        }, 
+        {
+          path: "/download",
+          element: (
+            <Suspense fallback={<MainLoader />}>
+              <Download />
             </Suspense>
           ),
         },
