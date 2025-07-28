@@ -12,7 +12,7 @@ import usePopularPeople from "../hooks/usePopularPeople";
 const  VideoContainer = () => {  
 
            const [genresError]= useMovieGenres();
-          const [nowplayingError]=  useNowPlayingMovies();
+           const [nowplayingError]=  useNowPlayingMovies();
            const[popularError]= usePopularMovies(); 
             const[topRatedError]= useTopRatedMovies();
             const[upcomingError]= useUpcomingMovies();
@@ -25,6 +25,7 @@ const  VideoContainer = () => {
   const upcomingMovies = useSelector((store)=>store.movie.upcomingMovies);
   const popularPeople = useSelector((store)=>store.people.popularPeople);
 
+console.log(popularMovies, "popularMovies");
 
  
   

@@ -13,15 +13,16 @@ const usePopularMovies = () => {
     const getPopularMovies=async()=>{
       setError("");
       try { 
-        const data=await fetch(`${HOME_MOVIE_URL}&region=${country}&with_origin_country=${country}&${new URLSearchParams(getDiscoverParams("popular")).toString()}`, API_OPTIONS);
+        const data=await fetch(`${HOME_MOVIE_URL}&page=${page}&region=${country}&with_origin_country=${country}&${new URLSearchParams(getDiscoverParams("popular")).toString()}`, API_OPTIONS);
+
         const json=await data.json();   
 
-
+       
         if(!data.ok) {
           throw new Error(json.status_message || "Failed to fetch Movies");
         } 
         
-        dispatch(addPopularMovies(json.results));
+        dispatch(addPopularMovies(json));
 
       } catch (error) {
         setError(`Failed to fetch popular movies: ${error.message}`);

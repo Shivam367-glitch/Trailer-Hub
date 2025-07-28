@@ -99,6 +99,14 @@ function OffcanvasExample() {
                     AI Recommendation
                   </Nav.Link>
 
+                  
+                   <Nav.Link
+                    as={NavLink}
+                    to="/download"
+                    onClick={handleCloseMenu}
+                  >
+                    Download
+                  </Nav.Link>
                   <Dropdown
                     title={"Genres"}
                     links={genreLinks.map((genre) => ({
@@ -121,13 +129,7 @@ function OffcanvasExample() {
                       onClick: handleCloseMenu,
                     }))}
                   />  
-                   <Nav.Link
-                    as={NavLink}
-                    to="/download"
-                    onClick={handleCloseMenu}
-                  >
-                    Download
-                  </Nav.Link>
+                  
                 </Nav>
               </Offcanvas.Body>
             )}
