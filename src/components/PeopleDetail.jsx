@@ -6,6 +6,7 @@ import { IMG_CDN_URL } from "../utils/Constants";
 import List from "./List";
 import SocialIcons from "./SocialIcons";
 import ReadMoreText from "./ReadMoreText";
+import GoBack from "./GoBack";
 
 
 
@@ -21,7 +22,10 @@ const PeopleDetail = () => {
 
   return (
     <> 
-    <Container fluid={true} >
+    <Container fluid={true}   className="mt-4"> 
+
+
+           <GoBack/>
            <Row className=" d-flex flex-column flex-lg-row  bg-dark opacity-90 py-3 gap-2 text-white">
              {loading && <Col className="bg-dark text-white">Loading People details...</Col>}
              {error && <Col className="bg-dark text-white">Failed to fetch People details. Please try again later.</Col>}
@@ -62,7 +66,7 @@ const PeopleDetail = () => {
           </Col>
          }
             </Row>
-         </Container>
+    </Container>
     </>
   )
 }
