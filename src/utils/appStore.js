@@ -7,7 +7,8 @@ import peopleReducer from "./peopleSlice";
 import watchHistoryReducer from "./watchHistorySlice";
 import categoryReducer from "./categorySlice";
 import countryReducer from "./countrySlice";
-import discoverReducer from "./discoverSlice";
+import discoverReducer from "./discoverSlice"; 
+import movieSearchReducer from "./movieSearchSlice";
 //  Register Reducers in the Store
 const appStore=configureStore(
     {
@@ -20,7 +21,8 @@ const appStore=configureStore(
             watchHistory: watchHistoryReducer,
             category:categoryReducer, 
             country:countryReducer,
-            discover:discoverReducer
+            discover:discoverReducer,
+            movieSearch:movieSearchReducer
         },
         devTools:import.meta.env.MODE !== 'production',
          middleware: (getDefaultMiddleware) =>

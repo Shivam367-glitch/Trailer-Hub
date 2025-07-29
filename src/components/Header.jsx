@@ -29,7 +29,22 @@ function OffcanvasExample() {
     { url: "/profile", name: "Profile" },
     { url: "/logout", name: "Log Out" },
   ];
+  
 
+  const searchLinks=[
+    {
+      url:"/people",
+      name:"People"
+    },
+    {
+      url:"/ai-recommendation",
+      name:"Ask AI"
+    },
+    {
+      url:"/search-movie",
+      name:"Movie"
+    }
+  ]
   const Genres = useSelector((store) => store?.movie?.genres);
   const genreLinks = useMemo(
     () =>
@@ -88,16 +103,6 @@ function OffcanvasExample() {
                   >
                     Welcome
                   </Nav.Link>
-                  <Nav.Link as={NavLink} to="/people" onClick={handleCloseMenu}>
-                    People
-                  </Nav.Link>
-                  <Nav.Link
-                    as={NavLink}
-                    to="/ai-recommendation"
-                    onClick={handleCloseMenu}
-                  >
-                    AI Recommendation
-                  </Nav.Link>
 
                   
                    <Nav.Link
@@ -106,7 +111,14 @@ function OffcanvasExample() {
                     onClick={handleCloseMenu}
                   >
                     Download
-                  </Nav.Link>
+                  </Nav.Link> 
+                  <Dropdown
+                    title={"Search"}
+                    links={searchLinks.map((searchLink) => ({
+                      ...searchLink,
+                      onClick: handleCloseMenu,
+                    }))}
+                  />
                   <Dropdown
                     title={"Genres"}
                     links={genreLinks.map((genre) => ({

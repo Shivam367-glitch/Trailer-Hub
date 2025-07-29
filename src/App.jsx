@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Body from "./components/Body";
 import MainLoader from "./components/MainLoader";
+import MovieSearch from "./components/MovieSearch";
 
 const Login = lazy(() => import("./components/Login"));
 const PeopleSearch = lazy(() => import("./components/PeopleSearch"));
@@ -74,6 +75,14 @@ function App() {
                   <MovieDetail />
                 </Suspense>
               ),
+            },
+            {
+              path:"/search-movie",
+              element:(
+                <Suspense fallback={<MainLoader />}>
+                  <MovieSearch />
+                </Suspense>
+              )
             },
             {
               path: "/logout",
