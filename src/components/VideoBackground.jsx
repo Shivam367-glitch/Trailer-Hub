@@ -6,8 +6,6 @@ import { memo } from "react";
 const VideoBackground = ({ id}) => {
   useMovieTrailer(id);
   const nowPlaying = useSelector((store) => store?.nowPlaying); 
- console.log("VideoBackground Rendered");
-
   const { videoId, playing } = nowPlaying;
   if (!videoId) return null;
 

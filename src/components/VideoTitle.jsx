@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { togglePlaying } from "../utils/nowPlayingSlice";
 
 const VideoTitle = ({title,overview}) => { 
-  console.log("VideoTitle Rendered");
-  
+
     const {id, playing} = useSelector((store) => store?.nowPlaying);
     const navigate = useNavigate(); 
     const dispatch = useDispatch();

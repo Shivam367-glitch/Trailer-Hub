@@ -23,7 +23,6 @@ const VideoContainer = () => {
   const upcomingMovies = useSelector((store) => store.movie.upcomingMovies);
   const popularPeople = useSelector((store) => store.people.popularPeople);
 
-  console.log(popularMovies, "popularMovies");
 
   return (
     <Container

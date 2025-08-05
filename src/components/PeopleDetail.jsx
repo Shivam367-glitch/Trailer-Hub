@@ -14,7 +14,6 @@ const PeopleDetail = () => {
     let { peopleId } = useParams();
     const viewedPeople = useSelector((store) => store?.people?.viewedPeople);
     const viewedPeopleMovies = useSelector((store) => store?.people?.viewedPeopleMovies);
-    console.log(viewedPeople);
 
     const [error, loading] = usePeopleDetail(peopleId);
     if (!viewedPeople ) return null;
