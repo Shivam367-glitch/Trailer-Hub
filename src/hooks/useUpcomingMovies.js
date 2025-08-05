@@ -20,8 +20,7 @@ const useUpcomingMovies = () => {
           API_OPTIONS
         );
         const json = await data.json();  
-        console.log(json);
-        
+  
         if (!data.ok) {
           throw new Error(json.status_message || "Failed to fetch Movies");
         }

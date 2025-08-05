@@ -36,7 +36,6 @@ const usePeopleDetail = (peopleId) => {
     
       
     } catch (error) {
-      console.error("Error fetching movie:", error);
       setError(error?.message || "Something Went Wrong!");
     } finally {
       setLoading(false);

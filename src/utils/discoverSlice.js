@@ -17,8 +17,7 @@ export const fetchDiscover = createAsyncThunk(
       const path = people ? `person/popular?page=${page}` : `discover/movie?${queryParams.toString()}`;
 
       const url = `${BASE_URL}${path}`;
-      console.log("fetchDiscover URL:", url);
-
+     
       const response = await fetch(url, API_OPTIONS);
 
       if (!response.ok) {
@@ -28,7 +27,7 @@ export const fetchDiscover = createAsyncThunk(
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error("fetchDiscover error:", error);
+     
       throw error;
     }
   }

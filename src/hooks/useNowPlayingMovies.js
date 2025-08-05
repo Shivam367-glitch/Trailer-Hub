@@ -13,7 +13,7 @@ const useNowPlayingMovies = () => {
 
   useEffect(() => {
    const getNowPlayingMovies = async () => {
-  setError(""); // clear previous errors
+  setError(""); 
   try {
     const data = await fetch(
       `${HOME_MOVIE_URL}&region=${country}&with_origin_country=${country}&${new URLSearchParams(

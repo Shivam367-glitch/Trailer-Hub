@@ -6,9 +6,7 @@ const gptSlice=createSlice({
         recommendedMovies:null
     },
     reducers:{
-        addRecommendedMovies:(state,action)=>{
-            console.log("addRecommendedMovies");
-            
+        addRecommendedMovies:(state,action)=>{   
               state.recommendedMovies=action.payload
         }
     }

@@ -14,8 +14,7 @@ const useMovieDetail = (movieId) => {
 
   const getMovieInfo = async () => {
     if (!movieId) return; 
-    // console.log(typeof movieId,typeof viewedMovie?.id);
-    
+
     try {
       setLoading(true);
 
@@ -38,7 +37,6 @@ const useMovieDetail = (movieId) => {
       })); 
 
     } catch (error) {
-      console.error("Error fetching movie:", error);
       setError(error?.message || "Something Went Wrong!");
     } finally {
       setLoading(false);
@@ -46,11 +44,9 @@ const useMovieDetail = (movieId) => {
   };
 
   useEffect(() => {
-    // If the movie isn't in the store and movieId is valid, fetch it.
     if (!viewedMovie && movieId) { 
       getMovieInfo();
     }
-    // We rely on movieId changes to re-trigger this effect.
   }, [movieId]);
 
   return [ error, loading ];
