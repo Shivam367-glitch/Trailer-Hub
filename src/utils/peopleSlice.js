@@ -35,19 +35,15 @@ const peopleSlice = createSlice({
     },
     reducers: {
         addViewedPeople:(state,action)=>{
-            console.log("addViewedPeople")
             state.viewedPeople=action.payload
         },
         removeViewedPeople:(state)=>{
-            console.log("removeViewedPeople")
             state.viewedPeople=null;
         }, 
         addPopularPeople:(state,action)=>{
-            console.log("addPopularPeople")
             state.popularPeople=action.payload
         },
         removePopularPeople:(state)=>{
-            console.log("removePopularPeople")
             state.popularPeople=[];
         },
         addViewedPeopleMovies:(state,action)=>{ 
