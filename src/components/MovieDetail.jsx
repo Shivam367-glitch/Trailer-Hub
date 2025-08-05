@@ -24,6 +24,10 @@ const MovieDetail = () => {
     dispatch(addToWatchHistory(movie));
   };
 
+  const handleBadgeClick = () => {
+    dispatch(setCategoryPage(1)); 
+  };
+
   if (!movie) return null;
 
   const {
@@ -86,7 +90,7 @@ const MovieDetail = () => {
                       pill
                       bg="secondary"
                       as={Link}
-                      onClick={() => { dispatch(setCategoryPage(1)); }}
+                      onClick={handleBadgeClick}
                       to={`/movies/${genre.id}`}
                       key={index}
                       className="me-1 text-decoration-none hover-effect"

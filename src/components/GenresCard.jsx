@@ -4,9 +4,13 @@ import { setCategoryPage } from "../utils/categorySlice";
 
 const GenresCard = ({src,alt,id}) => {
   const dispatch =  useDispatch();
+
+  const handleLinkClick = () => {
+  dispatch(setCategoryPage(1));
+};
   return (
     <>
-      <Link to={`/movies/${id}`} className="text-decoration-none text-white" onClick={() => {dispatch(setCategoryPage(1));}}>
+      <Link to={`/movies/${id}`} className="text-decoration-none text-white" onClick={handleLinkClick}>
       <img
         src={src}
         alt={alt}

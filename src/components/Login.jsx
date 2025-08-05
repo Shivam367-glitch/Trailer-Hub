@@ -110,6 +110,13 @@ const Login = () => {
 
     setLoading(false);
   };
+  const handleToggleForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <Container fluid>
@@ -151,7 +158,7 @@ const Login = () => {
               <div
                 role="button"
                 className="position-absolute end-0 me-2 top-50 translate-middle-y"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={handleTogglePasswordVisibility}
               >
                 {showPassword ? <FaEyeSlash size={22} /> : <FaEye size={22} />}
               </div>
@@ -179,7 +186,7 @@ const Login = () => {
               </label>
             </div>
 
-            <span className="text-secondary" onClick={() => setIsSignInForm(!isSignInForm)}>
+            <span className="text-secondary" onClick={handleToggleForm}>
               {isSignInForm ? (
                 <>
                   New to Trailer Hub?{" "}

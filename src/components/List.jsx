@@ -13,6 +13,10 @@ const List = ({ title, movieList, peopleList,error=null }) => {
   const displayList = movieList || peopleList;
   const people = !!peopleList;
 
+
+  const handleLinkClick = () => {
+    dispatch(setPage(1));
+  };
   return (
     <Container fluid>
       <Row className="gap-4">
@@ -22,7 +26,7 @@ const List = ({ title, movieList, peopleList,error=null }) => {
             {isBrowser && (
               <Link
                 to={`/discover/${title}`}
-                onClick={() => dispatch(setPage(1))}
+                onClick={handleLinkClick}
               >
                 <img
                   src="view-more.png"

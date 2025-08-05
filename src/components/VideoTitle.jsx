@@ -17,7 +17,7 @@ const VideoTitle = ({title,overview}) => {
     }
   return (
     <div className="position-absolute text-white ms-4 text-white mt-0 d-none d-md-block top-50  translate-middle-y ">
-       <h1 className="display-5 fw-bold">{title}</h1>
+        <h1 className="display-5 fw-bold">{title}</h1>
         <p className="w-35 lead">{overview}</p>
         <div className="d-flex flex-row gap-2">
             <Button   variant="light" className="text-dark" onClick={()=>{dispatch(togglePlaying())}}>{

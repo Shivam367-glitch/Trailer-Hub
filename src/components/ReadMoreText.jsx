@@ -8,14 +8,16 @@ const ReadMoreText = ({ text = "", maxChars = 300 }) => {
 
   const isLong = text.length > maxChars;
   const displayText = expanded || !isLong ? text : text.slice(0, maxChars) + "... ";
-
+  const toggleText = () => {
+    setExpanded(!expanded);
+  };
   return (
     <>
     
     <p className="paragraph_text">{displayText} 
     {isLong && (
       <button
-        onClick={() => setExpanded(!expanded)}
+        onClick={toggleText}
        className="read_button"
       >
         {expanded ? " Read less" : " Read more"}

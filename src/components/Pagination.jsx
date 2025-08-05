@@ -4,6 +4,7 @@ import { AiOutlineCaretLeft,AiOutlineCaretRight } from "react-icons/ai";
 import { useDispatch } from "react-redux";
  
 const Pagination = ({page,total_pages,setPage}) => {
+
   const dispatch = useDispatch();
   return (
      <Col xs={12} className="m-0 p-0 text-center d-flex flex-row gap-3 justify-content-center align-items-center text-white"> 
