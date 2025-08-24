@@ -18,9 +18,9 @@ const Download = () => {
           />
         </Col>
 
-        <Col md={6} className="d-flex flex-column gap-2 text-center text-md-start ">
-          <h1 className="display-6 fw-bold mb-3">Download Our App</h1>
-          <p className=" mb-4">
+        <Col md={6} className="d-flex flex-column gap-2 text-center text-md-start mt-3 ">
+          <h1 className="display-6 fw-bold mb-3 ">Download Our App</h1>
+          <p className=" mb-4 ">
              Watch the latest movie trailers — anytime, anywhere. Stay updated with what’s coming next in cinema.
           </p>
 
@@ -43,7 +43,7 @@ const Download = () => {
             size="lg"
             className="me-3 mb-2 align-self-center "
           >
-            Download Now
+            Download
           </Button>
          </div>
         </Col>
