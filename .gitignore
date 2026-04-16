@@ -23,5 +23,5 @@ build
 *.sln
 *.sw?
 
-src/utils/Constants.js
+src/utils/constant.js
 src/utils/firebase.js
