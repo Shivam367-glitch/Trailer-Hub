@@ -1,9 +1,7 @@
-
-import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addViewedMovie } from "../utils/movieSlice";
-import { BASE_URL } from "../utils/Constants"; 
+import { addViewedMovie } from "../store/movieSlice";
+import {API_OPTIONS, BASE_URL } from "../utils/constant"; 
 
 const useMovieDetail = (movieId) => {
   const dispatch = useDispatch();

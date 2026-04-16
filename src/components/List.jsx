@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Card from "./Card";
 import { Link, useLocation } from "react-router-dom";
-import { setPage } from "../utils/discoverSlice";
+import { setPage } from "../store/discoverSlice";
 import { useDispatch } from "react-redux";
 import Error from "./Error";
 import { getImagePath } from "../utils/common";

@@ -12,7 +12,7 @@ const Genres = () => {
             </Col> 
             <Col xs={12} className="container_scroll d-flex flex-row gap-4"> 
             {
-              genres?.map((item, index) => {
+              genres?.map((item) => {
                 return (
                   <GenresCard key={item?.id} src={item?.name+`.png`}  alt={item?.name} id={item?.id}/>
                 )

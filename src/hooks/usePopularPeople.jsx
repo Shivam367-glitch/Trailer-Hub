@@ -1,9 +1,9 @@
-
-import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPopularPeople } from "../utils/peopleSlice"; 
-import {BASE_URL} from "../utils/Constants";  
+import { addPopularPeople } from "../store/peopleSlice"; 
+import {BASE_URL,API_OPTIONS} from "../utils/constant";  
+
+
 const usePopularPeople = () => {
     const dispatch = useDispatch();
     const [error, setError] = useState("");

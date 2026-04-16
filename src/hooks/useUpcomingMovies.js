@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addUpcomingMovies } from "../utils/movieSlice";
+import { addUpcomingMovies } from "../store/movieSlice";
 import { useEffect, useState } from "react";
-import { API_OPTIONS, HOME_MOVIE_URL } from "../utils/Constants";
+import { API_OPTIONS, HOME_MOVIE_URL } from "../utils/constant";
 import { getDiscoverParams } from "../utils/discoverParams";
 
 const useUpcomingMovies = () => {
   const dispatch = useDispatch();
   const country = useSelector((store) => store?.country?.country);
   const page = useSelector((store) => store.movie.nowPlayingMovies?.page || 1);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(""); 
+
   useEffect(() => {
     const getUpcomingMovies = async () => {
       setError("");

@@ -1,8 +1,8 @@
-import { addNowPlayingVideo } from "../utils/nowPlayingSlice";
-import {API_OPTIONS} from "../utils/Constants" 
+import { addNowPlayingVideo } from "../store/nowPlayingSlice";
 import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"; 
-import {BASE_URL} from "../utils/Constants";  
+import {API_OPTIONS,BASE_URL} from "../utils/constant";   
+
 const useMovieTrailer = (id) => {
  
   const dispatch = useDispatch();

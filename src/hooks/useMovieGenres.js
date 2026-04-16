@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addGenres } from "../utils/movieSlice";
+import { addGenres } from "../store/movieSlice";
 import { useEffect, useState } from "react";
-import { API_OPTIONS } from "../utils/Constants";
-import {BASE_URL} from "../utils/Constants";  
+import {API_OPTIONS,BASE_URL} from "../utils/constant";  
 
 const useMovieGenres = () => { 
    const dispatch=useDispatch();  

@@ -1,9 +1,8 @@
-
-import { API_OPTIONS } from "../utils/Constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addViewedPeople, addViewedPeopleMovies } from "../utils/peopleSlice"; 
-import {BASE_URL} from "../utils/Constants";  
+import { addViewedPeople, addViewedPeopleMovies } from "../store/peopleSlice"; 
+import {BASE_URL,API_OPTIONS} from "../utils/constant"; 
+ 
 const usePeopleDetail = (peopleId) => {
     const dispatch = useDispatch();
     const [error, setError] = useState("");

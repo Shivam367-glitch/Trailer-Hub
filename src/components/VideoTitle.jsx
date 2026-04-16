@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap"
 import { FaPlay,FaInfoCircle, FaPause  } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
-import { togglePlaying } from "../utils/nowPlayingSlice";
+import { togglePlaying } from "../store/nowPlayingSlice";
 
 const VideoTitle = ({title,overview}) => { 
 
@@ -13,7 +13,8 @@ const VideoTitle = ({title,overview}) => {
 
     const showDetails=()=>{
       navigate(`/movie/${id}`)
-    }
+    } 
+    
   return (
     <div className="position-absolute text-white ms-4 text-white mt-0 d-none d-md-block top-50  translate-middle-y ">
         <h1 className="display-5 fw-bold">{title}</h1>

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addTopRatedMovies } from "../utils/movieSlice";
+import { addTopRatedMovies } from "../store/movieSlice";
 import { useEffect, useState } from "react";
-import { API_OPTIONS, HOME_MOVIE_URL } from "../utils/Constants";
+import { API_OPTIONS, HOME_MOVIE_URL } from "../utils/constant";
 import { getDiscoverParams } from "../utils/discoverParams";
 
 const useTopRatedMovies = () => { 
@@ -9,8 +9,6 @@ const useTopRatedMovies = () => {
     const [error,setError] = useState("");
     const country=useSelector((store)=>store?.country?.country);
     const page = useSelector((store) => store.movie.topRatedMovies?.page || 1);
-
-
 
   useEffect(() => {
     const getTopRatedMovies = async () => {

@@ -2,9 +2,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
-import { API_OPTIONS } from "../utils/Constants";
-import {BASE_URL} from "../utils/Constants";  
-import { addMovies } from "../utils/categorySlice";
+import { API_OPTIONS,BASE_URL } from "../utils/constant";
+import { addMovies } from "../store/categorySlice";
 
 const useGenreMovies = (page) => { 
 

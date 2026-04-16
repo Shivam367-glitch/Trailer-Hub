@@ -22,10 +22,6 @@ export const validateForm = (isSignInForm,Email, Password,Name) => {
           return null;
         }
     }
-
-  
-
-  
     return null;
-  };
+};
   

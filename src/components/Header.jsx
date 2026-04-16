@@ -1,12 +1,10 @@
 import { useMemo, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Offcanvas from "react-bootstrap/Offcanvas";
+import {Nav,Navbar,Offcanvas} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "./Dropdown";
-import { setCategoryPage } from "../utils/categorySlice";
+import { setCategoryPage } from "../store/categorySlice";
 
 function OffcanvasExample() {
   const [showOffcanvas, setShowOffcanvas] = useState(false);

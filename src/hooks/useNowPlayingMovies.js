@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addNowPlayingMovies } from "../utils/movieSlice";
+import { addNowPlayingMovies } from "../store/movieSlice";
 import { useEffect, useState } from "react";
-import { API_OPTIONS, HOME_MOVIE_URL } from "../utils/Constants";
+import { API_OPTIONS, HOME_MOVIE_URL } from "../utils/constant";
 
 
 import{  getDiscoverParams } from "../utils/discoverParams";

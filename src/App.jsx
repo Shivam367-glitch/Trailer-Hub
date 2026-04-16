@@ -1,23 +1,21 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Suspense, lazy } from "react";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 import Body from "./components/Body";
 import MainLoader from "./components/MainLoader";
-import MovieSearch from "./components/MovieSearch";
-
-const Login = lazy(() => import("./components/Login"));
-const PeopleSearch = lazy(() => import("./components/PeopleSearch"));
-const PasswordReset = lazy(() => import("./components/PasswordReset"));
-const MovieDetail = lazy(() => import("./components/MovieDetail"));
-const PeopleDetail = lazy(() => import("./components/PeopleDetail"));
-const LogOut = lazy(() => import("./components/LogOut"));
-const Browser = lazy(() => import("./components/Browser"));
-const CategoryMovie = lazy(() => import("./components/CategoryMovie"));
-const DiscoverPage = lazy(() => import("./components/DiscoverPage"));
-const Profile = lazy(() => import("./components/Profile"));
-const GptSearch = lazy(() => import("./components/GptSearch"));
-const Download = lazy(() => import("./components/Download"));
+const  MovieSearch= lazy(() => import("./pages/MovieSearch"));
+const Login = lazy(() => import("./pages/Login"));
+const PeopleSearch = lazy(() => import("./pages/PeopleSearch"));
+const PasswordReset = lazy(() => import("./pages/PasswordReset"));
+const MovieDetail = lazy(() => import("./pages/MovieDetail"));
+const PeopleDetail = lazy(() => import("./pages/PeopleDetail"));
+const LogOut = lazy(() => import("./pages/LogOut"));
+const Browser = lazy(() => import("./pages/Browser"));
+const CategoryMovie = lazy(() => import("./pages/CategoryMovie"));
+const DiscoverPage = lazy(() => import("./pages/DiscoverPage"));
+const Profile = lazy(() => import("./pages/Profile"));
+const GptSearch = lazy(() => import("./pages/GptSearch"));
+const Download = lazy(() => import("./pages/Download"));
 
 function App() {
   const appRoute = createBrowserRouter([

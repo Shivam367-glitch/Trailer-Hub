@@ -1,4 +1,4 @@
-import { IMG_CDN_URL } from "./Constants";
+import { IMG_CDN_URL } from "./constant";
 
  export const getImagePath = (item, people) =>
     people
