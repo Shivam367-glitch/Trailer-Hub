@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
-const Card = ({img,directTo}) => {  
-  
+const Card = ({img,directTo}) => {     
+
+ 
+   console.log(directTo);
   const navigate=useNavigate();
 
   const showDetails=()=>{
