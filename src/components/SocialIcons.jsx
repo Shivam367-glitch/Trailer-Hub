@@ -9,7 +9,7 @@ const SocialIcons = ({ facebook_id, youtube_id, instagram_id, twitter_id }) => {
           href={`https://www.facebook.com/${facebook_id}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="icon-hover"
+          className="icon-hover mb-2"
           title="Facebook"
         >
           <Facebook size={28} color="#1877F2" />
@@ -21,7 +21,7 @@ const SocialIcons = ({ facebook_id, youtube_id, instagram_id, twitter_id }) => {
           href={`https://www.youtube.com/@${youtube_id}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="icon-hover"
+          className="icon-hover mb-2"
           title="YouTube"
         >
           <Youtube size={28} color="#FF0000" />
@@ -33,7 +33,7 @@ const SocialIcons = ({ facebook_id, youtube_id, instagram_id, twitter_id }) => {
           href={`https://www.instagram.com/${instagram_id}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="icon-hover"
+          className="icon-hover mb-2"
           title="Instagram"
         >
           <Instagram size={28} color="#E1306C" />
@@ -45,7 +45,7 @@ const SocialIcons = ({ facebook_id, youtube_id, instagram_id, twitter_id }) => {
           href={`https://x.com/${twitter_id}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="icon-hover"
+          className="icon-hover mb-2"
           title="X (Twitter)"
         >
           <TwitterX size={28} color="white" />

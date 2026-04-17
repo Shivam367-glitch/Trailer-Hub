@@ -5,6 +5,7 @@ import { Circle } from "rc-progress";
 import { IMG_CDN_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { FaPlay } from "react-icons/fa";
+import { MdOutlineOpenInNew } from "react-icons/md";
 import useMovieDetail from "../hooks/useMovieDetail";
 import VideoTrailer from "../components/VideoTrailer";
 import { addToWatchHistory } from "../store/watchHistorySlice";
@@ -17,6 +18,7 @@ const MovieDetail = () => {
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
   const movie = useSelector((store) => store?.movie?.viewedMovie);
+  const country = useSelector((store) => store?.country?.country);
   const [error, loading] = useMovieDetail(movieId);
 
   const handleWatch = () => {
@@ -25,7 +27,7 @@ const MovieDetail = () => {
   };
 
   const handleBadgeClick = () => {
-    dispatch(setCategoryPage(1)); 
+    dispatch(setCategoryPage(1));
   };
 
   if (!movie) return null;
@@ -38,27 +40,38 @@ const MovieDetail = () => {
     overview = "No Overview Available",
     runtime,
     title,
-    homepage ,
+    homepage,
     watch_providers = "No Watch Providers Available",
   } = movie;
 
   let hr = Math.floor(runtime / 60);
   let min = runtime % 60;
-  const userScore = movie?.vote_average ? Math.ceil(movie.vote_average * 10) : 0;
+  const userScore = movie?.vote_average
+    ? Math.ceil(movie.vote_average * 10)
+    : 0;
 
   return (
     <>
       <Container fluid={true} className="mt-4">
-
-        <GoBack/>
+        <GoBack />
 
         <Row className="d-flex flex-column flex-md-row bg-dark opacity-90 py-3 gap-2 text-white">
-          {loading && <Col className="bg-dark text-white">Loading movie details...</Col>}
-          {error && <Col className="bg-dark text-white">Failed to fetch movie details. Please try again later.</Col>}
+          {loading && (
+            <Col className="bg-dark text-white">Loading movie details...</Col>
+          )}
+          {error && (
+            <Col className="bg-dark text-white">
+              Failed to fetch movie details. Please try again later.
+            </Col>
+          )}
 
           {!loading && !error && (
-            <> 
-              <Col xs={12} lg={3} className="d-flex flex-row justify-content-center mb-2">
+            <>
+              <Col
+                xs={12}
+                lg={3}
+                className="d-flex flex-row justify-content-center mb-2"
+              >
                 <img
                   src={IMG_CDN_URL + poster_path}
                   alt={title}
@@ -67,24 +80,39 @@ const MovieDetail = () => {
                 />
               </Col>
 
-              <Col xs={12} lg={8} className="d-flex flex-column justify-content-start gap-2 mb-2 border-start">
-                <div> 
-                  {
-                    homepage?
-                  <Link
-                    to={homepage}
-                    className="mt-3 fw-bolder fs-4 text-white cursor_pointer text-decoration-none hover-effect"
-                    target="_blank"
-                  >
+              <Col
+                xs={12}
+                lg={8}
+                className="d-flex flex-column justify-content-start gap-2 mb-2 border-start"
+              >
+                <div className="d-flex   align-items-center">
+                  <span className="fw-bolder fs-4">
                     {title} {title !== original_title && `(${original_title})`}
-                  </Link>:
-                  <span className=" fw-bolder fs-4">{title} {title !== original_title && `(${original_title})`}</span>
-    }
-                  - {" "}{runtime && <span className="ms-1">{hr} hr {min} min</span>}
+                  </span>
+
+                  {homepage && (
+                    <a
+                      href={homepage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ms-2 mb-1 text-white hover-effect icon-hover"
+                    >
+                      <MdOutlineOpenInNew size={30} />
+                    </a>
+                  )}
+
+                  {" - "}
+                  {runtime && (
+                    <span className="ms-1">
+                      {hr} hr {min} min
+                    </span>
+                  )}
                 </div>
 
                 <p>
-                  <span className="me-1">Movie Type<span className="ms-1">:</span></span>
+                  <span className="me-1">
+                    Movie Type<span className="ms-1">:</span>
+                  </span>
                   {genres?.map((genre, index) => (
                     <Badge
                       pill
@@ -116,10 +144,14 @@ const MovieDetail = () => {
 
                 <div>
                   <h3>Overview</h3>
-                  <p className="paragraph_text">{<ReadMoreText text={overview} />}</p>
+                  <p className="paragraph_text">
+                    {<ReadMoreText text={overview} />}
+                  </p>
 
                   <div className="position-relative d-flex flex-row gap-2">
-                    <span className="position-absolute m-4 align-self-center">{userScore}%</span>
+                    <span className="position-absolute m-4 align-self-center">
+                      {userScore}%
+                    </span>
                     <Circle
                       percent={userScore}
                       trailColor="#423d0f"
@@ -133,19 +165,19 @@ const MovieDetail = () => {
                 </div>
 
                 <div className="mt-3">
-                  <p>Where to Watch <span>:</span></p>
+                  <p>
+                    Where to Watch <span>:</span>
+                  </p>
                   <div className="d-flex flex-row gap-4">
-                    {
-                      watch_providers["IN"]?.["rent"]?.map((provider) => (
-                        <img
-                          key={provider.provider_id}
-                          src={`${IMG_CDN_URL}${provider.logo_path}`}
-                          alt={provider.provider_name}
-                          height={"60px"}
-                          width={"60px"}
-                        />
-                      ))
-                    }
+                    {watch_providers[country]?.["rent"]?.map((provider) => (
+                      <img
+                        key={provider.provider_id}
+                        src={`${IMG_CDN_URL}${provider.logo_path}`}
+                        alt={provider.provider_name}
+                        height={"60px"}
+                        width={"60px"}
+                      />
+                    ))}
                   </div>
                 </div>
               </Col>
@@ -154,7 +186,12 @@ const MovieDetail = () => {
         </Row>
       </Container>
 
-      <VideoTrailer id={movieId} show={modalShow} onHide={() => setModalShow(false)} title={title} />
+      <VideoTrailer
+        id={movieId}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        title={title}
+      />
     </>
   );
 };
