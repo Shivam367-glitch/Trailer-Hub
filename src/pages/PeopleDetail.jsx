@@ -2,12 +2,12 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import usePeopleDetail from "../hooks/usePeopleDetail";
 import { Col, Container, Row } from "react-bootstrap";
-import { IMG_CDN_URL } from "../utils/constant";
 import List from "../components/List";
 import SocialIcons from "../components/SocialIcons";
 import ReadMoreText from "../components/ReadMoreText";
 import GoBack from "../components/GoBack";
-import { MdOutlineOpenInNew } from "react-icons/md";
+import DetailPageTitle from "../components/DetailPageTitle";
+import DetailPageImage from "../components/DetailPageImage";
 
 const PeopleDetail = () => {
   let { peopleId } = useParams();
@@ -46,39 +46,14 @@ const PeopleDetail = () => {
           )}
           {!loading && !error && (
             <>
-              <Col
-                xs={12}
-                lg={3}
-                className="d-flex flex-row  justify-content-center  mb-2 "
-              >
-                <img
-                  src={
-                    profile_path ? IMG_CDN_URL + profile_path : "/person.png"
-                  }
-                  alt={name}
-                  className="img-fluid rounded-4 border"
-                  style={{ maxHeight: "500px" }}
-                />
-              </Col>
+              <DetailPageImage profile_path={profile_path} name={name} />
               <Col
                 xs={12}
                 lg={8}
                 className="d-flex flex-column justify-content-start gap-2 mb-2   border-start"
               >
                 <div className="mt-3 fw-bolder fs-4 text-white d-flex flex-wrap justify-content-center align-items-center gap-3">
-                  <span className="fw-bolder fs-4">{name}</span>
-
-                  {homepage && (
-                    <a
-                      href={homepage}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className=" ms-2 mb-1 text-white hover-effect icon-hover"
-                    >
-                      <MdOutlineOpenInNew size={28} />
-                    </a>
-                  )}
-
+                  <DetailPageTitle title={name} homepage={homepage} />
                   <SocialIcons
                     facebook_id={facebook_id}
                     youtube_id={youtube_id}

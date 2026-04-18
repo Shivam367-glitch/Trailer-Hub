@@ -12,7 +12,7 @@ const SocialIcons = ({ facebook_id, youtube_id, instagram_id, twitter_id }) => {
           className="icon-hover mb-2"
           title="Facebook"
         >
-          <Facebook size={28} color="#1877F2" />
+          <Facebook size={30} color="#1877F2" />
         </a>
       )}
 
@@ -24,7 +24,7 @@ const SocialIcons = ({ facebook_id, youtube_id, instagram_id, twitter_id }) => {
           className="icon-hover mb-2"
           title="YouTube"
         >
-          <Youtube size={28} color="#FF0000" />
+          <Youtube size={30} color="#FF0000" />
         </a>
       )}
 
@@ -36,7 +36,7 @@ const SocialIcons = ({ facebook_id, youtube_id, instagram_id, twitter_id }) => {
           className="icon-hover mb-2"
           title="Instagram"
         >
-          <Instagram size={28} color="#E1306C" />
+          <Instagram size={30} color="#E1306C" />
         </a>
       )}
 
@@ -48,7 +48,7 @@ const SocialIcons = ({ facebook_id, youtube_id, instagram_id, twitter_id }) => {
           className="icon-hover mb-2"
           title="X (Twitter)"
         >
-          <TwitterX size={28} color="white" />
+          <TwitterX size={30} color="white" />
         </a>
       )}
     </div>

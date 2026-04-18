@@ -5,13 +5,14 @@ import { Circle } from "rc-progress";
 import { IMG_CDN_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { FaPlay } from "react-icons/fa";
-import { MdOutlineOpenInNew } from "react-icons/md";
 import useMovieDetail from "../hooks/useMovieDetail";
 import VideoTrailer from "../components/VideoTrailer";
 import { addToWatchHistory } from "../store/watchHistorySlice";
 import { setCategoryPage } from "../store/categorySlice";
 import ReadMoreText from "../components/ReadMoreText";
 import GoBack from "../components/GoBack";
+import DetailPageTitle from "../components/DetailPageTitle";
+import DetailPageImage from "../components/DetailPageImage";
 
 const MovieDetail = () => {
   let { movieId } = useParams();
@@ -67,40 +68,14 @@ const MovieDetail = () => {
 
           {!loading && !error && (
             <>
-              <Col
-                xs={12}
-                lg={3}
-                className="d-flex flex-row justify-content-center mb-2"
-              >
-                <img
-                  src={IMG_CDN_URL + poster_path}
-                  alt={title}
-                  className="img-fluid rounded border"
-                  style={{ maxHeight: "500px" }}
-                />
-              </Col>
-
+              <DetailPageImage profile_path={poster_path} name={title} />
               <Col
                 xs={12}
                 lg={8}
                 className="d-flex flex-column justify-content-start gap-2 mb-2 border-start"
               >
                 <div className="d-flex   align-items-center">
-                  <span className="fw-bolder fs-4">
-                    {title} {title !== original_title && `(${original_title})`}
-                  </span>
-
-                  {homepage && (
-                    <a
-                      href={homepage}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ms-2 mb-1 text-white hover-effect icon-hover"
-                    >
-                      <MdOutlineOpenInNew size={30} />
-                    </a>
-                  )}
-
+                 <DetailPageTitle title={`${title}${title !== original_title ? ` (${original_title})` : ""}`} homepage={homepage}/>
                   {" - "}
                   {runtime && (
                     <span className="ms-1">
