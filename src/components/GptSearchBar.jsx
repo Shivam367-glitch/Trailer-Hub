@@ -4,6 +4,7 @@ import { model } from "./geminiAi";
 import { API_OPTIONS ,BASE_URL} from "../utils/constant";
 import { useDispatch } from "react-redux";
 import Error from "./Error";
+import { addRecommendedMovies } from "../store/gptSlice";
 
 const GptSearchBar = () => {
   const inputRef = useRef(null);
@@ -20,8 +21,7 @@ const GptSearchBar = () => {
       const json = await data.json();
 
       return json.results.length==0?null:json.results;
-    } catch (error) {
-
+    } catch (error) {       
       return [];
     }
   };
@@ -36,9 +36,15 @@ const GptSearchBar = () => {
     try {
       setLoading(true);
       const result = await model.generateContent([createQuery]);
-      const responseText = await result?.response?.text();
-      const movieList = responseText.split(",").map((movie) => movie.trim()); 
+      const responseText = await result?.response?.text(); 
 
+    if (!responseText) {
+      throw new Error("EMPTY_RESPONSE");
+    }
+      const movieList = responseText.split(",").map((movie) => movie.trim()); 
+  if (movieList.length === 0) {
+      throw new Error("INVALID_FORMAT");
+    }
       const moviePromises = movieList?.map((movie) => {
         const movieName = movie.substring(0, movie.lastIndexOf("-")).trim();
         const movieYear = movie.substring(movie.lastIndexOf("-") + 1).trim();
@@ -48,12 +54,22 @@ const GptSearchBar = () => {
       const movieDetailsArray = await Promise.all(moviePromises);
       
       dispatch(addRecommendedMovies(movieDetailsArray));
-    } catch (error) {
-      if (error.message.includes("GoogleGenerativeAI Error")) {
-        setError("Content not generated due to safety concerns.");
-      } else {
-        setError("Something went wrong. Please try again.");
-      }
+    } catch (error) { 
+    if (error.message?.includes("SAFETY")) {
+      setError("Your request could not be processed due to safety restrictions.");
+    } 
+     else if (error.message?.includes("quota")) {
+      setError("AI request limit reached. Please try again later.");
+    } 
+     else if (error.message?.includes("Failed to fetch")) {
+      setError("Network error. Please check your internet connection.");
+    } 
+    else if (error.message === "EMPTY_RESPONSE" || error.message === "INVALID_FORMAT") {
+      setError("AI could not generate valid movie recommendations. Try another genre.");
+    } 
+    else {
+      setError("Something went wrong while generating movie recommendations.");
+    }
     } finally {
       setLoading(false);
     }

@@ -143,7 +143,7 @@ const MovieDetail = () => {
                   <p>
                     Where to Watch <span>:</span>
                   </p>
-                  <div className="d-flex flex-row gap-4">
+                  <div className="d-flex flex-row gap-4 flex-wrap">
                     {watch_providers[country]?.["rent"]?.map((provider) => (
                       <img
                         key={provider.provider_id}
