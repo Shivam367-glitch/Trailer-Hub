@@ -75,14 +75,19 @@ const MovieDetail = () => {
                 className="d-flex flex-column justify-content-start gap-2 mb-2 border-start"
               >
                 <div className="d-flex   align-items-center">
-                 <DetailPageTitle title={`${title}${title !== original_title ? ` (${original_title})` : ""}`} homepage={homepage}/>
-                  {" - "}
-                  {runtime && (
+                  <DetailPageTitle
+                    title={`${title}${title !== original_title ? ` (${original_title})` : ""}`}
+                    homepage={homepage}
+                  />
+                </div>
+                {runtime > 0 && (
+                  <span>
+                    Run Time :
                     <span className="ms-1">
                       {hr} hr {min} min
                     </span>
-                  )}
-                </div>
+                  </span>
+                )}
 
                 <p>
                   <span className="me-1">
