@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
-import useMovieGenres from "../hooks/useMovieGenres";
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
-import usePopularMovies from "../hooks/usePopularMovies";
-import useTopRatedMovies from "../hooks/useTopRatedMovies";
-import useUpcomingMovies from "../hooks/useUpcomingMovies";
-import Genres from "./Genres";
-import usePopularPeople from "../hooks/usePopularPeople";
-import List from "./List";
+import useMovieGenres from "../../hooks/useMovieGenres";
+import useNowPlayingMovies from "../../hooks/useNowPlayingMovies";
+import usePopularMovies from "../../hooks/usePopularMovies";
+import useTopRatedMovies from "../../hooks/useTopRatedMovies";
+import useUpcomingMovies from "../../hooks/useUpcomingMovies";
+import Genres from "../Genres";
+import usePopularPeople from "../../hooks/usePopularPeople";
+import List from "../List";
 
 const VideoContainer = () => {
   const [genresError] = useMovieGenres();

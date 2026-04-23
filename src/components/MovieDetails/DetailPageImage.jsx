@@ -1,5 +1,5 @@
 import { Col } from "react-bootstrap";
-import { IMG_CDN_URL } from "../utils/constant";
+import { IMG_CDN_URL } from "../../utils/constant";
 import { memo } from "react";
 
 const DetailPageImage = ({ profile_path, name }) => {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
  import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import GridList from "../components/GridList";
-import Error from "../components/Error";
+import Error from "../components/Error/Error";
 import { fetchMovie } from "../store/movieSearchSlice";
 
 

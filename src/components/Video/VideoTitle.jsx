@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap"
 import { FaPlay,FaInfoCircle, FaPause  } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
-import { togglePlaying } from "../store/nowPlayingSlice";
+import { togglePlaying } from "../../store/nowPlayingSlice";
 
 const VideoTitle = ({title,overview}) => { 
 

@@ -6,13 +6,14 @@ import { IMG_CDN_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { FaPlay } from "react-icons/fa";
 import useMovieDetail from "../hooks/useMovieDetail";
-import VideoTrailer from "../components/VideoTrailer";
+import VideoTrailer from "../components/Video/VideoTrailer";
 import { addToWatchHistory } from "../store/watchHistorySlice";
 import { setCategoryPage } from "../store/categorySlice";
 import ReadMoreText from "../components/ReadMoreText";
 import GoBack from "../components/GoBack";
-import DetailPageTitle from "../components/DetailPageTitle";
-import DetailPageImage from "../components/DetailPageImage";
+import DetailPageTitle from "../components/MovieDetails/DetailPageTitle";
+import DetailPageImage from "../components/MovieDetails/DetailPageImage";
+import MovieChatBot from "../components/Chatbot/MovieChatBot";
 
 const MovieDetail = () => {
   let { movieId } = useParams();
@@ -172,6 +173,8 @@ const MovieDetail = () => {
         onHide={() => setModalShow(false)}
         title={title}
       />
+
+      <MovieChatBot/>
     </>
   );
 };

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPeople } from "../store/peopleSlice";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import GridList from "../components/GridList";
-import Error from "../components/Error";
+import Error from "../components/Error/Error";
 
 const PeopleSearch = () => {
   const dispatch = useDispatch();

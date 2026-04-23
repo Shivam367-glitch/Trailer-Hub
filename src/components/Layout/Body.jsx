@@ -1,9 +1,9 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
-import { addUser, removeUser} from '../store/userSlice';
+import { addUser ,removeUser} from "../../store/userSlice.js";
 import { useEffect } from 'react';
-import { auth } from "../utils/firebase";
+import { auth } from "../../utils/firebase";
 import Header from "./Header.jsx";
 
 

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { setCategoryPage } from "../store/categorySlice";
+import { setCategoryPage } from "../../store/categorySlice";
 
 const GenresCard = ({src,alt,id}) => {
   const dispatch =  useDispatch();

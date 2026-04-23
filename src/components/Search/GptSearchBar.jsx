@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import { Button,Col,Container,Form, Row, Spinner } from "react-bootstrap";
-import { model } from "./geminiAi";
-import { API_OPTIONS ,BASE_URL} from "../utils/constant";
+import { model } from "../../services/geminiAi";
+import { API_OPTIONS ,BASE_URL} from "../../utils/constant";
 import { useDispatch } from "react-redux";
-import Error from "./Error";
-import { addRecommendedMovies } from "../store/gptSlice";
+import Error from "../Error/Error";
+import { addRecommendedMovies } from "../../store/gptSlice";
 
 const GptSearchBar = () => {
   const inputRef = useRef(null);

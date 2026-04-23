@@ -1,9 +1,7 @@
-
-
+import {memo} from "react";
 import { Col, Container, Row } from "react-bootstrap"
 import { useSelector } from "react-redux"
-import React from "react";
-import GridList from "./GridList";
+import GridList from "../GridList";
 
 
 const GptSearchComponent = () => { 
@@ -29,4 +27,4 @@ const GptSearchComponent = () => {
   )
 }
 
-export default React.memo(GptSearchComponent);
+export default memo(GptSearchComponent);

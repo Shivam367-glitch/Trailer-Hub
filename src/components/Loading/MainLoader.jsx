@@ -1,4 +1,4 @@
-import Loading from "../assets/loading.gif";
+import Loading from "../../assets/loading.gif";
 const MainLoader = () => {
   return (
     <div

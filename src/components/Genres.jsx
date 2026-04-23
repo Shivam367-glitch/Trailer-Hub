@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import GenresCard from "./GenresCard";
+import GenresCard from "./Card/GenresCard";
 import { useSelector } from "react-redux";
 const Genres = () => {
      const  genres  = useSelector((state) => state?.movie?.genres);

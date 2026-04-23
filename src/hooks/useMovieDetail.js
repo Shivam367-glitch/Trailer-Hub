@@ -16,24 +16,15 @@ const useMovieDetail = (movieId) => {
     try {
       setLoading(true);
 
-      const [details, providers] = await Promise.all([
+      const [details] = await  Promise.all([
         fetch(
-          `${BASE_URL}movie/${movieId}`,
-          { ...API_OPTIONS }
-        ),
-        fetch(
-          `${BASE_URL}movie/${movieId}//watch/providers`,
+          `${BASE_URL}movie/${movieId}?append_to_response=credits,watch/providers`,
           { ...API_OPTIONS }
         )
       ]);
        
       const detailsJson = await details.json();
-      const providersJson = await providers.json();
-      dispatch(addViewedMovie({
-        ...detailsJson,
-        watch_providers: providersJson.results,
-      })); 
-
+      dispatch(addViewedMovie({ ...detailsJson})); 
     } catch (error) {
       setError(error?.message || "Something Went Wrong!");
     } finally {

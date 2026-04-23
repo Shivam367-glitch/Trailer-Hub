@@ -1,6 +1,6 @@
 import { Col } from "react-bootstrap";
-import Card from "./Card";
-import Error from "./Error";
+import Card from "./Card/Card";
+import Error from "./Error/Error";
 import { getImagePath } from "../utils/common";
 const GridList = ({ items, people }) => {
 

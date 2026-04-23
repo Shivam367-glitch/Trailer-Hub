@@ -5,8 +5,8 @@ import { fetchDiscover, setPage } from "../store/discoverSlice";
 import GridList from "../components/GridList";
 import {  Container, Row } from "react-bootstrap";
 import Title from "../components/Title";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
+import Loading from "../components/Loading/Loading";
+import Error from "../components/Error/Error";
 import Pagination from "../components/Pagination";
 import { getDiscoverParams } from "../utils/discoverParams";
 

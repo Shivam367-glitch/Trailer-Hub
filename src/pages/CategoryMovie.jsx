@@ -3,8 +3,8 @@ import useGenreMovies from "../hooks/useGenreMovies"
 import GridList from "../components/GridList";
 import Title from "../components/Title";
 import { Container, Row } from "react-bootstrap";
-import Error from "../components/Error";
-import Loading from "../components/Loading";
+import Error from "../components/Error/Error";
+import Loading from "../components/Loading/Loading";
 import { setCategoryPage } from "../store/categorySlice";
 import Pagination from "../components/Pagination";
  

@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Body from "./components/Body";
-import MainLoader from "./components/MainLoader";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Body from "./components/layout/Body";
+import MainLoader from "./components/loading/MainLoader";
 const  MovieSearch= lazy(() => import("./pages/MovieSearch"));
 const Login = lazy(() => import("./pages/Login"));
 const PeopleSearch = lazy(() => import("./pages/PeopleSearch"));

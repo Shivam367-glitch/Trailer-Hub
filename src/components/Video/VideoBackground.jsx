@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import useMovieTrailer from "../hooks/useMovieTrailer";
+import useMovieTrailer from "../../hooks/useMovieTrailer";
 import ReactPlayer from "react-player/lazy";
-import {YOUTUBE_BASE_LINK} from "../utils/constant";
+import {YOUTUBE_BASE_LINK} from "../../utils/constant";
 import { memo } from "react";
 
 const VideoBackground = ({ id}) => {

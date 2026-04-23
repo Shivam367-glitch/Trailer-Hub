@@ -1,9 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
-import Card from "./Card";
+import Card from "./Card/Card";
 import { Link, useLocation } from "react-router-dom";
 import { setPage } from "../store/discoverSlice";
 import { useDispatch } from "react-redux";
-import Error from "./Error";
+import Error from "./Error/Error";
 import { getImagePath } from "../utils/common";
 
 const List = ({ title, movieList, peopleList,error=null }) => {

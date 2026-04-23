@@ -2,8 +2,8 @@ import  { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container,Row,Col } from "react-bootstrap";
 import GridList from "../components/GridList";
-import Error from "../components/Error";
-import Loading from "../components/Loading";
+import Error from "../components/Error/Error";
+import Loading from "../components/Loading/Loading";
 import { fetchWatchHistory } from "../store/watchHistorySlice";
 
 const WatchHistoryPage = () => {

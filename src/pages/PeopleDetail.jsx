@@ -6,8 +6,9 @@ import List from "../components/List";
 import SocialIcons from "../components/SocialIcons";
 import ReadMoreText from "../components/ReadMoreText";
 import GoBack from "../components/GoBack";
-import DetailPageTitle from "../components/DetailPageTitle";
-import DetailPageImage from "../components/DetailPageImage";
+import DetailPageTitle from "../components/MovieDetails/DetailPageTitle";
+import DetailPageImage from "../components/MovieDetails/DetailPageImage";
+import { formatDate } from "../utils/common";
 
 const PeopleDetail = () => {
   let { peopleId } = useParams();
@@ -66,9 +67,7 @@ const PeopleDetail = () => {
                   <span>
                     Born On:{" "}
                     {birthday
-                      ? new Date(birthday)
-                          .toLocaleDateString("en-GB")
-                          .replace(/\//g, "-")
+                      ? formatDate(birthday)
                       : "NA"}
                   </span>
                   <span>Born At: {place_of_birth ? place_of_birth : "NA"}</span>
